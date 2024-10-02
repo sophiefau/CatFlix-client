@@ -1,0 +1,10 @@
+{
+  "name": "catflix-client",
+  "version": "1.0.0",
+  "description": "Client App for CatFlix Database",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sophie",
+  "license": "MIT"
+}
