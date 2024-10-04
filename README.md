@@ -1,6 +1,6 @@
 ## CatFlix
 
-<!-- TABLE OF CONTENTS -->
+<!-- TABLE OF CONTENTS
 <details>
   <summary>Table of Contents</summary>
   <ol>
@@ -24,7 +24,7 @@
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
-</details>
+</details> -->
 
 
 ## About The Project
@@ -33,9 +33,10 @@ This project is a small movies web application, with a catalog of movies featuri
 The web application will provide users with access to information about different movies, directors, and genres. Users will be able to sign up, update their personal information, and create a list of their favorite movies.
 
 ### Built With
-[![React][React.js]][React-url]
+- React
 
 ## Getting Started
+This project is still in building process!
 
 ### Prerequisites
 
@@ -44,7 +45,7 @@ The web application will provide users with access to information about differen
 ## Usage
 
 # Features
-Here is a list of the CatFlix app essential features:
+Here is a list of CatFlix app essential features:
 
 - Return a list of all movies to the user
 - Return data (description, genre, director, image URL, whether it’s featured or not) about a single movie by title to the user
@@ -58,7 +59,7 @@ Here is a list of the CatFlix app essential features:
 
 ## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+Distributed under the MIT License.
 
 ## Contact
 

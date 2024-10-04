@@ -2981,7 +2981,7 @@ $RefreshReg$(_c, "CatFlixApplication");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react-dom/client":"lOjBx","./index.scss":"lJZlQ","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"ixNZl","./components/main-view/main-view":"4gflv"}],"iTorj":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react-dom/client":"lOjBx","./components/main-view/main-view":"4gflv","./index.scss":"lJZlQ","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"ixNZl"}],"iTorj":[function(require,module,exports) {
 "use strict";
 module.exports = require("ee51401569654d91");
 
@@ -27224,7 +27224,161 @@ module.exports = require("ef03b89c8fe2794e");
     /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop === "function") __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
 })();
 
-},{}],"lJZlQ":[function() {},{}],"ixNZl":[function(require,module,exports) {
+},{}],"4gflv":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$f7a6 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$f7a6.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "MainView", ()=>MainView);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _movieCard = require("../movie-card/movie-card");
+var _movieView = require("../movie-view/movie-view");
+var _s = $RefreshSig$();
+const MainView = ()=>{
+    _s();
+    const [movies, setMovies] = (0, _react.useState)([
+        {
+            id: 1,
+            Title: "The Aristocats",
+            Img: "https://en.wikipedia.org/wiki/File:Aristoposter.jpg#/media/File:Aristoposter.jpg",
+            Director: "Wolfgang Reitherman",
+            Cat: "Duchess (mother) and her kittens: Marie, Berlioz, and Toulouse.",
+            Genre: "Family",
+            Year: "1970",
+            Synopsis: "A wealthy old woman plans to leave her fortune to her cats, but her butler tries to get rid of them. The cats must find their way back home with the help of a charming alley cat."
+        },
+        {
+            id: 2,
+            Title: "The Garfield Movie",
+            Img: "https://en.wikipedia.org/wiki/The_Garfield_Movie#/media/File:The_Garfield_Movie_2024_poster.jpg",
+            Director: "Peter Hewitt",
+            Cat: "Garfield",
+            Genre: "Animation, Comedy, Family",
+            Year: "2004",
+            Synopsis: "Garfield, a lazy and sarcastic cat, must deal with a new dog, Odie, in his home. When Odie is kidnapped, Garfield sets out to rescue him."
+        },
+        {
+            id: 3,
+            Title: "A Street Cat Named Bob",
+            Img: "https://en.wikipedia.org/wiki/File:A_Street_Cat_Named_Bob_(film).png#/media/File:A_Street_Cat_Named_Bob_(film).png",
+            Director: "Roger Spottiswoode",
+            Cat: "Bob",
+            Genre: "Biography, Drama",
+            Year: "2016",
+            Synopsis: "Based on a true story, the film follows a homeless man struggling with addiction who befriends a stray cat, Bob, and finds a new purpose in life."
+        }
+    ]);
+    const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
+    if (selectedMovie) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
+        movie: selectedMovie,
+        onBackClick: ()=>setSelectedMovie(null)
+    }, void 0, false, {
+        fileName: "src/components/main-view/main-view.jsx",
+        lineNumber: 46,
+        columnNumber: 7
+    }, undefined);
+    if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        children: "The list is empty!"
+    }, void 0, false, {
+        fileName: "src/components/main-view/main-view.jsx",
+        lineNumber: 54,
+        columnNumber: 12
+    }, undefined);
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        children: movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
+                movie: movie,
+                onMovieClick: (newSelectedMovie)=>{
+                    setSelectedMovie(newSelectedMovie);
+                }
+            }, movie.id, false, {
+                fileName: "src/components/main-view/main-view.jsx",
+                lineNumber: 60,
+                columnNumber: 9
+            }, undefined))
+    }, void 0, false, {
+        fileName: "src/components/main-view/main-view.jsx",
+        lineNumber: 58,
+        columnNumber: 5
+    }, undefined);
+};
+_s(MainView, "MXo8hLS/rb7X4WDzmp4TZ8TdVB0=");
+_c = MainView;
+var _c;
+$RefreshReg$(_c, "MainView");
+
+  $parcel$ReactRefreshHelpers$f7a6.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../movie-card/movie-card":"bwuIu","../movie-view/movie-view":"ggaUx","@parcel/transformer-js/src/esmodule-helpers.js":"aO8oZ","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"ixNZl"}],"bwuIu":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$67b2 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$67b2.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "MovieCard", ()=>MovieCard);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+const MovieCard = ({ movie, onMovieClick })=>{
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        onClick: ()=>{
+            onMovieClick(movie);
+        },
+        children: movie.Title
+    }, void 0, false, {
+        fileName: "src/components/movie-card/movie-card.jsx",
+        lineNumber: 3,
+        columnNumber: 5
+    }, undefined);
+};
+_c = MovieCard;
+var _c;
+$RefreshReg$(_c, "MovieCard");
+
+  $parcel$ReactRefreshHelpers$67b2.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"aO8oZ","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"ixNZl"}],"aO8oZ":[function(require,module,exports) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, "__esModule", {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === "default" || key === "__esModule" || Object.prototype.hasOwnProperty.call(dest, key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
+
+},{}],"ixNZl":[function(require,module,exports) {
 "use strict";
 var Refresh = require("f49c07d3f7913792");
 function debounce(func, delay) {
@@ -27362,160 +27516,7 @@ function registerExportsForReactRefresh(module1) {
     }
 }
 
-},{"f49c07d3f7913792":"cWRYw"}],"4gflv":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$f7a6 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$f7a6.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "MainView", ()=>MainView);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _react = require("react");
-var _movieCard = require("../movie-card/movie-card");
-var _movieView = require("../movie-view/movie-view");
-var _s = $RefreshSig$();
-const MainView = ()=>{
-    _s();
-    const [movies, setMovies] = (0, _react.useState)([
-        {
-            id: 1,
-            Title: "The Aristocats",
-            image: "https://upload.wikimedia.org/wikipedia/en/8/8d/Aristoposter.jpg",
-            Director: "Wolfgang Reitherman",
-            Cat: "Duchess (mother) and her kittens: Marie, Berlioz, and Toulouse.",
-            Genre: "Family",
-            Year: "1970",
-            Synopsis: "A wealthy old woman plans to leave her fortune to her cats, but her butler tries to get rid of them. The cats must find their way back home with the help of a charming alley cat."
-        },
-        {
-            id: 2,
-            Title: "The Garfield Movie",
-            image: "https://upload.wikimedia.org/wikipedia/en/9/91/The_Garfield_Movie_2024_poster.jpg",
-            Director: "Peter Hewitt",
-            Cat: "Garfield",
-            Genre: "Animation, Comedy, Family",
-            Year: "2004",
-            Synopsis: "Garfield Garfield, a lazy and sarcastic cat, must deal with a new dog, Odie, in his home. When Odie is kidnapped, Garfield sets out to rescue him."
-        },
-        {
-            id: 3,
-            Title: "A Street Cat Named Bob",
-            image: "https://upload.wikimedia.org/wikipedia/en/5/51/A_Street_Cat_Named_Bob_%28film%29.png?20170117135509",
-            Cat: "Bob",
-            Genre: "Biography, Drama",
-            Year: "2016",
-            Synopsis: "Based on a true story, the film follows a homeless man struggling with addiction who befriends a stray cat, Bob, and finds a new purpose in life."
-        }
-    ]);
-    const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
-    if (selectedMovie) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
-        movie: selectedMovie,
-        onBackClick: ()=>setSelectedMovie(null)
-    }, void 0, false, {
-        fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 45,
-        columnNumber: 7
-    }, undefined);
-    if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        children: "The list is empty!"
-    }, void 0, false, {
-        fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 53,
-        columnNumber: 12
-    }, undefined);
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        children: movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
-                movie: movie,
-                onMovieClick: (newSelectedMovie)=>{
-                    setSelectedMovie(newSelectedMovie);
-                }
-            }, movie.id, false, {
-                fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 59,
-                columnNumber: 9
-            }, undefined))
-    }, void 0, false, {
-        fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 57,
-        columnNumber: 5
-    }, undefined);
-};
-_s(MainView, "BnKzFNzw8A4TnofkRgUoPY8EhlU=");
-_c = MainView;
-var _c;
-$RefreshReg$(_c, "MainView");
-
-  $parcel$ReactRefreshHelpers$f7a6.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"aO8oZ","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"ixNZl","react":"21dqq","../movie-card/movie-card":"bwuIu","../movie-view/movie-view":"ggaUx"}],"aO8oZ":[function(require,module,exports) {
-exports.interopDefault = function(a) {
-    return a && a.__esModule ? a : {
-        default: a
-    };
-};
-exports.defineInteropFlag = function(a) {
-    Object.defineProperty(a, "__esModule", {
-        value: true
-    });
-};
-exports.exportAll = function(source, dest) {
-    Object.keys(source).forEach(function(key) {
-        if (key === "default" || key === "__esModule" || Object.prototype.hasOwnProperty.call(dest, key)) return;
-        Object.defineProperty(dest, key, {
-            enumerable: true,
-            get: function() {
-                return source[key];
-            }
-        });
-    });
-    return dest;
-};
-exports.export = function(dest, destName, get) {
-    Object.defineProperty(dest, destName, {
-        enumerable: true,
-        get: get
-    });
-};
-
-},{}],"bwuIu":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$67b2 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$67b2.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "MovieCard", ()=>MovieCard);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-const MovieCard = ({ movie, onMovieClick })=>{
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        onClick: ()=>{
-            onMovieClick(movie);
-        },
-        children: movie.Title
-    }, void 0, false, {
-        fileName: "src/components/movie-card/movie-card.jsx",
-        lineNumber: 3,
-        columnNumber: 5
-    }, undefined);
-};
-_c = MovieCard;
-var _c;
-$RefreshReg$(_c, "MovieCard");
-
-  $parcel$ReactRefreshHelpers$67b2.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"aO8oZ","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"ixNZl"}],"ggaUx":[function(require,module,exports) {
+},{"f49c07d3f7913792":"cWRYw"}],"ggaUx":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$e9f6 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -27531,7 +27532,7 @@ const MovieView = ({ movie, onBackClick })=>{
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                    src: movie.image
+                    src: movie.Img
                 }, void 0, false, {
                     fileName: "src/components/movie-view/movie-view.jsx",
                     lineNumber: 5,
@@ -27698,6 +27699,6 @@ $RefreshReg$(_c, "MovieView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"aO8oZ","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"ixNZl"}]},["2SdlY","jANDC","d8Dch"], "d8Dch", "parcelRequirec3c0")
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"aO8oZ","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"ixNZl"}],"lJZlQ":[function() {},{}]},["2SdlY","jANDC","d8Dch"], "d8Dch", "parcelRequirec3c0")
 
-//# sourceMappingURL=index.b4b6dfad.js.map
+//# sourceMappingURL=index.js.map
