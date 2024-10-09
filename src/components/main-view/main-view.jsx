@@ -4,24 +4,28 @@ import { MovieView } from "../movie-view/movie-view";
 
 export const MainView = () => {
   const [movies, setMovies] = useState([]);
-    
   const [selectedMovie, setSelectedMovie] = useState(null);
 
   useEffect(() => {
     fetch("https://catflix-99a985e6fffa.herokuapp.com/movies")
       .then((response) => response.json())
       .then((data) => {
-        const moviesFromApi = data.docs.map((doc) => {
-          return {
-            id: doc.key,
-            title: doc.title,
-            image: `xxx`,
-            author: doc.author_name?.[0],
-          };
-        });
+        console.log('Data:', data);
+        const moviesFromApi = data.map((movie) => ({
+          _id: movie._id,
+          Title: movie.Title,
+          Img: movie.Img,
+          Director: movie.Director,
+          Cat: movie.Cat,
+          Genre: movie.Genre,
+          Year: movie.Year,
+          Synopsis: movie.Synopsis,
+          Animation: movie.Animation,
+        }));
 
         setMovies(moviesFromApi);
-      });
+      })
+      .catch((error) => console.error('Error fetching movies:', error));
   }, []);
 
   if (selectedMovie) {
@@ -41,7 +45,7 @@ export const MainView = () => {
     <div>
       {movies.map((movie) => (
         <MovieCard
-          key={movie.id}
+          key={movie._id}
           movie={movie}
           onMovieClick={(newSelectedMovie) => {
             setSelectedMovie(newSelectedMovie);
