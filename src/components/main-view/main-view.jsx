@@ -3,11 +3,19 @@ import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 
 export const MainView = () => {
+  const storedUser = JSON.parse(localStorage.getItem("user"));
+  const storedToken = localStorage.getItem("token");
+  const [user, setUser] = useState(null);
+  const [token, setToken] = useState(null);
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
 
   useEffect(() => {
-    fetch("https://catflix-99a985e6fffa.herokuapp.com/movies")
+    if (!token) return;
+
+    fetch("https://catflix-99a985e6fffa.herokuapp.com/movies", {
+      headers: { Authorization: `Bearer ${token}` }
+    })
       .then((response) => response.json())
       .then((data) => {
         console.log('Data:', data);
@@ -26,7 +34,18 @@ export const MainView = () => {
         setMovies(moviesFromApi);
       })
       .catch((error) => console.error('Error fetching movies:', error));
-  }, []);
+}, [token]);
+
+  if (!user) {
+    return (
+      <LoginView
+        onLoggedIn={(user, token) => {
+          setUser(user);
+          setToken(token);
+        }}
+      />
+    );
+  }
 
   if (selectedMovie) {
     let similarMovies = movies.filter(
@@ -70,6 +89,15 @@ export const MainView = () => {
 
   return (
     <div>
+      <button
+        onClick={() => {
+          setUser(null);
+          setToken(null);
+          localStorage.clear();
+        }}
+      >
+        Logout
+      </button>
       {movies.map((movie) => (
         <MovieCard
           key={movie._id}
@@ -82,3 +110,5 @@ export const MainView = () => {
     </div>
   );
 };
+
+
