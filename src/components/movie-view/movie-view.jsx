@@ -1,8 +1,10 @@
-export const MovieView = ({ movie, onBackClick }) => {
+import React from "react";
+
+export const MovieView = ({ movie, similarMovies, onBackClick }) => {
   return (
     <div>
       <div>
-        <img src={movie.image} />
+        <img src={movie.Img} alt={"Movie poster"} />
       </div>
       <div>
         <span>Title: </span>
@@ -14,11 +16,11 @@ export const MovieView = ({ movie, onBackClick }) => {
       </div>
       <div>
         <span>Cat: </span>
-        <span>{movie.Cat}</span>
+        <span>{movie.Cat.Name}</span> {/* Assuming Cat is an object */}
       </div>
       <div>
         <span>Genre: </span>
-        <span>{movie.Genre}</span>
+        <span>{movie.Genre.Name}</span> {/* Assuming Genre is an object */}
       </div>
       <div>
         <span>Year: </span>
