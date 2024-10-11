@@ -9,10 +9,11 @@ export const LoginView = ({ onLoggedIn }) => {
 
     const data = {
       Username: username,
-      Password: password
+      Password: password,
+      // Email: "test@gmail.com"
     };
 
-    fetch("https://catflix-99a985e6fffa.herokuapp.com/users", {
+    fetch("https://catflix-99a985e6fffa.herokuapp.com/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

@@ -28600,7 +28600,7 @@ const LoginView = ({ onLoggedIn })=>{
             Username: username,
             Password: password
         };
-        fetch("https://catflix-99a985e6fffa.herokuapp.com/users", {
+        fetch("https://catflix-99a985e6fffa.herokuapp.com/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -28630,13 +28630,13 @@ const LoginView = ({ onLoggedIn })=>{
                         required: true
                     }, void 0, false, {
                         fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 42,
+                        lineNumber: 43,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 40,
+                lineNumber: 41,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
@@ -28649,13 +28649,13 @@ const LoginView = ({ onLoggedIn })=>{
                         required: true
                     }, void 0, false, {
                         fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 51,
+                        lineNumber: 52,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 49,
+                lineNumber: 50,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -28663,13 +28663,13 @@ const LoginView = ({ onLoggedIn })=>{
                 children: "Submit"
             }, void 0, false, {
                 fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 58,
+                lineNumber: 59,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/login-view/login-view.jsx",
-        lineNumber: 39,
+        lineNumber: 40,
         columnNumber: 5
     }, undefined);
 };
@@ -28699,14 +28699,18 @@ var _s = $RefreshSig$();
 const SignupView = ()=>{
     _s();
     const [username, setUsername] = (0, _react.useState)("");
+    const [usernameError, setUsernameError] = (0, _react.useState)("");
     const [password, setPassword] = (0, _react.useState)("");
+    const [passwordError, setPasswordError] = (0, _react.useState)("");
     const [email, setEmail] = (0, _react.useState)("");
     const [birthday, setBirthday] = (0, _react.useState)("");
     const handleSubmit = (event)=>{
         event.preventDefault();
-        /// Add errors message form non-validation
+        setUsernameError("");
+        setPasswordError("");
+        // /// Add errors message form non-validation
         const usernameRegex = /^[a-z]{5,}$/;
-        if (usernameRegex.test(username)) {
+        if (!usernameRegex.test(username)) {
             setUsernameError("Username must be at least 5 characters long and contain only lowercase letters.");
             return; // Stop the form submission if validation fails
         }
@@ -28714,14 +28718,13 @@ const SignupView = ()=>{
             setPasswordError("Password must be at least 8 characters long.");
             return; // Stop the form submission if validation fails
         }
-        setUsernameError("");
         const data = {
             Username: username,
             Password: password,
             Email: email,
             Birthday: birthday
         };
-        fetch("https://catflix-99a985e6fffa.herokuapp.com/login", {
+        fetch("https://catflix-99a985e6fffa.herokuapp.com/users", {
             method: "POST",
             body: JSON.stringify(data),
             headers: {
@@ -28751,13 +28754,13 @@ const SignupView = ()=>{
                         minLength: "5"
                     }, void 0, false, {
                         fileName: "src/components/signup-view/signup-view.jsx",
-                        lineNumber: 56,
+                        lineNumber: 61,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/signup-view/signup-view.jsx",
-                lineNumber: 54,
+                lineNumber: 59,
                 columnNumber: 7
             }, undefined),
             usernameError && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -28767,7 +28770,7 @@ const SignupView = ()=>{
                 children: usernameError
             }, void 0, false, {
                 fileName: "src/components/signup-view/signup-view.jsx",
-                lineNumber: 64,
+                lineNumber: 69,
                 columnNumber: 25
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
@@ -28780,13 +28783,13 @@ const SignupView = ()=>{
                         required: true
                     }, void 0, false, {
                         fileName: "src/components/signup-view/signup-view.jsx",
-                        lineNumber: 68,
+                        lineNumber: 73,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/signup-view/signup-view.jsx",
-                lineNumber: 66,
+                lineNumber: 71,
                 columnNumber: 7
             }, undefined),
             passwordError && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -28796,7 +28799,7 @@ const SignupView = ()=>{
                 children: passwordError
             }, void 0, false, {
                 fileName: "src/components/signup-view/signup-view.jsx",
-                lineNumber: 75,
+                lineNumber: 80,
                 columnNumber: 25
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
@@ -28809,13 +28812,13 @@ const SignupView = ()=>{
                         required: true
                     }, void 0, false, {
                         fileName: "src/components/signup-view/signup-view.jsx",
-                        lineNumber: 79,
+                        lineNumber: 84,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/signup-view/signup-view.jsx",
-                lineNumber: 77,
+                lineNumber: 82,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
@@ -28828,13 +28831,13 @@ const SignupView = ()=>{
                         required: true
                     }, void 0, false, {
                         fileName: "src/components/signup-view/signup-view.jsx",
-                        lineNumber: 88,
+                        lineNumber: 93,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/signup-view/signup-view.jsx",
-                lineNumber: 86,
+                lineNumber: 91,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -28842,17 +28845,17 @@ const SignupView = ()=>{
                 children: "Submit"
             }, void 0, false, {
                 fileName: "src/components/signup-view/signup-view.jsx",
-                lineNumber: 95,
+                lineNumber: 100,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/signup-view/signup-view.jsx",
-        lineNumber: 53,
+        lineNumber: 58,
         columnNumber: 5
     }, undefined);
 };
-_s(SignupView, "jsOQN3GC2XlBG9ITlzCdpyJOnso=");
+_s(SignupView, "6+n+nyQE5xBkSccDXvwrfwjY2cg=");
 _c = SignupView;
 var _c;
 $RefreshReg$(_c, "SignupView");
