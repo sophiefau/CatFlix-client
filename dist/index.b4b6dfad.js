@@ -28704,6 +28704,17 @@ const SignupView = ()=>{
     const [birthday, setBirthday] = (0, _react.useState)("");
     const handleSubmit = (event)=>{
         event.preventDefault();
+        /// Add errors message form non-validation
+        const usernameRegex = /^[a-z]{5,}$/;
+        if (usernameRegex.test(username)) {
+            setUsernameError("Username must be at least 5 characters long and contain only lowercase letters.");
+            return; // Stop the form submission if validation fails
+        }
+        if (password.length < 8) {
+            setPasswordError("Password must be at least 8 characters long.");
+            return; // Stop the form submission if validation fails
+        }
+        setUsernameError("");
         const data = {
             Username: username,
             Password: password,
@@ -28737,17 +28748,27 @@ const SignupView = ()=>{
                         value: username,
                         onChange: (e)=>setUsername(e.target.value),
                         required: true,
-                        minLength: "3"
+                        minLength: "5"
                     }, void 0, false, {
                         fileName: "src/components/signup-view/signup-view.jsx",
-                        lineNumber: 42,
+                        lineNumber: 56,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/signup-view/signup-view.jsx",
-                lineNumber: 40,
+                lineNumber: 54,
                 columnNumber: 7
+            }, undefined),
+            usernameError && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                style: {
+                    color: "red"
+                },
+                children: usernameError
+            }, void 0, false, {
+                fileName: "src/components/signup-view/signup-view.jsx",
+                lineNumber: 64,
+                columnNumber: 25
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                 children: [
@@ -28759,14 +28780,24 @@ const SignupView = ()=>{
                         required: true
                     }, void 0, false, {
                         fileName: "src/components/signup-view/signup-view.jsx",
-                        lineNumber: 52,
+                        lineNumber: 68,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/signup-view/signup-view.jsx",
-                lineNumber: 50,
+                lineNumber: 66,
                 columnNumber: 7
+            }, undefined),
+            passwordError && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                style: {
+                    color: "red"
+                },
+                children: passwordError
+            }, void 0, false, {
+                fileName: "src/components/signup-view/signup-view.jsx",
+                lineNumber: 75,
+                columnNumber: 25
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                 children: [
@@ -28778,13 +28809,13 @@ const SignupView = ()=>{
                         required: true
                     }, void 0, false, {
                         fileName: "src/components/signup-view/signup-view.jsx",
-                        lineNumber: 61,
+                        lineNumber: 79,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/signup-view/signup-view.jsx",
-                lineNumber: 59,
+                lineNumber: 77,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
@@ -28797,13 +28828,13 @@ const SignupView = ()=>{
                         required: true
                     }, void 0, false, {
                         fileName: "src/components/signup-view/signup-view.jsx",
-                        lineNumber: 70,
+                        lineNumber: 88,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/signup-view/signup-view.jsx",
-                lineNumber: 68,
+                lineNumber: 86,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -28811,13 +28842,13 @@ const SignupView = ()=>{
                 children: "Submit"
             }, void 0, false, {
                 fileName: "src/components/signup-view/signup-view.jsx",
-                lineNumber: 77,
+                lineNumber: 95,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/signup-view/signup-view.jsx",
-        lineNumber: 39,
+        lineNumber: 53,
         columnNumber: 5
     }, undefined);
 };

@@ -9,6 +9,20 @@ export const SignupView = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
+/// Add errors message form non-validation
+  const usernameRegex = /^[a-z]{5,}$/;
+  if (usernameRegex.test(username)) {
+    setUsernameError("Username must be at least 5 characters long and contain only lowercase letters.");
+    return; // Stop the form submission if validation fails
+  }
+
+  if (password.length < 8) {
+    setPasswordError("Password must be at least 8 characters long.");
+    return; // Stop the form submission if validation fails
+  }
+
+  setUsernameError("");
+
     const data = {
       Username: username,
       Password: password,
@@ -44,9 +58,11 @@ export const SignupView = () => {
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           required
-          minLength="3"
+          minLength="5"
         />
       </label>
+      {usernameError && <p style={{ color: 'red' }}>{usernameError}</p>} 
+
       <label>
         Password:
         <input
@@ -56,6 +72,8 @@ export const SignupView = () => {
           required
         />
       </label>
+      {passwordError && <p style={{ color: 'red' }}>{passwordError}</p>}
+
       <label>
         Email:
         <input
