@@ -28710,7 +28710,7 @@ const SignupView = ()=>{
             Email: email,
             Birthday: birthday
         };
-        fetch("https://catflix-99a985e6fffa.herokuapp.com/users", {
+        fetch("https://catflix-99a985e6fffa.herokuapp.com/login", {
             method: "POST",
             body: JSON.stringify(data),
             headers: {
