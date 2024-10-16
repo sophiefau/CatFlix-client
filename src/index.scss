@@ -1,9 +1,66 @@
-$color: steelblue;
+$primary: #c09301;
+$body-bg: #352941;
+$body-color: white;
 
-.catflix {
-  color: $color;
+@import '~bootstrap/scss/bootstrap.scss';
+
+
+.body{
+  min-height: 100vh;
+  margin: 0;
+  font-family: "Afacad Flux", sans-serif;
+  font-size: 17px;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }
 
-img {
- max-width: 300px;
+.btn-primary{
+  margin: 20px 0;
+  color: $body-color;
+  font-size: 18px;
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: $body-color;
+  }
+}
+
+.form-control{
+  margin-bottom: 20px;
+}
+
+.login-container{
+  margin: 50 auto;
+  max-width: 700px;
+}
+
+h1{
+  font-size: 20px;
+}
+
+.card{
+  max-width: 220px;
+  border-radius: 12px;
+  padding: 10px;
+  transition: transform 0.3s ease; 
+
+  &:hover {
+    transform: scale(1.04); 
+    box-shadow: 0 4px 20px #000; // 
+  }
+}
+
+.details-link{
+  text-align: left;
+  text-decoration: none;
+}
+
+img{
+  max-width: 200px;
+}
+
+.movie-view{
+  padding: 10px;
 }
