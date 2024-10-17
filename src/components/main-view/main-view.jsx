@@ -39,7 +39,6 @@ export const MainView = () => {
       .catch((error) => console.error('Error fetching movies:', error));
 }, [token]);
 
-<<<<<<< HEAD
 if (!user) {
   return (
     <>
@@ -49,17 +48,6 @@ if (!user) {
       }} />
       <SignupView />
     </>
-=======
-// Filter similar movies
-let similarMovies = [];
-
-if (selectedMovie) {
-  similarMovies = movies.filter(
-    (movie) =>
-      movie.Genre.Name === selectedMovie.Genre.Name &&
-      movie.Animation === selectedMovie.Animation &&
-      movie._id !== selectedMovie._id // Exclude the current selected movie
->>>>>>> 0ac51bec795668e6c294f1bcac3bf17ffaf99a6f
   );
 }
 
@@ -73,7 +61,6 @@ return (
             setToken(token);
           }}
         />
-        or
         <SignupView />
       </>
     ) : selectedMovie ? (
