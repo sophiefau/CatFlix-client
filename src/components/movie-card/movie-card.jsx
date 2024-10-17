@@ -9,7 +9,11 @@ export const MovieCard = ({ movie, onMovieClick }) => {
         <Card.Body className="d-flex flex-column">
           <Card.Title>{movie.Title}</Card.Title>
           <div className="mt-auto">
+<<<<<<< HEAD
           < a href="#" variant="link" className="details-link"> See details </a>
+=======
+          < a href="#" variant="link" className="details-btn"> See details </a>
+>>>>>>> 0ac51bec795668e6c294f1bcac3bf17ffaf99a6f
           </div>
         </Card.Body>
     </Card>

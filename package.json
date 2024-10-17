@@ -3,14 +3,20 @@
   "version": "1.0.0",
   "description": "Client App for CatFlix Database",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm run clean && parcel",
+    "build": "npm run clean && parcel build"
   },
   "author": "Sophie",
   "license": "MIT",
   "dependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "prop-types": "^15.8.1"
+    "bootstrap": "^5.2.0",
+    "prop-types": "^15.8.1",
+    "react": "18.3.1",
+    "react-bootstrap": "^2.5.0",
+    "react-dom": "18.3.1",
+    "react-scripts": "5.0.1",
+    "sass": "^1.79.5"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.12.0",
