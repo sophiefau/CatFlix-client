@@ -33,29 +33,41 @@ This project is a small movies web application, with a catalog of movies featuri
 The web application will provide users with access to information about different movies, directors, and genres. Users will be able to sign up, update their personal information, and create a list of their favorite movies.
 
 ### Built With
-- React
+- **React** - For building the user interface.
+- **Parcel** - For buidling and serving the app.
+- **Bootstrap** - For responsive design and styling.
+- **Sass** - For custom styles.
+- **RESTful API** - Provides movie data and user management.
+- **MongoDB** - For building the database.
 
 ## Getting Started
 This project is still in building process!
 
+# Features
+Here is a list of CatFlix app essential features:
+
+- **User Registration and Login:** Easily create an account and access your profile.
+- **Movie Display:** Browse a comprehensive list of movies retrieved from a RESTful API.
+- **Advanced Filtering:** Filter movies by title, genre, and cat characters for a personalized experience.
+- **Cat Character Insights:** Access detailed information about cat characters, including biographies and lifespan.
+- **Detailed Movie Information:** View in-depth details for each movie, including genre, director, and cast.
+- **Favorites Management:** Add or remove movies from your favorites list effortlessly.
+- **Profile Management:** Update your profile information, including username, email, and password.
+- **Responsive Design:** Enjoy a seamless experience across devices with Bootstrap's responsive design.
+
 ### Prerequisites
+
+Node.js and npm should be installed on your machine.
 
 ### Installation
 
 ## Usage
 
-# Features
-Here is a list of CatFlix app essential features:
 
-- Return a list of all movies to the user
-- Return data (description, genre, director, image URL, whether it’s featured or not) about a single movie by title to the user
-- Return data about a genre (description) by name/title (e.g., “Thriller”)
-- Return data about the cat caracter (bio, birth year, death year) by name
-- Allow new users to register
-- Allow users to update their user info (username, password, email, date of birth)
-- Allow users to add a movie to their list of favorites
-- Allow users to remove a movie from their list of favorites
-- Allow existing users to deregister
+
+## Contributing
+
+If you’d like to contribute, please fork the repository and use a feature branch.
 
 ## License
 
