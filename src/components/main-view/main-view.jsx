@@ -45,7 +45,6 @@ if (!user) {
         setUser(user);
         setToken(token);
       }} />
-      or
       <SignupView />
     </>
   );
