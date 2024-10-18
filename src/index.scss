@@ -1,4 +1,4 @@
-$primary: #c09301;
+$primary: #615428;
 $body-bg: #352941;
 $body-color: white;
 
@@ -9,6 +9,7 @@ $body-color: white;
   min-height: 100vh;
   margin: 0;
   font-family: "Afacad Flux", sans-serif;
+  color: $body-color;
   font-size: 17px;
   font-optical-sizing: auto;
   font-weight: 400;
@@ -36,6 +37,12 @@ $body-color: white;
   max-width: 700px;
 }
 
+.logo{
+  background-color: #615428;
+  display: block;
+  min-width: 30px;
+}
+
 h1{
   font-size: 20px;
 }
@@ -50,11 +57,6 @@ h1{
     transform: scale(1.04); 
     box-shadow: 0 4px 20px #000; // 
   }
-}
-
-.details-link{
-  text-align: left;
-  text-decoration: none;
 }
 
 img{

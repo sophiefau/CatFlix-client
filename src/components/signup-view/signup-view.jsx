@@ -1,4 +1,4 @@
-import { useState } from "react";
+import{ useState } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 
 export const SignupView = () => {
@@ -10,9 +10,9 @@ export const SignupView = () => {
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
   const [emailAlreadyUsed, setEmailAlreadyUsed] = useState("");
-  const [birthdayError, setBirthdayError] = useState("");
-  
   const [birthday, setBirthday] = useState("");
+  const [birthdayError, setBirthdayError] = useState("");
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -102,7 +102,7 @@ export const SignupView = () => {
 
   return (
     <Container className="login-container">
-      <h1>Please Register to use CatFlix</h1>
+      {/* <h1>Please Register to use CatFlix</h1> */}
       <Form onSubmit={handleSubmit} noValidate>
 
         <Row>
