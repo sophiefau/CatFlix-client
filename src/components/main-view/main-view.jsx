@@ -3,6 +3,7 @@ import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
+import { ProfileView } from "../profile-view/profile-view";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
 import { Row, Col } from "react-bootstrap";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
@@ -53,16 +54,28 @@ export const MainView = () => {
     return <div>{error}</div>;
   }
 
+  const onLoggedIn = (user, token) => {
+    setUser(user);
+    setToken(token);
+    localStorage.setItem("user", JSON.stringify(user));
+    localStorage.setItem("token", token);
+}
+const onLoggedOut = () => {
+    setUser(null);
+    setToken(null);
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+}
+const updatedUser = user => {
+    setUser(user);
+    localStorage.setItem('user', JSON.stringify(user));
+}
+
 return (
   <BrowserRouter>
   <NavigationBar
         user={user}
-        onLoggedOut={() => {
-          setUser(null);
-          setToken(null);
-          localStorage.removeItem("user");
-          localStorage.removeItem("token");
-        }}
+        onLoggedOut={onLoggedOut} 
       />
     <Row className="justify-content-md-center">
       <Routes>
@@ -90,12 +103,7 @@ return (
               ) : (
                 <Col md={5}>
                     <LoginView
-                      onLoggedIn={(user, token) => {
-                        setUser(user);
-                        setToken(token);
-                        localStorage.setItem("user", JSON.stringify(user));
-                        localStorage.setItem("token", token);
-                      }}
+                      onLoggedIn={onLoggedIn}
                     />
                   </Col>
               )}
@@ -139,8 +147,12 @@ return (
             </>
           }
         />
+         <Route path="/users/:username" element={<ProfileView />} />
       </Routes>
     </Row>
   </BrowserRouter>
 );
 };
+
+
+// "Welcome to CatFlix, the ultimate app showcasing a delightful collection of movies featuring our feline friends! Discover, rate, and share your favorite cat movies, and immerse yourself in a world of cuteness and adventure."
