@@ -1,4 +1,4 @@
-import{ useState } from "react";
+import { useState } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 
 export const SignupView = () => {
@@ -12,7 +12,6 @@ export const SignupView = () => {
   const [emailAlreadyUsed, setEmailAlreadyUsed] = useState("");
   const [birthday, setBirthday] = useState("");
   const [birthdayError, setBirthdayError] = useState("");
-
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -104,7 +103,6 @@ export const SignupView = () => {
     <Container className="login-container">
       {/* <h1>Please Register to use CatFlix</h1> */}
       <Form onSubmit={handleSubmit} noValidate>
-
         <Row>
           <Col xs={12} md={6}>
             <Form.Group controlId="formSignupUsername">
@@ -119,7 +117,7 @@ export const SignupView = () => {
                 isInvalid={!!usernameError || !!usernameAlreadyUsed}
               />
               <Form.Control.Feedback type="invalid">
-              {usernameError || usernameAlreadyUsed}
+                {usernameError || usernameAlreadyUsed}
               </Form.Control.Feedback>
             </Form.Group>
           </Col>
@@ -153,7 +151,7 @@ export const SignupView = () => {
                 isInvalid={!!emailError || !!emailAlreadyUsed}
               />
               <Form.Control.Feedback type="invalid">
-                  {emailError || emailAlreadyUsed}
+                {emailError || emailAlreadyUsed}
               </Form.Control.Feedback>
             </Form.Group>
           </Col>
@@ -169,7 +167,7 @@ export const SignupView = () => {
                 isInvalid={!!birthdayError}
               />
               <Form.Control.Feedback type="invalid">
-                  {birthdayError}
+                {birthdayError}
               </Form.Control.Feedback>
             </Form.Group>
           </Col>

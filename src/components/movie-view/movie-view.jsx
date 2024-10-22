@@ -7,8 +7,11 @@ export const MovieView = ({ movies, user, token, setUser }) => {
   const { movieId } = useParams();
   const [isFavorite, setIsFavorite] = useState(false);
   const movie = movies.find((m) => m.id === movieId);
-  console.log("Current movieId:", movieId);
-  console.log("Movies array:", movies);
+  const handleClick = () => {
+    window.scrollTo(0, 0); // Scrolls to the top when the movie card is clicked
+  };
+  // console.log("Current movieId:", movieId);
+  // console.log("Movies array:", movies);
 
   if (!movie) {
     return <div>Movie not found</div>;
@@ -21,59 +24,80 @@ export const MovieView = ({ movies, user, token, setUser }) => {
       m.Genre.Name === movie.Genre.Name &&
       m.isAnimated === movie.isAnimated
   );
-  console.log("Filtered similarMovies:", similarMovies);
+  // console.log("Filtered similarMovies:", similarMovies);
 
   // Add-remove favorite movie
   useEffect(() => {
-      if(user && user.FavoriteMovies)  {
-          const isFavorite = user.FavoriteMovies.includes(movieId);
-          setIsFavorite(isFavorite);
-      }
+    if (user && user.FavoriteMovies) {
+      const isFavorite = user.FavoriteMovies.includes(movieId);
+      setIsFavorite(isFavorite);
+    }
   }, [movieId, user]);
 
   const addtoFavorite = () => {
-      fetch(`https://moviesdb-6abb3284c2fb.herokuapp.com/users/${user.Username}/${movieId}`,
+    if (!token) {
+      console.log("No token found. Please log in again.");
+      return;
+    }
+    // console.log("Token before request:", token);
+    // console.log("Current movieId:", movieId);
+    fetch(
+      `https://moviesdb-6abb3284c2fb.herokuapp.com/users/${user.Username}/${movieId}`,
       {
-          method: "POST",
-          headers: { 
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${token}` 
-          }
-      }).then((response) => {
-          if (response.ok) {
-            return response.json();
-          }
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        if (!response.ok) {
+          throw new Error(
+            `Error: ${response.status} 'Failed to add to favorites'}`
+          );
+        }
       })
       .then((data) => {
-          setUser(data);
-          localStorage.setItem("user", JSON.stringify(data));
-          setIsFavorite(true);
+        setUser(data);
+        localStorage.setItem("user", JSON.stringify(data));
+        setIsFavorite(true);
       })
       .catch((e) => {
-          console.log(e);
-      });       
+        console.log(e);
+      });
   };
+
   const removefromFavorite = () => {
-      fetch(`https://moviesdb-6abb3284c2fb.herokuapp.com/users/${user.Username}/${movieId}`,
+    fetch(
+      `https://moviesdb-6abb3284c2fb.herokuapp.com/users/${user.Username}/${movieId}`,
       {
-          method: "DELETE",
-          headers: { 
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${token}` 
-          }
-      }).then((response) => {
-          if (response.ok) {
-            return response.json();
-          }
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        if (!response.ok) {
+          throw new Error("Failed to remove this movie from favorites");
+        }
       })
       .then((data) => {
-          setUser(data);
-          localStorage.setItem("user", JSON.stringify(data));
-          setIsFavorite(false);
+        setUser(data);
+        localStorage.setItem("user", JSON.stringify(data));
+        setIsFavorite(false);
       })
       .catch((e) => {
-      console.log(e);
-      });       
+        console.log(e);
+      });
   };
 
   return (
@@ -109,16 +133,15 @@ export const MovieView = ({ movies, user, token, setUser }) => {
             {isFavorite ? "Remove from Favorites" : "Add to Favorites"}
           </Button>
           <br />
-          <Link to={`/users/${user.Username}/movies/${movieId}`}>
-            <Button variant="primary" className="mt-3">
-              Go to Favorite Movies
-            </Button>
-          </Link>
+
           <Link to={`/`}>
-            <Button className="back-button">Back</Button>
+            <Button className="back-button" onClick={handleClick}>
+              Back
+            </Button>
           </Link>
         </Col>
       </Row>
+
       <div className="similar-movies">
         <h3>Similar Movies</h3>
         <Row>

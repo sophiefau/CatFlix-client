@@ -1,15 +1,15 @@
-import { useState } from 'react';
-import { Form, Button, Container, Row, Col } from 'react-bootstrap';
+import { useState } from "react";
+import { Form, Button, Container, Row, Col } from "react-bootstrap";
 
 export const UpdateUser = ({ user, onUpdate }) => {
   const [username, setUsername] = useState(user.Username);
   const [email, setEmail] = useState(user.Email);
-  const [emailError, setEmailError] = useState(''); 
-  const [emailAlreadyUsed, setEmailAlreadyUsed] = useState('');
-  const [password, setPassword] = useState('');
-  const [passwordError, setPasswordError] = useState('');
-  const [usernameError, setUsernameError] = useState('');
-  const [usernameAlreadyUsed, setUsernameAlreadyUsed] = useState('');
+  const [emailError, setEmailError] = useState("");
+  const [emailAlreadyUsed, setEmailAlreadyUsed] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [usernameError, setUsernameError] = useState("");
+  const [usernameAlreadyUsed, setUsernameAlreadyUsed] = useState("");
   const [token] = useState(localStorage.getItem("token"));
 
   // Handler for form submission
@@ -17,11 +17,11 @@ export const UpdateUser = ({ user, onUpdate }) => {
     event.preventDefault();
 
     // Clear previous errors
-    setUsernameError('');
-    setUsernameAlreadyUsed('');
-    setPasswordError('');
-    setEmailError('');
-    setEmailAlreadyUsed('');
+    setUsernameError("");
+    setUsernameAlreadyUsed("");
+    setPasswordError("");
+    setEmailError("");
+    setEmailAlreadyUsed("");
 
     // Validation checks
     const usernameRegex = /^[a-z]{5,}$/;
@@ -30,17 +30,19 @@ export const UpdateUser = ({ user, onUpdate }) => {
     let isValid = true;
 
     if (username && !usernameRegex.test(username)) {
-      setUsernameError('Username must be at least 5 characters long and contain only lowercase letters.');
+      setUsernameError(
+        "Username must be at least 5 characters long and contain only lowercase letters."
+      );
       isValid = false;
     }
 
     if (password && password.length < 8) {
-      setPasswordError('Password must be at least 8 characters long.');
+      setPasswordError("Password must be at least 8 characters long.");
       isValid = false;
     }
 
     if (email && !emailRegex.test(email)) {
-      setEmailError('Please enter a valid email address.');
+      setEmailError("Please enter a valid email address.");
       isValid = false;
     }
 
@@ -56,56 +58,55 @@ export const UpdateUser = ({ user, onUpdate }) => {
 
     // Update user information in the database
     fetch(`https://catflix-99a985e6fffa.herokuapp.com/users/${username}`, {
-      method: 'PATCH',
+      method: "PATCH",
       body: JSON.stringify(updatedUser),
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
     })
       .then((response) => {
         if (response.ok) {
-          return response.json(); 
+          return response.json();
         } else {
           // Handle server-side validation errors
           return response.json().then((err) => {
             if (err.errors) {
               err.errors.forEach((error) => {
-                if (error.param === 'Username') {
-                  if (error.msg === 'Username already exists') {
-                    setUsernameAlreadyUsed('This username is already taken.');
+                if (error.param === "Username") {
+                  if (error.msg === "Username already exists") {
+                    setUsernameAlreadyUsed("This username is already taken.");
                   } else {
                     setUsernameError(error.msg);
                   }
                 }
-                if (error.param === 'Email') {
-                  if (error.msg === 'Email already exists') {
-                    setEmailAlreadyUsed('This email is already used.');
+                if (error.param === "Email") {
+                  if (error.msg === "Email already exists") {
+                    setEmailAlreadyUsed("This email is already used.");
                   } else {
                     setEmailError(error.msg);
                   }
                 }
               });
-            } 
+            }
           });
         }
       })
       .then((result) => {
-        alert('User updated successfully!');
-        console.log('User updated successfully:', result);
+        console.log("User updated successfully:", result);
         onUpdate(updatedUser);
         window.location.reload(); // Reload the page after updating
       })
       .catch((error) => {
-        console.error('Error updating user:', error);
-        alert('An error occurred while updating the user.');
+        console.error("Error updating user:", error);
+        alert("An error occurred while updating the user.");
       });
   };
 
   return (
     <Container>
       <Row className="justify-content-md-center">
-        <Col md={6}>
+        <Col>
           <h3 className="text-center">Update Your Profile</h3>
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="formUsername">

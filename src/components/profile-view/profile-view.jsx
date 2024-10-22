@@ -2,47 +2,52 @@ import React, { useEffect, useState } from "react";
 import { UpdateUser } from "./update-user";
 import { FavoriteMovies } from "./favorite-movies";
 import { UserInfo } from "./user-info";
-import { useParams, Link, useNavigate } from "react-router-dom";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { useParams, Link } from "react-router-dom";
+import { Container, Row, Col, Button, Alert } from "react-bootstrap";
 
-export const ProfileView = () => {
+export const ProfileView = (onLoggedOut) => {
   const { username } = useParams();
-  const [user, setUser] = useState({ Username: "", Email: "", Birthday: "", FavoriteMovies: [] });
+  const [user, setUser] = useState({
+    Username: "",
+    Email: "",
+    Birthday: "",
+    FavoriteMovies: [],
+  });
   const [token] = useState(localStorage.getItem("token"));
   const [userUpdate, setUserUpdate] = useState(false);
   const [error, setError] = useState(null);
-  const navigate = useNavigate(); // For redirecting after deletion
+
+  // Function to fetch user data
+  const fetchUserData = () => {
+    if (!token) return;
+
+    fetch(`https://catflix-99a985e6fffa.herokuapp.com/users/${username}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Network response not ok: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((userData) => {
+        setUser({
+          Username: userData.Username,
+          Email: userData.Email,
+          Birthday: userData.Birthday,
+          FavoriteMovies: userData.FavoriteMovies || [],
+        });
+      })
+      .catch((error) => {
+        console.error("Error fetching user data:", error);
+        setError(error.message); // Set error state
+      });
+  };
 
   useEffect(() => {
     console.log("Username from URL params:", username);
     console.log("Token:", token);
-    if (!token) return;
-    
-    if (username) {
-      fetch(`https://catflix-99a985e6fffa.herokuapp.com/users/${username}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-        .then((response) => {
-          console.log("Response:", response);
-          if (!response.ok) {
-            throw new Error(`Network response not ok: ${response.status}`);
-          }
-          return response.json();
-        })
-        .then((userData) => {
-          console.log("Fetched user data:", userData);
-          
-          setUser({
-            Username: userData.Username,
-            Email: userData.Email,
-            Birthday: userData.Birthday,
-            FavoriteMovies: userData.FavoriteMovies || [],
-          });
-        })
-        .catch((error) => {
-          console.error("Error fetching user data:", error);
-        });
-    }
+    fetchUserData(); // Fetch user data on mount
   }, [username, token]);
 
   if (error) {
@@ -50,15 +55,20 @@ export const ProfileView = () => {
   }
 
   if (!user.Username) {
-    return <div>Loading user profile...</div>; 
+    return <div>Loading user profile...</div>;
   }
 
-  // // Function to toggle the update view
+  const handleUserUpdate = (updatedUserData) => {
+    // Update the user state with the new data
+    setUser(updatedUserData);
+    console.log("User updated:", updatedUserData);
+    fetchUserData(); // Fetch the updated user data after updating
+  };
+
   const handleToggleUpdate = () => {
     setUserUpdate(!userUpdate);
   };
 
-  // Function to handle user deletion
   const handleDeleteProfile = () => {
     if (
       !window.confirm(
@@ -71,22 +81,47 @@ export const ProfileView = () => {
     fetch(`https://catflix-99a985e6fffa.herokuapp.com/users/${username}`, {
       method: "DELETE",
       headers: {
+        "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-    })
+    }).then((response) => {
+      if (response.ok) {
+        console.log("Account deleted successfully!");
+        onLoggedOut();
+      } else {
+        alert("Failed to delete account!");
+      }
+    });
+  };
+
+  // Function to handle adding a movie to favorites
+  const addToFavorite = (movieId) => {
+    const updatedFavorites = [...user.FavoriteMovies, movieId];
+
+    fetch(
+      `https://catflix-99a985e6fffa.herokuapp.com/users/${username}/${movieId}`,
+      {
+        method: "POST", // Assuming you're adding a movie using POST
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ favoriteMovies: updatedFavorites }),
+      }
+    )
       .then((response) => {
         if (!response.ok) {
-          throw new Error("Failed to delete the profile.");
+          throw new Error("Failed to add to favorites.");
         }
         return response.json();
       })
       .then(() => {
-        console.log("Profile deleted successfully.");
-        // Redirect the user after successful deletion
-        navigate("/");
+        // Refetch user data to get updated favorites
+        fetchUserData();
+        console.log("Added to favorites:", movieId);
       })
       .catch((error) => {
-        console.error("Error deleting profile:", error);
+        console.error("Error adding to favorites:", error);
       });
   };
 
@@ -95,7 +130,7 @@ export const ProfileView = () => {
     const updatedFavorites = user.FavoriteMovies.filter((id) => id !== movieId);
 
     fetch(
-      `https://catflix-99a985e6fffa.herokuapp.com/users/${username}/movies/${movieId}`,
+      `https://catflix-99a985e6fffa.herokuapp.com/users/${username}/${movieId}`,
       {
         method: "DELETE",
         headers: {
@@ -152,6 +187,7 @@ export const ProfileView = () => {
         </Col>
         <FavoriteMovies
           favoriteMovies={user.FavoriteMovies}
+          addToFavorite={addToFavorite}
           removeFromFavorite={removeFromFavorite}
         />
       </Row>
