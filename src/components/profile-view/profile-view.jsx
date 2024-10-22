@@ -5,7 +5,7 @@ import { UserInfo } from "./user-info";
 import { useParams, Link } from "react-router-dom";
 import { Container, Row, Col, Button, Alert } from "react-bootstrap";
 
-export const ProfileView = (onLoggedOut) => {
+export const ProfileView = () => {
   const { username } = useParams();
   const [user, setUser] = useState({
     Username: "",
@@ -94,37 +94,6 @@ export const ProfileView = (onLoggedOut) => {
     });
   };
 
-  // Function to handle adding a movie to favorites
-  const addToFavorite = (movieId) => {
-    const updatedFavorites = [...user.FavoriteMovies, movieId];
-
-    fetch(
-      `https://catflix-99a985e6fffa.herokuapp.com/users/${username}/${movieId}`,
-      {
-        method: "POST", // Assuming you're adding a movie using POST
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ favoriteMovies: updatedFavorites }),
-      }
-    )
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Failed to add to favorites.");
-        }
-        return response.json();
-      })
-      .then(() => {
-        // Refetch user data to get updated favorites
-        fetchUserData();
-        console.log("Added to favorites:", movieId);
-      })
-      .catch((error) => {
-        console.error("Error adding to favorites:", error);
-      });
-  };
-
   // Function to handle removing a movie from favorites
   const removeFromFavorite = (movieId) => {
     const updatedFavorites = user.FavoriteMovies.filter((id) => id !== movieId);
@@ -187,7 +156,6 @@ export const ProfileView = (onLoggedOut) => {
         </Col>
         <FavoriteMovies
           favoriteMovies={user.FavoriteMovies}
-          addToFavorite={addToFavorite}
           removeFromFavorite={removeFromFavorite}
         />
       </Row>

@@ -43190,7 +43190,7 @@ var _userInfo = require("./user-info");
 var _reactRouterDom = require("react-router-dom");
 var _reactBootstrap = require("react-bootstrap");
 var _s = $RefreshSig$();
-const ProfileView = (onLoggedOut)=>{
+const ProfileView = ()=>{
     _s();
     const { username } = (0, _reactRouterDom.useParams)();
     const [user, setUser] = (0, _react.useState)({
@@ -43271,32 +43271,6 @@ const ProfileView = (onLoggedOut)=>{
             } else alert("Failed to delete account!");
         });
     };
-    // Function to handle adding a movie to favorites
-    const addToFavorite = (movieId)=>{
-        const updatedFavorites = [
-            ...user.FavoriteMovies,
-            movieId
-        ];
-        fetch(`https://catflix-99a985e6fffa.herokuapp.com/users/${username}/${movieId}`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${token}`
-            },
-            body: JSON.stringify({
-                favoriteMovies: updatedFavorites
-            })
-        }).then((response)=>{
-            if (!response.ok) throw new Error("Failed to add to favorites.");
-            return response.json();
-        }).then(()=>{
-            // Refetch user data to get updated favorites
-            fetchUserData();
-            console.log("Added to favorites:", movieId);
-        }).catch((error)=>{
-            console.error("Error adding to favorites:", error);
-        });
-    };
     // Function to handle removing a movie from favorites
     const removeFromFavorite = (movieId)=>{
         const updatedFavorites = user.FavoriteMovies.filter((id)=>id !== movieId);
@@ -43334,7 +43308,7 @@ const ProfileView = (onLoggedOut)=>{
                             birthday: user.Birthday
                         }, void 0, false, {
                             fileName: "src/components/profile-view/profile-view.jsx",
-                            lineNumber: 165,
+                            lineNumber: 134,
                             columnNumber: 11
                         }, undefined),
                         userUpdate && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _updateUser.UpdateUser), {
@@ -43342,7 +43316,7 @@ const ProfileView = (onLoggedOut)=>{
                             onUpdate: handleUserUpdate
                         }, void 0, false, {
                             fileName: "src/components/profile-view/profile-view.jsx",
-                            lineNumber: 171,
+                            lineNumber: 140,
                             columnNumber: 26
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
@@ -43351,7 +43325,7 @@ const ProfileView = (onLoggedOut)=>{
                             children: userUpdate ? "Cancel Update" : "Update Profile"
                         }, void 0, false, {
                             fileName: "src/components/profile-view/profile-view.jsx",
-                            lineNumber: 172,
+                            lineNumber: 141,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
@@ -43361,7 +43335,7 @@ const ProfileView = (onLoggedOut)=>{
                             children: "Delete Profile"
                         }, void 0, false, {
                             fileName: "src/components/profile-view/profile-view.jsx",
-                            lineNumber: 176,
+                            lineNumber: 145,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
@@ -43371,38 +43345,37 @@ const ProfileView = (onLoggedOut)=>{
                                 children: "Back"
                             }, void 0, false, {
                                 fileName: "src/components/profile-view/profile-view.jsx",
-                                lineNumber: 185,
+                                lineNumber: 154,
                                 columnNumber: 13
                             }, undefined)
                         }, void 0, false, {
                             fileName: "src/components/profile-view/profile-view.jsx",
-                            lineNumber: 184,
+                            lineNumber: 153,
                             columnNumber: 11
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/profile-view/profile-view.jsx",
-                    lineNumber: 164,
+                    lineNumber: 133,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _favoriteMovies.FavoriteMovies), {
                     favoriteMovies: user.FavoriteMovies,
-                    addToFavorite: addToFavorite,
                     removeFromFavorite: removeFromFavorite
                 }, void 0, false, {
                     fileName: "src/components/profile-view/profile-view.jsx",
-                    lineNumber: 188,
+                    lineNumber: 157,
                     columnNumber: 9
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 163,
+            lineNumber: 132,
             columnNumber: 7
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/profile-view/profile-view.jsx",
-        lineNumber: 162,
+        lineNumber: 131,
         columnNumber: 5
     }, undefined);
 };
