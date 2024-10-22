@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { UpdateUser } from "./update-user";
 import { FavoriteMovies } from "./favorite-movies";
 import { UserInfo } from "./user-info";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { Container, Row, Col, Button, Alert } from "react-bootstrap";
 
-export const ProfileView = () => {
+export const ProfileView = ({ onLoggedOut }) => {
   const { username } = useParams();
   const [user, setUser] = useState({
     Username: "",
@@ -16,6 +16,7 @@ export const ProfileView = () => {
   const [token] = useState(localStorage.getItem("token"));
   const [userUpdate, setUserUpdate] = useState(false);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   // Function to fetch user data
   const fetchUserData = () => {
@@ -69,6 +70,7 @@ export const ProfileView = () => {
     setUserUpdate(!userUpdate);
   };
 
+// Delete profile
   const handleDeleteProfile = () => {
     if (
       !window.confirm(
@@ -87,7 +89,8 @@ export const ProfileView = () => {
     }).then((response) => {
       if (response.ok) {
         console.log("Account deleted successfully!");
-        onLoggedOut();
+        onLoggedOut(); 
+        navigate("/signup"); 
       } else {
         alert("Failed to delete account!");
       }

@@ -16,6 +16,21 @@ export const MainView = () => {
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  
+  const onLoggedIn = (user, token) => {
+    setUser(user);
+    setToken(token);
+    localStorage.setItem("user", JSON.stringify(user));
+    localStorage.setItem("token", token);
+  };
+
+  const onLoggedOut = () => {
+    setUser(null);
+    setToken(null);
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+    localStorage.clear();
+  };
 
   useEffect(() => {
     if (!token) {
@@ -24,10 +39,21 @@ export const MainView = () => {
     console.log("Token being used:", token);
 
     setLoading(true);
+
     fetch("https://catflix-99a985e6fffa.herokuapp.com/movies", {
       headers: { Authorization: `Bearer ${token}` },
     })
-      .then((response) => response.json())
+      .then((response) => {
+      if (!response.ok) {
+        if (response.status === 401) {
+          setError("Unauthorized access. Please log in again.");
+          onLoggedOut(); // Log out the user if unauthorized
+          return; // Exit early
+        }
+        throw new Error("Failed to fetch movies.");
+      }
+      return response.json();
+    })
       .then((movies) => {
         console.log("Fetched movies:", movies);
         const moviesFromApi = movies.map((movie) => ({
@@ -44,13 +70,8 @@ export const MainView = () => {
         setMovies(moviesFromApi);
       })
       .catch((error) => {
-        if (error.message.includes("401")) {
-          setError("Unauthorized access. Please log in again.");
-          onLoggedOut(); // Log out the user if unauthorized
-        } else {
-          console.error("Error fetching movies:", error);
-          setError("Failed to get movies. Please try again later.");
-        }
+        console.error("Error fetching movies:", error);
+        setError("Failed to get movies. Please try again later.");
       })
       .finally(() => {
         setLoading(false);
@@ -60,20 +81,6 @@ export const MainView = () => {
   if (error) {
     return <div>{error}</div>;
   }
-
-  const onLoggedIn = (user, token) => {
-    setUser(user);
-    setToken(token);
-    localStorage.setItem("user", JSON.stringify(user));
-    localStorage.setItem("token", token);
-  };
-  const onLoggedOut = () => {
-    setUser(null);
-    setToken(null);
-    localStorage.removeItem("user");
-    localStorage.removeItem("token");
-    localStorage.clear();
-  };
 
   return (
     <BrowserRouter>
