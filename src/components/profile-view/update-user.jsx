@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 
 export const UpdateUser = ({ user, onUpdate }) => {
-  const [username, setUsername] = useState(user?.username || '');
-  const [email, setEmail] = useState(user?.email || '');
+  const [username, setUsername] = useState(user.Username);
+  const [email, setEmail] = useState(user.Email);
   const [emailError, setEmailError] = useState(''); 
   const [emailAlreadyUsed, setEmailAlreadyUsed] = useState('');
   const [password, setPassword] = useState('');
@@ -13,8 +13,8 @@ export const UpdateUser = ({ user, onUpdate }) => {
   const [token] = useState(localStorage.getItem("token"));
 
   // Handler for form submission
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault();
 
     // Clear previous errors
     setUsernameError('');
@@ -48,28 +48,6 @@ export const UpdateUser = ({ user, onUpdate }) => {
       return; // Stop the form submission if validation fails
     }
 
-    // Check if username or email already exists in the database
-    const checkUrl = `https://catflix-99a985e6fffa.herokuapp.com/users`; 
-    const response = await fetch(checkUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ username, email }),
-    });
-
-    const data = await response.json();
-
-    if (data.usernameAlreadyExists) {
-      setUsernameAlreadyUsed('This username is already taken.');
-      return;
-    }
-
-    if (data.emailAlreadyExists) {
-      setEmailAlreadyUsed('This email is already used.');
-      return;
-    }
-
     // Create a payload with only the fields that have values
     const updatedUser = {};
     if (username) updatedUser.username = username;
@@ -77,39 +55,51 @@ export const UpdateUser = ({ user, onUpdate }) => {
     if (password) updatedUser.password = password;
 
     // Update user information in the database
-    const url = `https://catflix-99a985e6fffa.herokuapp.com/users/${username}`; 
-    const updateResponse = await fetch(url, {
+    fetch(`https://catflix-99a985e6fffa.herokuapp.com/users/${username}`, {
       method: 'PATCH',
+      body: JSON.stringify(updatedUser),
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`, // Ensure you have access to the token
+        Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify(updatedUser),
-    });
-
-    if (!updateResponse.ok) {
-      const errorData = await updateResponse.json();
-      // Handle errors from the server response
-      if (errorData.errors) {
-        errorData.errors.forEach((error) => {
-          if (error.param === 'Username') {
-            setUsernameError(error.msg);
-          }
-          if (error.param === 'Email') {
-            setEmailError(error.msg);
-          }
-        });
-      } else {
-        console.error('Error updating user data:', errorData);
-      }
-      return; // Stop further execution if the update fails
-    }
-
-    const result = await updateResponse.json();
-    console.log('User updated successfully:', result);
-    
-    // Trigger the onUpdate function passed as a prop to update the user info
-    onUpdate(updatedUser);
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json(); 
+        } else {
+          // Handle server-side validation errors
+          return response.json().then((err) => {
+            if (err.errors) {
+              err.errors.forEach((error) => {
+                if (error.param === 'Username') {
+                  if (error.msg === 'Username already exists') {
+                    setUsernameAlreadyUsed('This username is already taken.');
+                  } else {
+                    setUsernameError(error.msg);
+                  }
+                }
+                if (error.param === 'Email') {
+                  if (error.msg === 'Email already exists') {
+                    setEmailAlreadyUsed('This email is already used.');
+                  } else {
+                    setEmailError(error.msg);
+                  }
+                }
+              });
+            } 
+          });
+        }
+      })
+      .then((result) => {
+        alert('User updated successfully!');
+        console.log('User updated successfully:', result);
+        onUpdate(updatedUser);
+        window.location.reload(); // Reload the page after updating
+      })
+      .catch((error) => {
+        console.error('Error updating user:', error);
+        alert('An error occurred while updating the user.');
+      });
   };
 
   return (
@@ -122,7 +112,6 @@ export const UpdateUser = ({ user, onUpdate }) => {
               <Form.Label>Username</Form.Label>
               <Form.Control
                 type="text"
-                value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 placeholder="At least 5 characters long and only lowercase letters"
                 isInvalid={!!usernameError || !!usernameAlreadyUsed}
@@ -136,7 +125,6 @@ export const UpdateUser = ({ user, onUpdate }) => {
               <Form.Label>Email</Form.Label>
               <Form.Control
                 type="email"
-                value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter new valid email"
                 isInvalid={!!emailError || !!emailAlreadyUsed}

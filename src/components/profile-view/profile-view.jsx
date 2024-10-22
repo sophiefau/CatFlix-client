@@ -10,6 +10,7 @@ export const ProfileView = () => {
   const [user, setUser] = useState({ Username: "", Email: "", Birthday: "", FavoriteMovies: [] });
   const [token] = useState(localStorage.getItem("token"));
   const [userUpdate, setUserUpdate] = useState(false);
+  const [error, setError] = useState(null);
   const navigate = useNavigate(); // For redirecting after deletion
 
   useEffect(() => {
@@ -44,49 +45,17 @@ export const ProfileView = () => {
     }
   }, [username, token]);
 
+  if (error) {
+    return <Alert variant="danger">{error}</Alert>;
+  }
+
   if (!user.Username) {
     return <div>Loading user profile...</div>; 
   }
 
-  // Function to toggle the update view
+  // // Function to toggle the update view
   const handleToggleUpdate = () => {
     setUserUpdate(!userUpdate);
-  };
-
-
-  // Update user information in the database
-  const handleUserUpdate = (updatedUser) => {
-    console.log("Updated user data:", updatedUser);
-    console.log("Current user data:", user);
-
-    const url = `https://catflix-99a985e6fffa.herokuapp.com/users/${username}`;
-
-    fetch(url, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`, 
-      },
-      body: JSON.stringify(updatedUser), // Send the updated user data
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        console.log("User updated successfully:", data);
-        // Update the local user state with the new user data
-        setUser((prevUser) => ({
-          ...prevUser,
-          ...updatedUser,
-        }));
-        setUserUpdate(false); // Hide the update form after updating
-      })
-      .catch((error) => {
-        console.error("Error updating user data:", error);
-      });
   };
 
   // Function to handle user deletion
@@ -102,7 +71,7 @@ export const ProfileView = () => {
     fetch(`https://catflix-99a985e6fffa.herokuapp.com/users/${username}`, {
       method: "DELETE",
       headers: {
-        Authorization: `Bearer ${token}`, // Include the token for authentication
+        Authorization: `Bearer ${token}`,
       },
     })
       .then((response) => {
@@ -163,10 +132,7 @@ export const ProfileView = () => {
             email={user.Email}
             birthday={user.Birthday}
           />
-          {/* <div>{username}'s Profile</div>
-          <div>Email: {user.Email}</div> */}
 
-          {/* // Update User */}
           {userUpdate && <UpdateUser user={user} onUpdate={handleUserUpdate} />}
           <Button variant="secondary" onClick={handleToggleUpdate}>
             {userUpdate ? "Cancel Update" : "Update Profile"}

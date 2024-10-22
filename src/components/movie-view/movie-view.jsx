@@ -6,7 +6,9 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 export const MovieView = ({ movies, user, token, setUser }) => {
   const { movieId } = useParams();
   const [isFavorite, setIsFavorite] = useState(false);
-  const movie = movies.find((b) => b.id === movieId);
+  const movie = movies.find((m) => m.id === movieId);
+  console.log("Current movieId:", movieId);
+  console.log("Movies array:", movies);
 
   if (!movie) {
     return <div>Movie not found</div>;
@@ -15,10 +17,11 @@ export const MovieView = ({ movies, user, token, setUser }) => {
   // Find similar movies
   const similarMovies = movies.filter(
     (m) =>
-      m._id !== movieId &&
+      m.id !== movieId &&
       m.Genre.Name === movie.Genre.Name &&
       m.isAnimated === movie.isAnimated
   );
+  console.log("Filtered similarMovies:", similarMovies);
 
   // Add-remove favorite movie
   useEffect(() => {
@@ -121,7 +124,7 @@ export const MovieView = ({ movies, user, token, setUser }) => {
         <Row>
           {similarMovies.length > 0 ? (
             similarMovies.map((similarMovie) => (
-              <Col xs={12} sm={8} md={6} lg={4} key={similarMovie._id}>
+              <Col xs={12} sm={8} md={6} lg={4} key={similarMovie.id}>
                 <MovieCard movie={similarMovie} />
               </Col>
             ))

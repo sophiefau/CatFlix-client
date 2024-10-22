@@ -7,11 +7,12 @@ export const MovieCard = ({ movie }) => {
     window.scrollTo(0, 0); // Scrolls to the top when the movie card is clicked
   };
 
-  console.log("Rendering MovieCard for:", movie.Title, movie);
+  // console.log("Rendering MovieCard for:", movie.Title, movie);
+  // console.log("Navigating to:", `/movies/${encodeURIComponent(movie.id)}`);
 
   return (
     <Link
-      to={`/movies/${encodeURIComponent(movie._id)}`}
+      to={`/movies/${encodeURIComponent(movie.id)}`}
       className="text-decoration-none"
       onClick={handleClick}
     >
@@ -32,7 +33,7 @@ export const MovieCard = ({ movie }) => {
 
 MovieCard.propTypes = {
   movie: PropTypes.shape({
-    _id: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
     Title: PropTypes.string.isRequired,
     Img: PropTypes.string.isRequired,
     Director: PropTypes.string.isRequired,
