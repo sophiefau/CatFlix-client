@@ -115,7 +115,7 @@ export const SignupView = () => {
                 onChange={(e) => setUsername(e.target.value)}
                 required
                 minLength="5"
-                placeholder="use only lowercase letters"
+                placeholder="At least 5 characters long and only lowercase letters"
                 isInvalid={!!usernameError || !!usernameAlreadyUsed}
               />
               <Form.Control.Feedback type="invalid">
@@ -132,7 +132,7 @@ export const SignupView = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                placeholder="must be at least 8 characters long"
+                placeholder="At least 8 characters long"
                 isInvalid={!!passwordError}
               />
               <Form.Control.Feedback type="invalid">
@@ -149,7 +149,7 @@ export const SignupView = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                placeholder="enter a valid email address"
+                placeholder="Enter a valid email address"
                 isInvalid={!!emailError || !!emailAlreadyUsed}
               />
               <Form.Control.Feedback type="invalid">

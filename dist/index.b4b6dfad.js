@@ -42696,7 +42696,7 @@ const SignupView = ()=>{
                                     onChange: (e)=>setUsername(e.target.value),
                                     required: true,
                                     minLength: "5",
-                                    placeholder: "use only lowercase letters",
+                                    placeholder: "At least 5 characters long and only lowercase letters",
                                     isInvalid: !!usernameError || !!usernameAlreadyUsed
                                 }, void 0, false, {
                                     fileName: "src/components/signup-view/signup-view.jsx",
@@ -42740,7 +42740,7 @@ const SignupView = ()=>{
                                     value: password,
                                     onChange: (e)=>setPassword(e.target.value),
                                     required: true,
-                                    placeholder: "must be at least 8 characters long",
+                                    placeholder: "At least 8 characters long",
                                     isInvalid: !!passwordError
                                 }, void 0, false, {
                                     fileName: "src/components/signup-view/signup-view.jsx",
@@ -42784,7 +42784,7 @@ const SignupView = ()=>{
                                     value: email,
                                     onChange: (e)=>setEmail(e.target.value),
                                     required: true,
-                                    placeholder: "enter a valid email address",
+                                    placeholder: "Enter a valid email address",
                                     isInvalid: !!emailError || !!emailAlreadyUsed
                                 }, void 0, false, {
                                     fileName: "src/components/signup-view/signup-view.jsx",
@@ -43277,17 +43277,22 @@ const UpdateUser = ({ user, onUpdate })=>{
     _s();
     const [username, setUsername] = (0, _react.useState)(user?.username || "");
     const [email, setEmail] = (0, _react.useState)(user?.email || "");
-    const [password, setPassword] = (0, _react.useState)("");
-    const [usernameError, setUsernameError] = (0, _react.useState)("");
-    const [passwordError, setPasswordError] = (0, _react.useState)("");
     const [emailError, setEmailError] = (0, _react.useState)("");
+    const [emailAlreadyUsed, setEmailAlreadyUsed] = (0, _react.useState)("");
+    const [password, setPassword] = (0, _react.useState)("");
+    const [passwordError, setPasswordError] = (0, _react.useState)("");
+    const [usernameError, setUsernameError] = (0, _react.useState)("");
+    const [usernameAlreadyUsed, setUsernameAlreadyUsed] = (0, _react.useState)("");
+    const [token] = (0, _react.useState)(localStorage.getItem("token"));
     // Handler for form submission
-    const handleSubmit = (e)=>{
+    const handleSubmit = async (e)=>{
         e.preventDefault();
         // Clear previous errors
         setUsernameError("");
+        setUsernameAlreadyUsed("");
         setPasswordError("");
         setEmailError("");
+        setEmailAlreadyUsed("");
         // Validation checks
         const usernameRegex = /^[a-z]{5,}$/;
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -43305,11 +43310,54 @@ const UpdateUser = ({ user, onUpdate })=>{
             isValid = false;
         }
         if (!isValid) return; // Stop the form submission if validation fails
+        // Check if username or email already exists in the database
+        const checkUrl = `https://catflix-99a985e6fffa.herokuapp.com/users`;
+        const response = await fetch(checkUrl, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                username,
+                email
+            })
+        });
+        const data = await response.json();
+        if (data.usernameAlreadyExists) {
+            setUsernameAlreadyUsed("This username is already taken.");
+            return;
+        }
+        if (data.emailAlreadyExists) {
+            setEmailAlreadyUsed("This email is already used.");
+            return;
+        }
         // Create a payload with only the fields that have values
         const updatedUser = {};
         if (username) updatedUser.username = username;
         if (email) updatedUser.email = email;
         if (password) updatedUser.password = password;
+        // Update user information in the database
+        const url = `https://catflix-99a985e6fffa.herokuapp.com/users/${username}`;
+        const updateResponse = await fetch(url, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`
+            },
+            body: JSON.stringify(updatedUser)
+        });
+        if (!updateResponse.ok) {
+            const errorData = await updateResponse.json();
+            // Handle errors from the server response
+            if (errorData.errors) errorData.errors.forEach((error)=>{
+                if (error.param === "Username") setUsernameError(error.msg);
+                if (error.param === "Email") setEmailError(error.msg);
+            });
+            else console.error("Error updating user data:", errorData);
+            return; // Stop further execution if the update fails
+        }
+        const result = await updateResponse.json();
+        console.log("User updated successfully:", result);
         // Trigger the onUpdate function passed as a prop to update the user info
         onUpdate(updatedUser);
     };
@@ -43324,7 +43372,7 @@ const UpdateUser = ({ user, onUpdate })=>{
                         children: "Update Your Profile"
                     }, void 0, false, {
                         fileName: "src/components/profile-view/update-user.jsx",
-                        lineNumber: 62,
+                        lineNumber: 119,
                         columnNumber: 11
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form), {
@@ -43337,7 +43385,7 @@ const UpdateUser = ({ user, onUpdate })=>{
                                         children: "Username"
                                     }, void 0, false, {
                                         fileName: "src/components/profile-view/update-user.jsx",
-                                        lineNumber: 65,
+                                        lineNumber: 122,
                                         columnNumber: 15
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
@@ -43345,24 +43393,24 @@ const UpdateUser = ({ user, onUpdate })=>{
                                         value: username,
                                         onChange: (e)=>setUsername(e.target.value),
                                         placeholder: "At least 5 characters long and only lowercase letters",
-                                        isInvalid: !!usernameError
+                                        isInvalid: !!usernameError || !!usernameAlreadyUsed
                                     }, void 0, false, {
                                         fileName: "src/components/profile-view/update-user.jsx",
-                                        lineNumber: 66,
+                                        lineNumber: 123,
                                         columnNumber: 15
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control.Feedback, {
                                         type: "invalid",
-                                        children: usernameError
+                                        children: usernameError || usernameAlreadyUsed
                                     }, void 0, false, {
                                         fileName: "src/components/profile-view/update-user.jsx",
-                                        lineNumber: 73,
+                                        lineNumber: 130,
                                         columnNumber: 15
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/profile-view/update-user.jsx",
-                                lineNumber: 64,
+                                lineNumber: 121,
                                 columnNumber: 13
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
@@ -43372,7 +43420,7 @@ const UpdateUser = ({ user, onUpdate })=>{
                                         children: "Email"
                                     }, void 0, false, {
                                         fileName: "src/components/profile-view/update-user.jsx",
-                                        lineNumber: 79,
+                                        lineNumber: 136,
                                         columnNumber: 15
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
@@ -43380,24 +43428,24 @@ const UpdateUser = ({ user, onUpdate })=>{
                                         value: email,
                                         onChange: (e)=>setEmail(e.target.value),
                                         placeholder: "Enter new valid email",
-                                        isInvalid: !!emailError
+                                        isInvalid: !!emailError || !!emailAlreadyUsed
                                     }, void 0, false, {
                                         fileName: "src/components/profile-view/update-user.jsx",
-                                        lineNumber: 80,
+                                        lineNumber: 137,
                                         columnNumber: 15
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control.Feedback, {
                                         type: "invalid",
-                                        children: emailError
+                                        children: emailError || emailAlreadyUsed
                                     }, void 0, false, {
                                         fileName: "src/components/profile-view/update-user.jsx",
-                                        lineNumber: 87,
-                                        columnNumber: 17
+                                        lineNumber: 144,
+                                        columnNumber: 15
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/profile-view/update-user.jsx",
-                                lineNumber: 78,
+                                lineNumber: 135,
                                 columnNumber: 13
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
@@ -43407,7 +43455,7 @@ const UpdateUser = ({ user, onUpdate })=>{
                                         children: "Password"
                                     }, void 0, false, {
                                         fileName: "src/components/profile-view/update-user.jsx",
-                                        lineNumber: 93,
+                                        lineNumber: 150,
                                         columnNumber: 15
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
@@ -43418,7 +43466,7 @@ const UpdateUser = ({ user, onUpdate })=>{
                                         isInvalid: !!passwordError
                                     }, void 0, false, {
                                         fileName: "src/components/profile-view/update-user.jsx",
-                                        lineNumber: 94,
+                                        lineNumber: 151,
                                         columnNumber: 15
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control.Feedback, {
@@ -43426,13 +43474,13 @@ const UpdateUser = ({ user, onUpdate })=>{
                                         children: passwordError
                                     }, void 0, false, {
                                         fileName: "src/components/profile-view/update-user.jsx",
-                                        lineNumber: 101,
-                                        columnNumber: 17
+                                        lineNumber: 158,
+                                        columnNumber: 15
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/profile-view/update-user.jsx",
-                                lineNumber: 92,
+                                lineNumber: 149,
                                 columnNumber: 13
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
@@ -43442,33 +43490,33 @@ const UpdateUser = ({ user, onUpdate })=>{
                                 children: "Update"
                             }, void 0, false, {
                                 fileName: "src/components/profile-view/update-user.jsx",
-                                lineNumber: 106,
+                                lineNumber: 163,
                                 columnNumber: 13
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/profile-view/update-user.jsx",
-                        lineNumber: 63,
+                        lineNumber: 120,
                         columnNumber: 11
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/profile-view/update-user.jsx",
-                lineNumber: 61,
+                lineNumber: 118,
                 columnNumber: 9
             }, undefined)
         }, void 0, false, {
             fileName: "src/components/profile-view/update-user.jsx",
-            lineNumber: 60,
+            lineNumber: 117,
             columnNumber: 7
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/profile-view/update-user.jsx",
-        lineNumber: 59,
+        lineNumber: 116,
         columnNumber: 5
     }, undefined);
 };
-_s(UpdateUser, "uJ54pmu70aqfC4k+rpxybqAQ4Ok=");
+_s(UpdateUser, "ftMs4ZmPsMOtYwyPxYLPetA6mBU=");
 _c = UpdateUser;
 var _c;
 $RefreshReg$(_c, "UpdateUser");
