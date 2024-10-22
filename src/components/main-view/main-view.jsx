@@ -9,10 +9,11 @@ import { Row, Col } from "react-bootstrap";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 export const MainView = () => {
-  const storedUser = JSON.parse(localStorage.getItem("user"));
+  // const storedUser = JSON.parse(localStorage.getItem("user"));
+  const storedUser = localStorage.getItem("user");
   const storedToken = localStorage.getItem("token");
-  const [user, setUser] = useState(storedUser || null);
-  const [token, setToken] = useState(storedToken || null);
+  const [user, setUser] = useState(storedUser? storedUser : null);
+  const [token, setToken] = useState(storedToken? storedToken : null);
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState("");
 
@@ -29,9 +30,9 @@ export const MainView = () => {
         }
         return response.json();
       })
-      .then((data) => {
-        console.log("Fetched movies data:", data);
-        const moviesFromApi = data.map((movie) => ({
+      .then((movies) => {
+        console.log("Fetched movies:", movies);
+        const moviesFromApi = movies.map((movie) => ({
           _id: movie._id,
           Title: movie.Title,
           Img: movie.Img,
@@ -65,6 +66,7 @@ const onLoggedOut = () => {
     setToken(null);
     localStorage.removeItem("user");
     localStorage.removeItem("token");
+    localStorage.clear();
 }
 const updatedUser = user => {
     setUser(user);
@@ -112,7 +114,7 @@ return (
         />
         console.log("Movies state:", movies);
         <Route
-          path="/movies/:movieId"
+          path="/movies/:MovieId"
           element={
             <>
               {!user ? (
@@ -121,7 +123,12 @@ return (
                 <Col>The list is empty!</Col>
               ) : (
                 <Col md={8}>
-                  <MovieView movies={movies} />
+                  <MovieView 
+                                                    movies={movies}
+                                                    user={user}
+                                                    token={token}
+                                                    setUser={setUser}  
+                                                    />
                 </Col>
               )}
             </>
@@ -147,7 +154,22 @@ return (
             </>
           }
         />
-         <Route path="/users/:username" element={<ProfileView />} />
+         <Route path="/users/:username"  element={
+                                    <>
+                                        {!user ? (
+                                            <Navigate to="/login" replace />
+                                        ) : (
+                                            <Col md={5}>      
+                                                <ProfileView 
+                                                    user={user}
+                                                    token={token}
+                                                    // onLoggedOut={onLoggedOut}
+                                                />
+                                            </Col>
+                                        )}
+                                    </>
+                                }
+                            />
       </Routes>
     </Row>
   </BrowserRouter>

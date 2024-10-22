@@ -1,13 +1,12 @@
-import { useEffect } from "react";
-import { MovieCard } from "../movie-card/movie-card";
+import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
+import { MovieCard } from "../movie-card/movie-card";
 import { Container, Row, Col, Button } from "react-bootstrap";
 
-export const MovieView = ({ movies }) => {
+export const MovieView = ({ movies, user, token, setUser }) => {
   const { movieId } = useParams();
-
-  // Find selected movie
-  const movie = movies.find((m) => m._id === movieId);
+  const [isFavorite, setIsFavorite] = useState(false);
+  const movie = movies.find((b) => b.id === movieId);
 
   if (!movie) {
     return <div>Movie not found</div>;
@@ -21,60 +20,102 @@ export const MovieView = ({ movies }) => {
       m.isAnimated === movie.isAnimated
   );
 
+  // Add-remove favorite movie
+  useEffect(() => {
+      if(user && user.FavoriteMovies)  {
+          const isFavorite = user.FavoriteMovies.includes(movieId);
+          setIsFavorite(isFavorite);
+      }
+  }, [movieId, user]);
+
+  const addtoFavorite = () => {
+      fetch(`https://moviesdb-6abb3284c2fb.herokuapp.com/users/${user.Username}/${movieId}`,
+      {
+          method: "POST",
+          headers: { 
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}` 
+          }
+      }).then((response) => {
+          if (response.ok) {
+            return response.json();
+          }
+      })
+      .then((data) => {
+          setUser(data);
+          localStorage.setItem("user", JSON.stringify(data));
+          setIsFavorite(true);
+      })
+      .catch((e) => {
+          console.log(e);
+      });       
+  };
+  const removefromFavorite = () => {
+      fetch(`https://moviesdb-6abb3284c2fb.herokuapp.com/users/${user.Username}/${movieId}`,
+      {
+          method: "DELETE",
+          headers: { 
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}` 
+          }
+      }).then((response) => {
+          if (response.ok) {
+            return response.json();
+          }
+      })
+      .then((data) => {
+          setUser(data);
+          localStorage.setItem("user", JSON.stringify(data));
+          setIsFavorite(false);
+      })
+      .catch((e) => {
+      console.log(e);
+      });       
+  };
+
   return (
     <Container>
       <Row className="mb-4">
-        <Col md={6}>
+        <Col>
           <img className="w-100" src={movie.Img} alt={movie.Title} />
         </Col>
-        <Col md={6}>
-          <Row className="mb-3">
-            <Col>
-              <h2>Movie Details</h2>
-            </Col>
-          </Row>
-          <Row className="mb-2">
-            <Col xs="auto" className="fw-bold">
-              Title:
-            </Col>
-            <Col>{movie.Title}</Col>
-          </Row>
-          <Row className="mb-2">
-            <Col xs="auto" className="fw-bold">
-              Director:
-            </Col>
-            <Col>{movie.Director}</Col>
-          </Row>
-          <Row className="mb-2">
-            <Col xs="auto" className="fw-bold">
-              Cat:{" "}
-            </Col>
-            <Col>{movie.Cat.Name}</Col>
-          </Row>
-          <Row className="mb-2">
-            <Col xs="auto" className="fw-bold">
-              Genre:{" "}
-            </Col>
-            <Col>{movie.Genre.Name}</Col>
-          </Row>
-          <Row className="mb-2">
-            <Col xs="auto" className="fw-bold">
-              Year:{" "}
-            </Col>
-            <Col>{movie.Year}</Col>
-          </Row>
-          <Row className="mb-2">
-            <Col xs="auto" className="fw-bold">
-              Synopsis:{" "}
-            </Col>
-            <Col>{movie.Synopsis}</Col>
-          </Row>
+      </Row>
+      <Row className="mb-4">
+        <Col>
+          <h2>Movie Details</h2>
+          <div className="mb-2">
+            <strong>Title:</strong> {movie.Title}
+          </div>
+          <div className="mb-2">
+            <strong>Director:</strong> {movie.Director}
+          </div>
+          <div className="mb-2">
+            <strong>Cat:</strong> {movie.Cat?.Name}
+          </div>
+          <div className="mb-2">
+            <strong>Genre:</strong> {movie.Genre?.Name}
+          </div>
+          <div className="mb-2">
+            <strong>Year:</strong> {movie.Year}
+          </div>
+          <div className="mb-2">
+            <strong>Synopsis:</strong> {movie.Synopsis}
+          </div>
+
+          <Button onClick={isFavorite ? removefromFavorite : addtoFavorite}>
+            {isFavorite ? "Remove from Favorites" : "Add to Favorites"}
+          </Button>
+          <br />
+          <Link to={`/users/${user.Username}/movies/${movieId}`}>
+            <Button variant="primary" className="mt-3">
+              Go to Favorite Movies
+            </Button>
+          </Link>
           <Link to={`/`}>
             <Button className="back-button">Back</Button>
           </Link>
         </Col>
       </Row>
-
       <div className="similar-movies">
         <h3>Similar Movies</h3>
         <Row>
