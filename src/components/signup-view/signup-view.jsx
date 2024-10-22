@@ -1,4 +1,5 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 
 export const SignupView = () => {
@@ -12,6 +13,7 @@ export const SignupView = () => {
   const [emailAlreadyUsed, setEmailAlreadyUsed] = useState("");
   const [birthday, setBirthday] = useState("");
   const [birthdayError, setBirthdayError] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -70,7 +72,7 @@ export const SignupView = () => {
     }).then((response) => {
       if (response.ok) {
         alert("Signup successful");
-        window.location.reload();
+        navigate("/login"); 
       } else {
         // Handle server-side validation errors
         response.json().then((err) => {
@@ -96,6 +98,10 @@ export const SignupView = () => {
           }
         });
       }
+    })
+    .catch((error) => {
+      console.error("Error during signup:", error);
+      alert("Signup failed due to a network error");
     });
   };
 
