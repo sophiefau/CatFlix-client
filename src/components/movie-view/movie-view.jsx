@@ -42,7 +42,7 @@ export const MovieView = ({ movies, user, token, setUser }) => {
     // console.log("Token before request:", token);
     // console.log("Current movieId:", movieId);
     fetch(
-      `https://moviesdb-6abb3284c2fb.herokuapp.com/users/${user.Username}/${movieId}`,
+      `https://catflix-99a985e6fffa.herokuapp.com/users/${user.Username}/${movieId}`,
       {
         method: "POST",
         headers: {
