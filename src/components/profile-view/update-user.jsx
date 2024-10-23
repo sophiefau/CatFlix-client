@@ -57,7 +57,7 @@ export const UpdateUser = ({ user, onUpdate }) => {
     if (password) updatedUser.password = password;
 
     // Update user information in the database
-    fetch(`https://catflix-99a985e6fffa.herokuapp.com/users/${username}`, {
+    fetch(`https://catflix-99a985e6fffa.herokuapp.com/users/${user.Username}`, {
       method: "PATCH",
       body: JSON.stringify(updatedUser),
       headers: {

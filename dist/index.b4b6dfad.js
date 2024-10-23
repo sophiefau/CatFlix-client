@@ -42294,7 +42294,7 @@ const MovieView = ({ movies, user, token, setUser })=>{
         }
         // console.log("Token before request:", token);
         // console.log("Current movieId:", movieId);
-        fetch(`https://moviesdb-6abb3284c2fb.herokuapp.com/users/${user.Username}/${movieId}`, {
+        fetch(`https://catflix-99a985e6fffa.herokuapp.com/users/${user.Username}/${movieId}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -43469,7 +43469,7 @@ const UpdateUser = ({ user, onUpdate })=>{
         if (email) updatedUser.email = email;
         if (password) updatedUser.password = password;
         // Update user information in the database
-        fetch(`https://catflix-99a985e6fffa.herokuapp.com/users/${username}`, {
+        fetch(`https://catflix-99a985e6fffa.herokuapp.com/users/${user.Username}`, {
             method: "PATCH",
             body: JSON.stringify(updatedUser),
             headers: {
