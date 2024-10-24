@@ -63,7 +63,9 @@ Node.js and npm should be installed on your machine.
 
 ## Usage
 
+# Documentation
 
+You can access the documentation build with Swagger here: https://catflix-99a985e6fffa.herokuapp.com/api-docs/
 
 ## Contributing
 
