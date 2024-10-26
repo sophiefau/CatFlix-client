@@ -14,6 +14,8 @@ export const SignupView = () => {
   const [birthday, setBirthday] = useState("");
   const [birthdayError, setBirthdayError] = useState("");
   const navigate = useNavigate();
+  const [AlertMessag, setAlertMessage] = useState("");
+  
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -71,8 +73,11 @@ export const SignupView = () => {
       },
     }).then((response) => {
       if (response.ok) {
-        alert("Signup successful");
-        navigate("/login"); 
+          setAlertMessage('Signup successful');
+          setTimeout(() => {
+              setAlertMessage(''); 
+              navigate("/login");  
+          }, 3000); 
       } else {
         // Handle server-side validation errors
         response.json().then((err) => {
@@ -94,14 +99,14 @@ export const SignupView = () => {
               }
             });
           } else {
-            alert("Signup failed");
+            setAlertMessage("Signup failed");
           }
         });
       }
     })
     .catch((error) => {
       console.error("Error during signup:", error);
-      alert("Signup failed due to a network error");
+      setAlertMessage("Signup failed due to a network error");
     });
   };
 
@@ -182,6 +187,14 @@ export const SignupView = () => {
               Sign up to CatFlix
             </Button>
           </Col>
+          {AlertMessag && (
+                <div className="alert alert-secondary alert-dismissible fade show" role="alert">
+                    {AlertMessag}
+                    <button type="button" className="close" onClick={() => setAlertMessage('')} aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            )}
         </Row>
       </Form>
     </Container>

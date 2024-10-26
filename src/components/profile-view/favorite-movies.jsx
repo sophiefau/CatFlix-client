@@ -27,6 +27,11 @@ export const FavoriteMovies = ({ favoriteMovies, removeFromFavorite }) => {
   );
 };
 
+
+// Tonny Ntambaazi
+// 17:43
+// allMovies.filter(movie => user.FavoriteMovies.includes(movie.id))
+
 FavoriteMovies.propTypes = {
   favoriteMovies: PropTypes.array.isRequired,
   removeFromFavorite: PropTypes.func.isRequired,

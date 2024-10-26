@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
+import { useNavigate } from "react-router";
 
 export const UpdateUser = ({ user, onUpdate }) => {
   const [username, setUsername] = useState(user.Username);
@@ -11,6 +12,7 @@ export const UpdateUser = ({ user, onUpdate }) => {
   const [usernameError, setUsernameError] = useState("");
   const [usernameAlreadyUsed, setUsernameAlreadyUsed] = useState("");
   const [token] = useState(localStorage.getItem("token"));
+  const navigate = useNavigate();
 
   // Handler for form submission
   const handleSubmit = (event) => {
@@ -52,9 +54,9 @@ export const UpdateUser = ({ user, onUpdate }) => {
 
     // Create a payload with only the fields that have values
     const updatedUser = {};
-    if (username) updatedUser.username = username;
-    if (email) updatedUser.email = email;
-    if (password) updatedUser.password = password;
+    if (username) updatedUser.Username = username;
+    if (email) updatedUser.Email = email;
+    if (password) updatedUser.Password = password;
 
     // Update user information in the database
     fetch(`https://catflix-99a985e6fffa.herokuapp.com/users/${user.Username}`, {
@@ -93,6 +95,7 @@ export const UpdateUser = ({ user, onUpdate }) => {
         }
       })
       .then((result) => {
+        navigate(`/users/${result.Username}`);
         console.log("User updated successfully:", result);
         onUpdate(updatedUser);
         window.location.reload(); // Reload the page after updating

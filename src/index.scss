@@ -1,6 +1,13 @@
 $primary: #615428;
 $body-bg: #352941;
 $body-color: white;
+$jaune: #f5ee2b;
+$or: #c79b0b;
+$noir: #000;
+$blanc-casse:#faf5ea;
+$ocre:#9b7006; 
+$gris: #5c5849;
+$beige: #f0e4b8;
 
 @import '~bootstrap/scss/bootstrap.scss';
 
@@ -38,7 +45,6 @@ $body-color: white;
 }
 
 .logo{
-  background-color: #615428;
   display: block;
   min-width: 30px;
 }

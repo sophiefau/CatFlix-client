@@ -1,12 +1,16 @@
 import { Link } from "react-router-dom";
 import { Container, Nav, Navbar } from "react-bootstrap";
+import logo from '../../img/catflix_logo_trans.png';
 
 export const NavigationBar = ({ user, onLoggedOut }) => {
   return (
     <Navbar variant="dark" bg="dark" expand="lg">
       <Container>
         <Navbar.Brand as={Link} to="/">
-          CatFlix
+        <img className="logo"
+                    src={logo}
+                    alt="Logo"
+                />{' '}
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
