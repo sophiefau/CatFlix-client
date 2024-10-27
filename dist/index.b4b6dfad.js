@@ -42681,6 +42681,7 @@ const LoginView = ({ onLoggedIn })=>{
                                     value: username,
                                     onChange: (e)=>setUsername(e.target.value),
                                     required: true,
+                                    placeholder: ". . . . . . . . .",
                                     isInvalid: !!usernameError
                                 }, void 0, false, {
                                     fileName: "src/components/login-view/login-view.jsx",
@@ -42692,7 +42693,7 @@ const LoginView = ({ onLoggedIn })=>{
                                     children: usernameError
                                 }, void 0, false, {
                                     fileName: "src/components/login-view/login-view.jsx",
-                                    lineNumber: 75,
+                                    lineNumber: 76,
                                     columnNumber: 15
                                 }, undefined)
                             ]
@@ -42716,7 +42717,7 @@ const LoginView = ({ onLoggedIn })=>{
                                     children: "Password:"
                                 }, void 0, false, {
                                     fileName: "src/components/login-view/login-view.jsx",
-                                    lineNumber: 83,
+                                    lineNumber: 84,
                                     columnNumber: 15
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
@@ -42724,10 +42725,11 @@ const LoginView = ({ onLoggedIn })=>{
                                     value: password,
                                     onChange: (e)=>setPassword(e.target.value),
                                     required: true,
+                                    placeholder: ". . . . . . . . .",
                                     isInvalid: !!passwordError
                                 }, void 0, false, {
                                     fileName: "src/components/login-view/login-view.jsx",
-                                    lineNumber: 84,
+                                    lineNumber: 85,
                                     columnNumber: 15
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control.Feedback, {
@@ -42735,18 +42737,18 @@ const LoginView = ({ onLoggedIn })=>{
                                     children: passwordError
                                 }, void 0, false, {
                                     fileName: "src/components/login-view/login-view.jsx",
-                                    lineNumber: 91,
+                                    lineNumber: 93,
                                     columnNumber: 15
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/login-view/login-view.jsx",
-                            lineNumber: 82,
+                            lineNumber: 83,
                             columnNumber: 13
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 81,
+                        lineNumber: 82,
                         columnNumber: 11
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
@@ -42757,12 +42759,12 @@ const LoginView = ({ onLoggedIn })=>{
                             children: "Login to CatFlix"
                         }, void 0, false, {
                             fileName: "src/components/login-view/login-view.jsx",
-                            lineNumber: 98,
+                            lineNumber: 100,
                             columnNumber: 13
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 97,
+                        lineNumber: 99,
                         columnNumber: 11
                     }, undefined)
                 ]

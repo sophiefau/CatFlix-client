@@ -70,6 +70,7 @@ export const LoginView = ({ onLoggedIn }) => {
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 required
+                placeholder=". . . . . . . . ."
                 isInvalid={!!usernameError}
               />
               <Form.Control.Feedback type="invalid">
@@ -86,6 +87,7 @@ export const LoginView = ({ onLoggedIn }) => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
+                placeholder=". . . . . . . . ."
                 isInvalid={!!passwordError}
               />
               <Form.Control.Feedback type="invalid">
