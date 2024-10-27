@@ -142,8 +142,8 @@ export const MovieView = ({ movies, user, token, setUser }) => {
         </Row>
       </Row>
 
-      <div className="similar-movies">
-        <h3>Similar Movies</h3>
+      <div>
+        <h2 className="mb-3">Similar Movies</h2>
         <Row>
           {similarMovies.length > 0 ? (
             similarMovies.map((similarMovie) => (
