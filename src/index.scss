@@ -1,4 +1,4 @@
-$primary: #615428;
+$primary: #9b7006;
 $body-bg: #352941;
 $body-color: #faf5ea;
 $yellow: #f5ee2b;
@@ -80,8 +80,7 @@ $cream: #f0e4b8;
 }
 
 .card{
-  width: 240px;
-  margin-top: 15px;
+  max-width: 240px;
   border-radius: 12px;
   padding: 10px;
   transition: transform 0.3s ease; 
@@ -93,8 +92,8 @@ $cream: #f0e4b8;
 }
 
 div.movies_img{
-  height: 350px;
-  width: 220px;
+  max-height: 350px;
+  max-width: 220px;
 }
 
 img{
@@ -107,6 +106,7 @@ img{
   color: $gold;
 }
 
-.movie-view{
-  padding: 10px;
+h1{
+  color: $ocher;
+  font-size: 33px;
 }

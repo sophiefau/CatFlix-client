@@ -4,7 +4,7 @@ import logo from "../../img/catflix_logo_trans.png";
 
 export const NavigationBar = ({ user, onLoggedOut }) => {
   return (
-    <Navbar variant="dark" bg="dark" expand="lg">
+    <Navbar variant="dark" bg="dark" expand="lg" className="mb-4">
       <Container>
         <Navbar.Brand as={Link} to="/">
         <img className="logo"

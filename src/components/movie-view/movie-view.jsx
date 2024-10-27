@@ -103,13 +103,11 @@ export const MovieView = ({ movies, user, token, setUser }) => {
   return (
     <Container>
       <Row className="mb-4">
-        <Col>
+        <Col className="mb-4" sm={12} md={5} lg={4}>
           <img className="w-100" src={movie.Img} alt={movie.Title} />
         </Col>
-      </Row>
-      <Row className="mb-4">
-        <Col>
-          <h2>Movie Details</h2>
+        <Col sm={12} md={7} lg={8}>
+          <h1 className="mb-4">Movie Details</h1>
           <div className="mb-2">
             <strong>Title:</strong> {movie.Title}
           </div>
@@ -129,17 +127,19 @@ export const MovieView = ({ movies, user, token, setUser }) => {
             <strong>Synopsis:</strong> {movie.Synopsis}
           </div>
 
-          <Button onClick={isFavorite ? removefromFavorite : addtoFavorite}>
+          <Button className="btn-sm" onClick={isFavorite ? removefromFavorite : addtoFavorite}>
             {isFavorite ? "Remove from Favorites" : "Add to Favorites"}
           </Button>
-          <br />
-
+          </Col>
+<Row>
+  <Col>
           <Link to={`/`}>
-            <Button className="back-button" onClick={handleClick}>
+            <Button className="back-button btn-dark" onClick={handleClick}>
               Back
             </Button>
           </Link>
         </Col>
+        </Row>
       </Row>
 
       <div className="similar-movies">
@@ -147,7 +147,7 @@ export const MovieView = ({ movies, user, token, setUser }) => {
         <Row>
           {similarMovies.length > 0 ? (
             similarMovies.map((similarMovie) => (
-              <Col xs={12} sm={8} md={6} lg={4} key={similarMovie.id}>
+              <Col className="mb-3" md={6} lg={4} xl={3} key={similarMovie.id}>
                 <MovieCard movie={similarMovie} />
               </Col>
             ))
