@@ -2,7 +2,7 @@ $primary: #615428;
 $body-bg: #352941;
 $body-color: #faf5ea;
 $yellow: #f5ee2b;
-$gold: #c79b0b;
+$gold: #9c7b0f;
 $black: #000;
 $darkgrey: #212529;
 $ocher:#9b7006; 
@@ -79,12 +79,9 @@ $cream: #f0e4b8;
   opacity: 1;
 }
 
-h1{
-  font-size: 20px;
-}
-
 .card{
-  max-width: 220px;
+  width: 240px;
+  margin-top: 15px;
   border-radius: 12px;
   padding: 10px;
   transition: transform 0.3s ease; 
@@ -95,8 +92,19 @@ h1{
   }
 }
 
+div.movies_img{
+  height: 350px;
+  width: 220px;
+}
+
 img{
-  max-width: 200px;
+  max-width: 220px;
+}
+
+.btn-link{
+  margin: none;
+  padding: none;
+  color: $gold;
 }
 
 .movie-view{

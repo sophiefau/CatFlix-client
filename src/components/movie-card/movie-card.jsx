@@ -16,12 +16,14 @@ export const MovieCard = ({ movie }) => {
       className="text-decoration-none"
       onClick={handleClick}
     >
-      <Card className="h-100 bg-dark text-white">
-        <Card.Img className="w-100" variant="top" src={movie.Img} />
+      <Card className="h-100 bg-dark">
+        <div className="movies_img">
+        <Card.Img className="w-100" variant="top" src={movie.Img} alt={movie.Title +'poster'} />
+        </div>
         <Card.Body className="d-flex flex-column">
           <Card.Title>{movie.Title}</Card.Title>
           <div className="mt-auto">
-            <Button variant="link" className="text-decoration-none">
+            <Button variant="link" className="m-0 p-0 text-decoration-none">
               See details
             </Button>
           </div>

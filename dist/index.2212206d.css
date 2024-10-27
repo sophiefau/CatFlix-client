@@ -213,6 +213,10 @@ h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
   line-height: 1.2;
 }
 
+h1, .h1 {
+  font-size: calc(1.375rem + 1.5vw);
+}
+
 @media (width >= 1200px) {
   h1, .h1 {
     font-size: 2.5rem;
@@ -13230,7 +13234,7 @@ textarea.form-control-lg {
 
 .alert-custom {
   float: none;
-  color: #c79b0b;
+  color: #9c7b0f;
   text-align: center;
   background: #212529;
   border-radius: 12px;
@@ -13240,7 +13244,7 @@ textarea.form-control-lg {
 .btn-custom {
   opacity: .9;
   padding: none;
-  color: #c79b0b;
+  color: #9c7b0f;
   background-color: #0000;
   border: none;
   margin-left: 25px;
@@ -13250,13 +13254,10 @@ textarea.form-control-lg {
   opacity: 1;
 }
 
-h1, .h1 {
-  font-size: 20px;
-}
-
 .card {
   border-radius: 12px;
-  max-width: 220px;
+  width: 240px;
+  margin-top: 15px;
   padding: 10px;
   transition: transform .3s;
 }
@@ -13266,8 +13267,19 @@ h1, .h1 {
   box-shadow: 0 4px 20px #000;
 }
 
+div.movies_img {
+  width: 220px;
+  height: 350px;
+}
+
 img {
-  max-width: 200px;
+  max-width: 220px;
+}
+
+.btn-link {
+  margin: none;
+  padding: none;
+  color: #9c7b0f;
 }
 
 .movie-view {
