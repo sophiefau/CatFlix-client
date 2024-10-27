@@ -1,13 +1,13 @@
 $primary: #615428;
 $body-bg: #352941;
-$body-color: white;
-$jaune: #f5ee2b;
-$or: #c79b0b;
-$noir: #000;
-$blanc-casse:#faf5ea;
-$ocre:#9b7006; 
-$gris: #5c5849;
-$beige: #f0e4b8;
+$body-color: #faf5ea;
+$yellow: #f5ee2b;
+$gold: #c79b0b;
+$black: #000;
+$darkgrey: #212529;
+$ocher:#9b7006; 
+$grey: #5c5849;
+$cream: #f0e4b8;
 
 @import '~bootstrap/scss/bootstrap.scss';
 
@@ -51,24 +51,33 @@ $beige: #f0e4b8;
 
 .profile-signup{
   text-decoration: none;
-  color: $beige;
+  color: $cream;
 }
 .active {
   opacity: 0;
  }
 
  .alert-custom{
-  background: $noir;
-  opacity: 0.9;
-  color: $or;
+  float: none;
+  background: $darkgrey;
+  color: $gold;
+  font-size: 17px;
+  text-align: center;
+  border-radius: 12px;
  }
 
-//  .close{
-//   color: $or;
-//   background: none;
-//   border: none;
-//   text-align: right;
-//  }
+.btn-custom{
+  opacity: 0.9;
+  margin-left: 25px;
+  padding: none;
+  color: $gold;
+  background-color: transparent;
+  border: none;
+}
+
+.btn-custom:hover{
+  opacity: 1;
+}
 
 h1{
   font-size: 20px;

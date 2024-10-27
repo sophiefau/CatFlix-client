@@ -42846,7 +42846,7 @@ const SignupView = ()=>{
                 setTimeout(()=>{
                     setAlertMessage("");
                     navigate("/login");
-                }, 5000);
+                }, 1500);
             } else // Handle server-side validation errors
             response.json().then((err)=>{
                 if (err.errors) err.errors.forEach((error)=>{
@@ -42883,7 +42883,7 @@ const SignupView = ()=>{
                                     children: "Username:"
                                 }, void 0, false, {
                                     fileName: "src/components/signup-view/signup-view.jsx",
-                                    lineNumber: 120,
+                                    lineNumber: 119,
                                     columnNumber: 15
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
@@ -42896,7 +42896,7 @@ const SignupView = ()=>{
                                     isInvalid: !!usernameError || !!usernameAlreadyUsed
                                 }, void 0, false, {
                                     fileName: "src/components/signup-view/signup-view.jsx",
-                                    lineNumber: 121,
+                                    lineNumber: 120,
                                     columnNumber: 15
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control.Feedback, {
@@ -42904,18 +42904,18 @@ const SignupView = ()=>{
                                     children: usernameError || usernameAlreadyUsed
                                 }, void 0, false, {
                                     fileName: "src/components/signup-view/signup-view.jsx",
-                                    lineNumber: 130,
+                                    lineNumber: 129,
                                     columnNumber: 15
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/signup-view/signup-view.jsx",
-                            lineNumber: 119,
+                            lineNumber: 118,
                             columnNumber: 13
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/signup-view/signup-view.jsx",
-                        lineNumber: 118,
+                        lineNumber: 117,
                         columnNumber: 11
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
@@ -42928,7 +42928,7 @@ const SignupView = ()=>{
                                     children: "Password:"
                                 }, void 0, false, {
                                     fileName: "src/components/signup-view/signup-view.jsx",
-                                    lineNumber: 138,
+                                    lineNumber: 137,
                                     columnNumber: 15
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
@@ -42940,7 +42940,7 @@ const SignupView = ()=>{
                                     isInvalid: !!passwordError
                                 }, void 0, false, {
                                     fileName: "src/components/signup-view/signup-view.jsx",
-                                    lineNumber: 139,
+                                    lineNumber: 138,
                                     columnNumber: 15
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control.Feedback, {
@@ -42948,18 +42948,18 @@ const SignupView = ()=>{
                                     children: passwordError
                                 }, void 0, false, {
                                     fileName: "src/components/signup-view/signup-view.jsx",
-                                    lineNumber: 147,
+                                    lineNumber: 146,
                                     columnNumber: 15
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/signup-view/signup-view.jsx",
-                            lineNumber: 137,
+                            lineNumber: 136,
                             columnNumber: 13
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/signup-view/signup-view.jsx",
-                        lineNumber: 136,
+                        lineNumber: 135,
                         columnNumber: 11
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
@@ -42972,7 +42972,7 @@ const SignupView = ()=>{
                                     children: "Email:"
                                 }, void 0, false, {
                                     fileName: "src/components/signup-view/signup-view.jsx",
-                                    lineNumber: 155,
+                                    lineNumber: 154,
                                     columnNumber: 15
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
@@ -42984,7 +42984,7 @@ const SignupView = ()=>{
                                     isInvalid: !!emailError || !!emailAlreadyUsed
                                 }, void 0, false, {
                                     fileName: "src/components/signup-view/signup-view.jsx",
-                                    lineNumber: 156,
+                                    lineNumber: 155,
                                     columnNumber: 15
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control.Feedback, {
@@ -42992,18 +42992,18 @@ const SignupView = ()=>{
                                     children: emailError || emailAlreadyUsed
                                 }, void 0, false, {
                                     fileName: "src/components/signup-view/signup-view.jsx",
-                                    lineNumber: 164,
+                                    lineNumber: 163,
                                     columnNumber: 15
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/signup-view/signup-view.jsx",
-                            lineNumber: 154,
+                            lineNumber: 153,
                             columnNumber: 13
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/signup-view/signup-view.jsx",
-                        lineNumber: 153,
+                        lineNumber: 152,
                         columnNumber: 11
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
@@ -43016,7 +43016,7 @@ const SignupView = ()=>{
                                     children: "Birthday:"
                                 }, void 0, false, {
                                     fileName: "src/components/signup-view/signup-view.jsx",
-                                    lineNumber: 172,
+                                    lineNumber: 171,
                                     columnNumber: 15
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
@@ -43027,7 +43027,7 @@ const SignupView = ()=>{
                                     isInvalid: !!birthdayError
                                 }, void 0, false, {
                                     fileName: "src/components/signup-view/signup-view.jsx",
-                                    lineNumber: 173,
+                                    lineNumber: 172,
                                     columnNumber: 15
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control.Feedback, {
@@ -43035,18 +43035,18 @@ const SignupView = ()=>{
                                     children: birthdayError
                                 }, void 0, false, {
                                     fileName: "src/components/signup-view/signup-view.jsx",
-                                    lineNumber: 180,
+                                    lineNumber: 179,
                                     columnNumber: 15
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/signup-view/signup-view.jsx",
-                            lineNumber: 171,
+                            lineNumber: 170,
                             columnNumber: 13
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/signup-view/signup-view.jsx",
-                        lineNumber: 170,
+                        lineNumber: 169,
                         columnNumber: 11
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
@@ -43057,12 +43057,12 @@ const SignupView = ()=>{
                             children: "Sign up to CatFlix"
                         }, void 0, false, {
                             fileName: "src/components/signup-view/signup-view.jsx",
-                            lineNumber: 186,
+                            lineNumber: 185,
                             columnNumber: 13
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/signup-view/signup-view.jsx",
-                        lineNumber: 185,
+                        lineNumber: 184,
                         columnNumber: 11
                     }, undefined),
                     AlertMessag && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -43072,7 +43072,7 @@ const SignupView = ()=>{
                             AlertMessag,
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                                 type: "button",
-                                className: "close",
+                                className: "btn-custom",
                                 "data-dismiss": "alert",
                                 onClick: ()=>setAlertMessage(""),
                                 "aria-label": "Close",
@@ -43081,29 +43081,29 @@ const SignupView = ()=>{
                                     children: "\xd7"
                                 }, void 0, false, {
                                     fileName: "src/components/signup-view/signup-view.jsx",
-                                    lineNumber: 194,
-                                    columnNumber: 25
+                                    lineNumber: 193,
+                                    columnNumber: 23
                                 }, undefined)
                             }, void 0, false, {
                                 fileName: "src/components/signup-view/signup-view.jsx",
-                                lineNumber: 193,
+                                lineNumber: 192,
                                 columnNumber: 21
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/signup-view/signup-view.jsx",
-                        lineNumber: 191,
+                        lineNumber: 190,
                         columnNumber: 17
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/signup-view/signup-view.jsx",
-                lineNumber: 117,
+                lineNumber: 116,
                 columnNumber: 9
             }, undefined)
         }, void 0, false, {
             fileName: "src/components/signup-view/signup-view.jsx",
-            lineNumber: 116,
+            lineNumber: 115,
             columnNumber: 7
         }, undefined)
     }, void 0, false, {
@@ -43155,7 +43155,7 @@ const NavigationBar = ({ user, onLoggedOut })=>{
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
                             className: "logo",
                             src: (0, _catflixLogoTransPngDefault.default),
-                            alt: "Logo"
+                            alt: "Logo for CatFlix App"
                         }, void 0, false, {
                             fileName: "src/components/navigation-bar/navigation-bar.jsx",
                             lineNumber: 10,

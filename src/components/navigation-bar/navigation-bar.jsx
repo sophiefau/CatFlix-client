@@ -9,7 +9,7 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
         <Navbar.Brand as={Link} to="/">
         <img className="logo"
                     src={logo}
-                    alt="Logo"
+                    alt="Logo for CatFlix App"
                 />{' '}
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

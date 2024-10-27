@@ -77,7 +77,7 @@ export const SignupView = () => {
           setTimeout(() => {
               setAlertMessage(''); 
               navigate("/login");  
-          }, 5000); 
+          }, 1500); 
       } else {
         // Handle server-side validation errors
         response.json().then((err) => {
@@ -112,7 +112,6 @@ export const SignupView = () => {
 
   return (
     <Container className="login-container">
-      {/* <h1>Please Register to use CatFlix</h1> */}
       <Form onSubmit={handleSubmit} noValidate>
         <Row>
           <Col xs={12} md={6}>
@@ -190,8 +189,8 @@ export const SignupView = () => {
           {AlertMessag && (
                 <div className="alert alert-custom alert-dismissible fade show" role="alert">
                     {AlertMessag}
-                    <button type="button" className="close" data-dismiss="alert" onClick={() => setAlertMessage('')} aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                    <button type="button" className="btn-custom" data-dismiss="alert" onClick={() => setAlertMessage('')} aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
             )}
