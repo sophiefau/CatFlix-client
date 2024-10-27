@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { Container, Nav, Navbar } from "react-bootstrap";
-import logo from '../../img/catflix_logo_trans.png';
+import logo from "../../img/catflix_logo_trans.png";
 
 export const NavigationBar = ({ user, onLoggedOut }) => {
   return (
@@ -17,17 +17,17 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
           <Nav className="ms-auto">
             {!user && (
               <>
-                <Nav.Link as={Link} to="/login">
+                <NavLink as={Link} to="/login" className={"profile-signup"}>
                   Login
-                </Nav.Link>
-                <Nav.Link as={Link} to="/signup">
+                </NavLink>
+                <NavLink as={Link} to="/signup" className={"profile-signup"}>
                   Signup
-                </Nav.Link>
+                </NavLink>
               </>
             )}
             {user && (
               <>
-                <Nav.Link as={Link} to="/">
+                <Nav.Link as={Link} to="/" >
                   Home
                 </Nav.Link>
                 <Nav.Link as={Link} to={`/users/${user.Username}`}>

@@ -77,7 +77,7 @@ export const SignupView = () => {
           setTimeout(() => {
               setAlertMessage(''); 
               navigate("/login");  
-          }, 3000); 
+          }, 5000); 
       } else {
         // Handle server-side validation errors
         response.json().then((err) => {
@@ -106,7 +106,7 @@ export const SignupView = () => {
     })
     .catch((error) => {
       console.error("Error during signup:", error);
-      setAlertMessage("Signup failed due to a network error");
+      setAlertMessage("Signup failed due to a network error, please try later.");
     });
   };
 
@@ -188,9 +188,9 @@ export const SignupView = () => {
             </Button>
           </Col>
           {AlertMessag && (
-                <div className="alert alert-secondary alert-dismissible fade show" role="alert">
+                <div className="alert alert-custom alert-dismissible fade show" role="alert">
                     {AlertMessag}
-                    <button type="button" className="close" onClick={() => setAlertMessage('')} aria-label="Close">
+                    <button type="button" className="close" data-dismiss="alert" onClick={() => setAlertMessage('')} aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>

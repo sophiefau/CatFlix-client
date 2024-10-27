@@ -4,10 +4,16 @@ import { Container, Row, Col, Form, Button } from "react-bootstrap";
 export const LoginView = ({ onLoggedIn }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [usernameError, setUsernameError] = useState(""); 
+  const [passwordError, setPasswordError] = useState("");
 
   const handleSubmit = (event) => {
     // this prevents the default behavior of the form which is to reload the entire page
     event.preventDefault();
+
+    // Reset error messages before a new login attempt
+    setUsernameError("");
+    setPasswordError("");
 
     const data = {
       Username: username,
@@ -21,23 +27,37 @@ export const LoginView = ({ onLoggedIn }) => {
       },
       body: JSON.stringify(data),
     })
-      .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok) {
+        // Handle server-side validation errors
+        return response.json().then((err) => {
+          if (err.message) {
+            // Display specific error messages based on what the backend sends
+            if (err.message.includes("Username")) {
+              setUsernameError("Wrong username");
+            }
+            if (err.message.includes("Password")) {
+              setPasswordError("Wrong password");
+            }
+          }
+          return Promise.reject(err); // Stop further processing
+        });
+      }
+      return response.json();
+    })
       .then((data) => {
         console.log("Login response: ", data);
         if (data.user) {
           localStorage.setItem("user", JSON.stringify(data.user));
           localStorage.setItem("token", data.token);
           onLoggedIn(data.user, data.token);
-        } else {
-          alert("No such user");
         }
       })
       .catch((e) => {
         console.error("Error during login: ", e);
-        alert("Something went wrong");
       });
-  };
-
+    };
+    
   return (
     <Container className="login-container">
       <Form onSubmit={handleSubmit}>
@@ -50,7 +70,11 @@ export const LoginView = ({ onLoggedIn }) => {
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 required
+                isInvalid={!!usernameError}
               />
+              <Form.Control.Feedback type="invalid">
+                {usernameError}
+              </Form.Control.Feedback>
             </Form.Group>
           </Col>
 
@@ -62,7 +86,11 @@ export const LoginView = ({ onLoggedIn }) => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
+                isInvalid={!!passwordError}
               />
+              <Form.Control.Feedback type="invalid">
+                {passwordError}
+              </Form.Control.Feedback>
             </Form.Group>
           </Col>
 

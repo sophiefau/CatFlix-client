@@ -49,6 +49,27 @@ $beige: #f0e4b8;
   min-width: 30px;
 }
 
+.profile-signup{
+  text-decoration: none;
+  color: $beige;
+}
+.active {
+  opacity: 0;
+ }
+
+ .alert-custom{
+  background: $noir;
+  opacity: 0.9;
+  color: $or;
+ }
+
+//  .close{
+//   color: $or;
+//   background: none;
+//   border: none;
+//   text-align: right;
+//  }
+
 h1{
   font-size: 20px;
 }

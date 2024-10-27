@@ -42594,9 +42594,14 @@ const LoginView = ({ onLoggedIn })=>{
     _s();
     const [username, setUsername] = (0, _react.useState)("");
     const [password, setPassword] = (0, _react.useState)("");
+    const [usernameError, setUsernameError] = (0, _react.useState)("");
+    const [passwordError, setPasswordError] = (0, _react.useState)("");
     const handleSubmit = (event)=>{
         // this prevents the default behavior of the form which is to reload the entire page
         event.preventDefault();
+        // Reset error messages before a new login attempt
+        setUsernameError("");
+        setPasswordError("");
         const data = {
             Username: username,
             Password: password
@@ -42607,16 +42612,26 @@ const LoginView = ({ onLoggedIn })=>{
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(data)
-        }).then((response)=>response.json()).then((data)=>{
+        }).then((response)=>{
+            if (!response.ok) // Handle server-side validation errors
+            return response.json().then((err)=>{
+                if (err.message) {
+                    // Display specific error messages based on what the backend sends
+                    if (err.message.includes("Username")) setUsernameError("Wrong username");
+                    if (err.message.includes("Password")) setPasswordError("Wrong password");
+                }
+                return Promise.reject(err); // Stop further processing
+            });
+            return response.json();
+        }).then((data)=>{
             console.log("Login response: ", data);
             if (data.user) {
                 localStorage.setItem("user", JSON.stringify(data.user));
                 localStorage.setItem("token", data.token);
                 onLoggedIn(data.user, data.token);
-            } else alert("No such user");
+            }
         }).catch((e)=>{
             console.error("Error during login: ", e);
-            alert("Something went wrong");
         });
     };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Container), {
@@ -42635,28 +42650,37 @@ const LoginView = ({ onLoggedIn })=>{
                                     children: "Username:"
                                 }, void 0, false, {
                                     fileName: "src/components/login-view/login-view.jsx",
-                                    lineNumber: 47,
+                                    lineNumber: 67,
                                     columnNumber: 15
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
                                     type: "text",
                                     value: username,
                                     onChange: (e)=>setUsername(e.target.value),
-                                    required: true
+                                    required: true,
+                                    isInvalid: !!usernameError
                                 }, void 0, false, {
                                     fileName: "src/components/login-view/login-view.jsx",
-                                    lineNumber: 48,
+                                    lineNumber: 68,
+                                    columnNumber: 15
+                                }, undefined),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control.Feedback, {
+                                    type: "invalid",
+                                    children: usernameError
+                                }, void 0, false, {
+                                    fileName: "src/components/login-view/login-view.jsx",
+                                    lineNumber: 75,
                                     columnNumber: 15
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/login-view/login-view.jsx",
-                            lineNumber: 46,
+                            lineNumber: 66,
                             columnNumber: 13
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 45,
+                        lineNumber: 65,
                         columnNumber: 11
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
@@ -42669,28 +42693,37 @@ const LoginView = ({ onLoggedIn })=>{
                                     children: "Password:"
                                 }, void 0, false, {
                                     fileName: "src/components/login-view/login-view.jsx",
-                                    lineNumber: 59,
+                                    lineNumber: 83,
                                     columnNumber: 15
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
                                     type: "password",
                                     value: password,
                                     onChange: (e)=>setPassword(e.target.value),
-                                    required: true
+                                    required: true,
+                                    isInvalid: !!passwordError
                                 }, void 0, false, {
                                     fileName: "src/components/login-view/login-view.jsx",
-                                    lineNumber: 60,
+                                    lineNumber: 84,
+                                    columnNumber: 15
+                                }, undefined),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control.Feedback, {
+                                    type: "invalid",
+                                    children: passwordError
+                                }, void 0, false, {
+                                    fileName: "src/components/login-view/login-view.jsx",
+                                    lineNumber: 91,
                                     columnNumber: 15
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/login-view/login-view.jsx",
-                            lineNumber: 58,
+                            lineNumber: 82,
                             columnNumber: 13
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 57,
+                        lineNumber: 81,
                         columnNumber: 11
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
@@ -42701,32 +42734,32 @@ const LoginView = ({ onLoggedIn })=>{
                             children: "Login to CatFlix"
                         }, void 0, false, {
                             fileName: "src/components/login-view/login-view.jsx",
-                            lineNumber: 70,
+                            lineNumber: 98,
                             columnNumber: 13
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 69,
+                        lineNumber: 97,
                         columnNumber: 11
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 44,
+                lineNumber: 64,
                 columnNumber: 9
             }, undefined)
         }, void 0, false, {
             fileName: "src/components/login-view/login-view.jsx",
-            lineNumber: 43,
+            lineNumber: 63,
             columnNumber: 7
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/login-view/login-view.jsx",
-        lineNumber: 42,
+        lineNumber: 62,
         columnNumber: 5
     }, undefined);
 };
-_s(LoginView, "Lrw7JeD9zj6OUWhT/IH4OIvPKEk=");
+_s(LoginView, "d9mgaSC8OOUJtyk+UewARK5RKhs=");
 _c = LoginView;
 var _c;
 $RefreshReg$(_c, "LoginView");
@@ -42813,7 +42846,7 @@ const SignupView = ()=>{
                 setTimeout(()=>{
                     setAlertMessage("");
                     navigate("/login");
-                }, 3000);
+                }, 5000);
             } else // Handle server-side validation errors
             response.json().then((err)=>{
                 if (err.errors) err.errors.forEach((error)=>{
@@ -42830,7 +42863,7 @@ const SignupView = ()=>{
             });
         }).catch((error)=>{
             console.error("Error during signup:", error);
-            setAlertMessage("Signup failed due to a network error");
+            setAlertMessage("Signup failed due to a network error, please try later.");
         });
     };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Container), {
@@ -43033,13 +43066,14 @@ const SignupView = ()=>{
                         columnNumber: 11
                     }, undefined),
                     AlertMessag && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                        className: "alert alert-secondary alert-dismissible fade show",
+                        className: "alert alert-custom alert-dismissible fade show",
                         role: "alert",
                         children: [
                             AlertMessag,
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                                 type: "button",
                                 className: "close",
+                                "data-dismiss": "alert",
                                 onClick: ()=>setAlertMessage(""),
                                 "aria-label": "Close",
                                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -43148,18 +43182,20 @@ const NavigationBar = ({ user, onLoggedOut })=>{
                         children: [
                             !user && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
                                 children: [
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav).Link, {
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.NavLink), {
                                         as: (0, _reactRouterDom.Link),
                                         to: "/login",
+                                        className: "profile-signup",
                                         children: "Login"
                                     }, void 0, false, {
                                         fileName: "src/components/navigation-bar/navigation-bar.jsx",
                                         lineNumber: 20,
                                         columnNumber: 17
                                     }, undefined),
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav).Link, {
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.NavLink), {
                                         as: (0, _reactRouterDom.Link),
                                         to: "/signup",
+                                        className: "profile-signup",
                                         children: "Signup"
                                     }, void 0, false, {
                                         fileName: "src/components/navigation-bar/navigation-bar.jsx",

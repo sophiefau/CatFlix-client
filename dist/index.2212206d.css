@@ -13219,6 +13219,21 @@ textarea.form-control-lg {
   display: block;
 }
 
+.profile-signup {
+  color: #f0e4b8;
+  text-decoration: none;
+}
+
+.active {
+  opacity: 0;
+}
+
+.alert-custom {
+  opacity: .9;
+  color: #c79b0b;
+  background: #000;
+}
+
 h1, .h1 {
   font-size: 20px;
 }
