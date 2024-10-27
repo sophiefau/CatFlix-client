@@ -13290,4 +13290,9 @@ h2, .h2 {
   color: #9b7006;
   font-size: 27px;
 }
+
+.login-view {
+  max-width: 667px;
+  margin: auto;
+}
 /*# sourceMappingURL=index.2212206d.css.map */

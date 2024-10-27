@@ -10,7 +10,7 @@ export const UserInfo = ({ username, email, birthday }) => {
 
 return (
   <>
-    <h2>Your Profile</h2>
+    <h2 className="mb-4">Your Profile</h2>
     <p>Username: {username}</p>
     <p>Email: {email}</p>
     <p>Birthday: {new Date(birthday).toLocaleDateString()}</p>

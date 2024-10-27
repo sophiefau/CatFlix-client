@@ -32,6 +32,7 @@ export const ProfileView = ({ onLoggedOut }) => {
         return response.json();
       })
       .then((userData) => {
+        console.log("Fetched user data:", userData);
         setUser({
           Username: userData.Username,
           Email: userData.Email,
@@ -97,42 +98,9 @@ export const ProfileView = ({ onLoggedOut }) => {
     });
   };
 
-  // Function to handle removing a movie from favorites
-  const removeFromFavorite = (movieId) => {
-    const updatedFavorites = user.FavoriteMovies.filter((id) => id !== movieId);
-
-    fetch(
-      `https://catflix-99a985e6fffa.herokuapp.com/users/${username}/${movieId}`,
-      {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ favoriteMovies: updatedFavorites }),
-      }
-    )
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Failed to update favorites.");
-        }
-        return response.json();
-      })
-      .then(() => {
-        setUser((prevUser) => ({
-          ...prevUser,
-          FavoriteMovies: updatedFavorites,
-        }));
-        console.log("Removed from favorites:", movieId);
-      })
-      .catch((error) => {
-        console.error("Error removing from favorites:", error);
-      });
-  };
-
   return (
-    <Container>
-      <Row className="mb-4">
+    <Container className="d-flex justify-content-center align-items-center">
+      <Row className="login-view mb-4">
         <Col>
           <UserInfo
             username={username}
@@ -141,26 +109,25 @@ export const ProfileView = ({ onLoggedOut }) => {
           />
 
           {userUpdate && <UpdateUser user={user} onUpdate={handleUserUpdate} />}
-          <Button variant="secondary" onClick={handleToggleUpdate}>
+          <Button onClick={handleToggleUpdate}>
             {userUpdate ? "Cancel Update" : "Update Profile"}
           </Button>
 
           <Button
-            variant="danger"
             onClick={handleDeleteProfile}
             className="ms-2"
           >
             Delete Profile
           </Button>
-
+          </Col>
+<Row>
+          <Col>
           <Link to={`/`}>
-            <Button className="back-button">Back</Button>
+            <Button className="back-button btn-dark">Back</Button>
           </Link>
         </Col>
-        <FavoriteMovies
-          favoriteMovies={user.FavoriteMovies}
-          removeFromFavorite={removeFromFavorite}
-        />
+        </Row>
+        <FavoriteMovies favoriteMovies={user.FavoriteMovies}/>
       </Row>
     </Container>
   );

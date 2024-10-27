@@ -33,10 +33,10 @@ export const LoginView = ({ onLoggedIn }) => {
         return response.json().then((err) => {
           if (err.message) {
             // Display specific error messages based on what the backend sends
-            if (err.message.includes("Username")) {
+            if (err.message.includes("username")) {
               setUsernameError("Wrong username");
             }
-            if (err.message.includes("Password")) {
+            if (err.message.includes("password")) {
               setPasswordError("Wrong password");
             }
           }

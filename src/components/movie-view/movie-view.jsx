@@ -34,7 +34,7 @@ export const MovieView = ({ movies, user, token, setUser }) => {
     }
   }, [movieId, user]);
 
-  const addtoFavorite = () => {
+  const addToFavorite = () => {
     if (!token) {
       console.log("No token found. Please log in again.");
       return;
@@ -71,9 +71,9 @@ export const MovieView = ({ movies, user, token, setUser }) => {
       });
   };
 
-  const removefromFavorite = () => {
+  const removeFromFavorite = () => {
     fetch(
-      `https://moviesdb-6abb3284c2fb.herokuapp.com/users/${user.Username}/${movieId}`,
+      `https://catflix-99a985e6fffa.herokuapp.com/users/${user.Username}/${movieId}`,
       {
         method: "DELETE",
         headers: {
@@ -83,6 +83,7 @@ export const MovieView = ({ movies, user, token, setUser }) => {
       }
     )
       .then((response) => {
+        console.log("Authorization Token:", token);
         if (response.ok) {
           return response.json();
         }
@@ -103,7 +104,7 @@ export const MovieView = ({ movies, user, token, setUser }) => {
   return (
     <Container>
       <Row className="mb-4">
-        <Col className="mb-4" sm={12} md={5} lg={4}>
+        <Col className="mb-4 me-0" sm={12} md={5} lg={4}>
           <img className="w-100" src={movie.Img} alt={movie.Title} />
         </Col>
         <Col sm={12} md={7} lg={8}>
@@ -127,7 +128,7 @@ export const MovieView = ({ movies, user, token, setUser }) => {
             <strong>Synopsis:</strong> {movie.Synopsis}
           </div>
 
-          <Button className="btn-sm" onClick={isFavorite ? removefromFavorite : addtoFavorite}>
+          <Button className="btn-sm" onClick={isFavorite ? removeFromFavorite : addToFavorite}>
             {isFavorite ? "Remove from Favorites" : "Add to Favorites"}
           </Button>
           </Col>

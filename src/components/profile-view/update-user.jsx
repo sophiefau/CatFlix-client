@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from 'prop-types';
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router";
 
@@ -32,9 +33,7 @@ export const UpdateUser = ({ user, onUpdate }) => {
     let isValid = true;
 
     if (username && !usernameRegex.test(username)) {
-      setUsernameError(
-        "Username must be at least 5 characters long and contain only lowercase letters."
-      );
+      setUsernameError("Username must be at least 5 characters long and contains only lowercases letters.");
       isValid = false;
     }
 
@@ -98,11 +97,11 @@ export const UpdateUser = ({ user, onUpdate }) => {
         navigate(`/users/${result.Username}`);
         console.log("User updated successfully:", result);
         onUpdate(updatedUser);
-        window.location.reload(); // Reload the page after updating
+        // window.location.reload(); // Reload the page after updating
       })
       .catch((error) => {
         console.error("Error updating user:", error);
-        alert("An error occurred while updating the user.");
+        // $(".alert").alert("An error occurred while updating the user.");
       });
   };
 
@@ -110,7 +109,7 @@ export const UpdateUser = ({ user, onUpdate }) => {
     <Container>
       <Row className="justify-content-md-center">
         <Col>
-          <h3 className="text-center">Update Your Profile</h3>
+          <h1 className="text-center">Update Your Profile</h1>
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="formUsername">
               <Form.Label>Username</Form.Label>
@@ -160,4 +159,13 @@ export const UpdateUser = ({ user, onUpdate }) => {
       </Row>
     </Container>
   );
+};
+
+
+UpdateUser.propTypes = {
+  user: PropTypes.shape({
+    Username: PropTypes.string.isRequired,
+    Email: PropTypes.string.isRequired,
+  }).isRequired,
+  onUpdate: PropTypes.func.isRequired,
 };
