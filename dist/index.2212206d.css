@@ -13295,4 +13295,9 @@ h2, .h2 {
   max-width: 667px;
   margin: auto;
 }
+
+.loading-msg {
+  text-align: center;
+  margin: auto;
+}
 /*# sourceMappingURL=index.2212206d.css.map */

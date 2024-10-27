@@ -57,7 +57,7 @@ export const ProfileView = ({ onLoggedOut }) => {
   }
 
   if (!user.Username) {
-    return <div>Loading user profile...</div>;
+    return <div className="login-view">Loading user profile...</div>;
   }
 
   const handleUserUpdate = (updatedUserData) => {
