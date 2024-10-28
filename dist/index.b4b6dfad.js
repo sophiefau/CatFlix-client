@@ -44513,7 +44513,7 @@ const CatList = ({ token })=>{
     };
     (0, _react.useEffect)(()=>{
         if (!token) return;
-        console.log("Token being used:", token);
+        // console.log("Token being used:", token);
         setLoading(true);
         fetch("https://catflix-99a985e6fffa.herokuapp.com/cats", {
             headers: {
@@ -44525,12 +44525,12 @@ const CatList = ({ token })=>{
                     setError("Unauthorized access. Please log in again.");
                     return; // Exit early
                 }
-                throw new Error("Failed to fetch movies.");
+                throw new Error("Failed to fetch cats.");
             }
             return response.json();
         }).then((catsData)=>{
             console.log("Fetched cats:", catsData);
-            setCats(catsData);
+            setCats(catsData); // Assuming catsData is an array of strings
         }).catch((error)=>{
             console.error("Error fetching cats:", error);
             setError("Failed to get cats. Please try again later.");
@@ -44544,15 +44544,15 @@ const CatList = ({ token })=>{
         children: error
     }, void 0, false, {
         fileName: "src/components/cat-view/cat-list.jsx",
-        lineNumber: 49,
+        lineNumber: 51,
         columnNumber: 12
     }, undefined);
     if (loading) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "loading-msg",
-        children: "loading..."
+        children: "loading cats..."
     }, void 0, false, {
         fileName: "src/components/cat-view/cat-list.jsx",
-        lineNumber: 53,
+        lineNumber: 55,
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Container), {
@@ -44562,31 +44562,33 @@ const CatList = ({ token })=>{
                 children: "Cat Movie Stars"
             }, void 0, false, {
                 fileName: "src/components/cat-view/cat-list.jsx",
-                lineNumber: 58,
+                lineNumber: 60,
                 columnNumber: 5
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
-                children: cats.map((cat, index)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
+                children: cats.map((catName, index)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
                         className: "mb-4 d-flex justify-content-center",
-                        sm: 12,
+                        sm: 6,
                         md: 6,
                         lg: 4,
                         xl: 3,
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _catCard.CatCard), {
-                            cat: cat
-                        }, index, false, {
+                            cat: {
+                                Name: catName
+                            }
+                        }, void 0, false, {
                             fileName: "src/components/cat-view/cat-list.jsx",
-                            lineNumber: 62,
-                            columnNumber: 11
+                            lineNumber: 64,
+                            columnNumber: 13
                         }, undefined)
-                    }, void 0, false, {
+                    }, index, false, {
                         fileName: "src/components/cat-view/cat-list.jsx",
-                        lineNumber: 61,
+                        lineNumber: 63,
                         columnNumber: 11
                     }, undefined))
             }, void 0, false, {
                 fileName: "src/components/cat-view/cat-list.jsx",
-                lineNumber: 59,
+                lineNumber: 61,
                 columnNumber: 5
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
@@ -44598,23 +44600,23 @@ const CatList = ({ token })=>{
                         children: "Back"
                     }, void 0, false, {
                         fileName: "src/components/cat-view/cat-list.jsx",
-                        lineNumber: 68,
+                        lineNumber: 70,
                         columnNumber: 13
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/cat-view/cat-list.jsx",
-                    lineNumber: 67,
+                    lineNumber: 69,
                     columnNumber: 5
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/cat-view/cat-list.jsx",
-                lineNumber: 66,
+                lineNumber: 68,
                 columnNumber: 5
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/cat-view/cat-list.jsx",
-        lineNumber: 57,
+        lineNumber: 59,
         columnNumber: 5
     }, undefined);
 };
@@ -44635,68 +44637,76 @@ var prevRefreshSig = window.$RefreshSig$;
 $parcel$ReactRefreshHelpers$17f9.prelude(module);
 
 try {
+// import PropTypes from "prop-types";
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "CatCard", ()=>CatCard);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _propTypes = require("prop-types");
-var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
+var _reactRouterDom = require("react-router-dom");
 var _reactBootstrap = require("react-bootstrap");
 const CatCard = ({ cat })=>{
-    // const handleClick = () => {
-    //   window.scrollTo(0, 0); // Scrolls to the top when the movie card is clicked
-    // };
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card), {
-        className: "h-100 bg-dark",
-        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Body, {
-            className: "d-flex flex-column",
-            children: [
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Title, {
-                    children: cat.Name
-                }, void 0, false, {
+    const handleClick = ()=>{
+        window.scrollTo(0, 0); // Scrolls to the top when the movie card is clicked
+    };
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "cat-card",
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
+            to: `/cats/${cat.Name}`,
+            onClick: handleClick,
+            className: "text-decoration-none",
+            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card), {
+                className: "h-100 w-100 bg-dark",
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Body, {
+                    className: "d-flex flex-column",
+                    children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Title, {
+                            children: cat.Name
+                        }, void 0, false, {
+                            fileName: "src/components/cat-view/cat-card.jsx",
+                            lineNumber: 21,
+                            columnNumber: 9
+                        }, undefined),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                            className: "mt-auto",
+                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
+                                variant: "link",
+                                className: "m-0 p-0 text-decoration-none",
+                                children: "See details"
+                            }, void 0, false, {
+                                fileName: "src/components/cat-view/cat-card.jsx",
+                                lineNumber: 23,
+                                columnNumber: 13
+                            }, undefined)
+                        }, void 0, false, {
+                            fileName: "src/components/cat-view/cat-card.jsx",
+                            lineNumber: 22,
+                            columnNumber: 9
+                        }, undefined)
+                    ]
+                }, void 0, true, {
                     fileName: "src/components/cat-view/cat-card.jsx",
-                    lineNumber: 13,
-                    columnNumber: 9
-                }, undefined),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                    className: "mt-auto",
-                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
-                        variant: "link",
-                        className: "m-0 p-0 text-decoration-none",
-                        children: "See details"
-                    }, void 0, false, {
-                        fileName: "src/components/cat-view/cat-card.jsx",
-                        lineNumber: 15,
-                        columnNumber: 11
-                    }, undefined)
-                }, void 0, false, {
-                    fileName: "src/components/cat-view/cat-card.jsx",
-                    lineNumber: 14,
-                    columnNumber: 9
+                    lineNumber: 20,
+                    columnNumber: 7
                 }, undefined)
-            ]
-        }, void 0, true, {
+            }, void 0, false, {
+                fileName: "src/components/cat-view/cat-card.jsx",
+                lineNumber: 18,
+                columnNumber: 5
+            }, undefined)
+        }, void 0, false, {
             fileName: "src/components/cat-view/cat-card.jsx",
-            lineNumber: 12,
-            columnNumber: 7
+            lineNumber: 13,
+            columnNumber: 5
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/cat-view/cat-card.jsx",
-        lineNumber: 11,
+        lineNumber: 12,
         columnNumber: 5
     }, undefined);
 };
 _c = CatCard;
-CatCard.propTypes = {
-    cat: (0, _propTypesDefault.default).shape({
-        Name: (0, _propTypesDefault.default).string.isRequired,
-        ColorBreed: (0, _propTypesDefault.default).string,
-        Bio: (0, _propTypesDefault.default).string,
-        Movies: (0, _propTypesDefault.default).arrayOf((0, _propTypesDefault.default).string)
-    }).isRequired
-};
 var _c;
 $RefreshReg$(_c, "CatCard");
 
@@ -44705,6 +44715,6 @@ $RefreshReg$(_c, "CatCard");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react-bootstrap":"3AD9A","@parcel/transformer-js/src/esmodule-helpers.js":"aO8oZ","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"ixNZl","react":"21dqq","prop-types":"7wKI2"}],"lJZlQ":[function() {},{}]},["2SdlY","jANDC","d8Dch"], "d8Dch", "parcelRequirec3c0")
+},{"react/jsx-dev-runtime":"iTorj","react-bootstrap":"3AD9A","@parcel/transformer-js/src/esmodule-helpers.js":"aO8oZ","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"ixNZl","react":"21dqq","react-router-dom":"9xmpe"}],"lJZlQ":[function() {},{}]},["2SdlY","jANDC","d8Dch"], "d8Dch", "parcelRequirec3c0")
 
 //# sourceMappingURL=index.b4b6dfad.js.map

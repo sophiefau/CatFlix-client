@@ -7,6 +7,7 @@ export const CatList = ({ token }) => {
   const [cats, setCats] = useState([]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+
   const handleClick = () => {
     window.scrollTo(0, 0); // Scrolls to the top when the movie card is clicked
   };
@@ -15,7 +16,7 @@ export const CatList = ({ token }) => {
     if (!token) {
       return;
     }
-    console.log("Token being used:", token);
+    // console.log("Token being used:", token);
 
     setLoading(true);
 
@@ -23,18 +24,18 @@ export const CatList = ({ token }) => {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((response) => {
-      if (!response.ok) {
-        if (response.status === 401) {
-          setError("Unauthorized access. Please log in again.");
-          return; // Exit early
+        if (!response.ok) {
+          if (response.status === 401) {
+            setError("Unauthorized access. Please log in again.");
+            return; // Exit early
+          }
+          throw new Error("Failed to fetch cats.");
         }
-        throw new Error("Failed to fetch movies.");
-      }
-      return response.json();
-    })
+        return response.json();
+      })
       .then((catsData) => {
         console.log("Fetched cats:", catsData);
-        setCats(catsData);
+        setCats(catsData); // Assuming catsData is an array of strings
       })
       .catch((error) => {
         console.error("Error fetching cats:", error);
@@ -45,21 +46,22 @@ export const CatList = ({ token }) => {
       });
   }, [token]);
 
+
   if (error) {
     return <div>{error}</div>;
   }
 
   if (loading) {
-    return <div className="loading-msg">{"loading..."}</div>;
+    return <div className="loading-msg">{"loading cats..."}</div>;
   }
 
   return (
     <Container>
     <h1 className="my-4">Cat Movie Stars</h1>
     <Row>
-        {cats.map((cat, index) => (
-          <Col className="mb-4 d-flex justify-content-center" sm={12} md={6} lg={4} xl={3}> 
-          <CatCard key={index} cat={cat} />
+    {cats.map((catName, index) => (
+          <Col className="mb-4 d-flex justify-content-center" sm={6} md={6} lg={4} xl={3} key={index}> 
+            <CatCard cat={{ Name: catName }} /> 
           </Col>
         ))}  
       </Row>
