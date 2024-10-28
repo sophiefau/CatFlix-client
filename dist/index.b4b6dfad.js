@@ -43759,8 +43759,8 @@ var _reactRouter = require("react-router");
 var _s = $RefreshSig$();
 const UpdateUser = ({ user, onUpdate })=>{
     _s();
-    const [username, setUsername] = (0, _react.useState)(user.Username);
-    const [email, setEmail] = (0, _react.useState)(user.Email);
+    const [username, setUsername] = (0, _react.useState)("");
+    const [email, setEmail] = (0, _react.useState)("");
     const [emailError, setEmailError] = (0, _react.useState)("");
     const [emailAlreadyUsed, setEmailAlreadyUsed] = (0, _react.useState)("");
     const [password, setPassword] = (0, _react.useState)("");
@@ -43992,7 +43992,7 @@ const UpdateUser = ({ user, onUpdate })=>{
         columnNumber: 5
     }, undefined);
 };
-_s(UpdateUser, "s6ke+ehmL3qamrbh5AvtTkgbT9s=", false, function() {
+_s(UpdateUser, "FQl398GqDcqJHQhczya2z2gJDKY=", false, function() {
     return [
         (0, _reactRouter.useNavigate)
     ];

@@ -4,8 +4,8 @@ import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router";
 
 export const UpdateUser = ({ user, onUpdate }) => {
-  const [username, setUsername] = useState(user.Username);
-  const [email, setEmail] = useState(user.Email);
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
   const [emailAlreadyUsed, setEmailAlreadyUsed] = useState("");
   const [password, setPassword] = useState("");

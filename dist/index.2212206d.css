@@ -13224,7 +13224,7 @@ textarea.form-control-lg {
 }
 
 .profile-signup {
-  color: #f0e4b8;
+  color: #faf5ea;
   text-decoration: none;
 }
 
@@ -13238,7 +13238,7 @@ textarea.form-control-lg {
   text-align: center;
   background: #212529;
   border-radius: 12px;
-  font-size: 17px;
+  font-size: 20px;
 }
 
 .btn-custom {
@@ -13247,7 +13247,7 @@ textarea.form-control-lg {
   color: #9c7b0f;
   background-color: #0000;
   border: none;
-  margin-left: 25px;
+  margin-left: 10px;
 }
 
 .btn-custom:hover {
