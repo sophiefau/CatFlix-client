@@ -77,7 +77,7 @@ export const SignupView = () => {
           setTimeout(() => {
               setAlertMessage(''); 
               navigate("/login");  
-          }, 1500); 
+          }, 1000); 
       } else {
         // Handle server-side validation errors
         response.json().then((err) => {

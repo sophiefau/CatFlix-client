@@ -71,7 +71,7 @@ export const ProfileView = ({ onLoggedOut, allMovies }) => {
     setUserUpdate(!userUpdate);
   };
 
-// Delete profile
+  // Delete profile
   const handleDeleteProfile = () => {
     if (
       !window.confirm(
@@ -90,8 +90,8 @@ export const ProfileView = ({ onLoggedOut, allMovies }) => {
     }).then((response) => {
       if (response.ok) {
         console.log("Account deleted successfully!");
-        onLoggedOut(); 
-        navigate("/signup"); 
+        onLoggedOut();
+        navigate("/signup");
       } else {
         alert("Failed to delete account!");
       }
@@ -113,21 +113,22 @@ export const ProfileView = ({ onLoggedOut, allMovies }) => {
             {userUpdate ? "Cancel Update" : "Update Profile"}
           </Button>
 
-          <Button
-            onClick={handleDeleteProfile}
-            className="ms-2"
-          >
+          <Button onClick={handleDeleteProfile} className="ms-2">
             Delete Profile
           </Button>
-          </Col>
-<Row>
-          <Col>
-          <Link to={`/`}>
-            <Button className="back-button btn-dark">Back</Button>
-          </Link>
         </Col>
+        <Row>
+          <Col>
+            <Link to={`/`}>
+              <Button className="back-button btn-dark">Back</Button>
+            </Link>
+          </Col>
         </Row>
-        <FavoriteMovies favoriteMovies={allMovies.filter(movie => user.FavoriteMovies.includes(movie.id))}/>
+        <FavoriteMovies
+          favoriteMovies={allMovies.filter((movie) =>
+            user.FavoriteMovies.includes(movie.id)
+          )}
+        />
       </Row>
     </Container>
   );

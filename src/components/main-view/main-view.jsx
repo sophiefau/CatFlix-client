@@ -36,7 +36,7 @@ export const MainView = () => {
     if (!token) {
       return;
     }
-    console.log("Token being used:", token);
+    // console.log("Token being used:", token);
 
     setLoading(true);
 

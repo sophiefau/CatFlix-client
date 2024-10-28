@@ -9,7 +9,7 @@ export const FavoriteMovies = ({ favoriteMovies }) => {
       <Row>
         {favoriteMovies && favoriteMovies.length > 0 ? (
           favoriteMovies.map((movie) => (
-            <Col xs={12} sm={6} md={4} key={movie._id}>
+            <Col xs={12} sm={6} md={4} key={movie.id}>
               <MovieCard movie={movie} />
             </Col>
           ))

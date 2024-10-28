@@ -58,6 +58,7 @@ export const UpdateUser = ({ user, onUpdate }) => {
     if (password) updatedUser.Password = password;
 
     // Update user information in the database
+    console.log("Updated user object before fetch:", updatedUser);
     fetch(`https://catflix-99a985e6fffa.herokuapp.com/users/${user.Username}`, {
       method: "PATCH",
       body: JSON.stringify(updatedUser),
@@ -67,41 +68,44 @@ export const UpdateUser = ({ user, onUpdate }) => {
       },
     })
       .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          // Handle server-side validation errors
-          return response.json().then((err) => {
-            if (err.errors) {
-              err.errors.forEach((error) => {
-                if (error.param === "Username") {
-                  if (error.msg === "Username already exists") {
-                    setUsernameAlreadyUsed("This username is already taken.");
-                  } else {
-                    setUsernameError(error.msg);
-                  }
-                }
-                if (error.param === "Email") {
-                  if (error.msg === "Email already exists") {
-                    setEmailAlreadyUsed("This email is already used.");
-                  } else {
-                    setEmailError(error.msg);
-                  }
-                }
-              });
-            }
-          });
+        console.log("Username:", username);
+console.log("Email:", email);
+console.log("Password:", password);
+console.log("Fetch request data:", JSON.stringify(updatedUser));
+if (password) {
+  console.log("Password before adding to updatedUser:", password);
+  updatedUser.Password = password;
+}
+  if (response.ok) {
+    return response.json();
+  } else {
+    // Handle server-side validation errors
+    return response.json().then((err) => {
+      if (err.message) {
+        if (err.message === "Username is already in use.") {
+          setUsernameAlreadyUsed("This username is already taken.");
         }
-      })
+        if (err.message === "Email is already in use.") {
+          setEmailAlreadyUsed("This email is already used.");
+        }
+      }
+      throw new Error("Validation failed");
+    });
+  }
+})
       .then((result) => {
         navigate(`/users/${result.Username}`);
-        console.log("User updated successfully:", result);
+        console.log("Updated user data:", updatedUser);
         onUpdate(updatedUser);
         window.location.reload(); // Reload the page after updating
       })
       .catch((error) => {
-        console.error("Error updating user:", error);
-        $(".alert").alert("An error occurred while updating the user.");
+        // console.error("Error updating user:", error);
+        if (error.response) {
+          console.error("Server response:", error.response);
+        } else {
+          console.error("Error updating user, no server response:", error);
+        }
       });
   };
 
@@ -115,6 +119,7 @@ export const UpdateUser = ({ user, onUpdate }) => {
               <Form.Label>Username</Form.Label>
               <Form.Control
                 type="text"
+                value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 placeholder="At least 5 characters long and only lowercase letters"
                 isInvalid={!!usernameError || !!usernameAlreadyUsed}
@@ -128,6 +133,7 @@ export const UpdateUser = ({ user, onUpdate }) => {
               <Form.Label>Email</Form.Label>
               <Form.Control
                 type="email"
+                value={email} 
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter new valid email"
                 isInvalid={!!emailError || !!emailAlreadyUsed}

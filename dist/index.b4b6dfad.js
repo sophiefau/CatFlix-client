@@ -27281,7 +27281,7 @@ const MainView = ()=>{
     };
     (0, _react.useEffect)(()=>{
         if (!token) return;
-        console.log("Token being used:", token);
+        // console.log("Token being used:", token);
         setLoading(true);
         fetch("https://catflix-99a985e6fffa.herokuapp.com/movies", {
             headers: {
@@ -42870,7 +42870,7 @@ const SignupView = ()=>{
                 setTimeout(()=>{
                     setAlertMessage("");
                     navigate("/login");
-                }, 1500);
+                }, 1000);
             } else // Handle server-side validation errors
             response.json().then((err)=>{
                 if (err.errors) err.errors.forEach((error)=>{
@@ -43311,29 +43311,29 @@ const ProfileView = ({ onLoggedOut, allMovies })=>{
                                 children: "Back"
                             }, void 0, false, {
                                 fileName: "src/components/profile-view/profile-view.jsx",
-                                lineNumber: 126,
-                                columnNumber: 13
+                                lineNumber: 123,
+                                columnNumber: 15
                             }, undefined)
                         }, void 0, false, {
                             fileName: "src/components/profile-view/profile-view.jsx",
-                            lineNumber: 125,
-                            columnNumber: 11
+                            lineNumber: 122,
+                            columnNumber: 13
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/profile-view/profile-view.jsx",
-                        lineNumber: 124,
+                        lineNumber: 121,
                         columnNumber: 11
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/profile-view/profile-view.jsx",
-                    lineNumber: 123,
-                    columnNumber: 1
+                    lineNumber: 120,
+                    columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _favoriteMovies.FavoriteMovies), {
                     favoriteMovies: allMovies.filter((movie)=>user.FavoriteMovies.includes(movie.id))
                 }, void 0, false, {
                     fileName: "src/components/profile-view/profile-view.jsx",
-                    lineNumber: 130,
+                    lineNumber: 127,
                     columnNumber: 9
                 }, undefined)
             ]
@@ -43424,6 +43424,7 @@ const UpdateUser = ({ user, onUpdate })=>{
         if (email) updatedUser.Email = email;
         if (password) updatedUser.Password = password;
         // Update user information in the database
+        console.log("Updated user object before fetch:", updatedUser);
         fetch(`https://catflix-99a985e6fffa.herokuapp.com/users/${user.Username}`, {
             method: "PATCH",
             body: JSON.stringify(updatedUser),
@@ -43432,28 +43433,32 @@ const UpdateUser = ({ user, onUpdate })=>{
                 Authorization: `Bearer ${token}`
             }
         }).then((response)=>{
+            console.log("Username:", username);
+            console.log("Email:", email);
+            console.log("Password:", password);
+            console.log("Fetch request data:", JSON.stringify(updatedUser));
+            if (password) {
+                console.log("Password before adding to updatedUser:", password);
+                updatedUser.Password = password;
+            }
             if (response.ok) return response.json();
             else // Handle server-side validation errors
             return response.json().then((err)=>{
-                if (err.errors) err.errors.forEach((error)=>{
-                    if (error.param === "Username") {
-                        if (error.msg === "Username already exists") setUsernameAlreadyUsed("This username is already taken.");
-                        else setUsernameError(error.msg);
-                    }
-                    if (error.param === "Email") {
-                        if (error.msg === "Email already exists") setEmailAlreadyUsed("This email is already used.");
-                        else setEmailError(error.msg);
-                    }
-                });
+                if (err.message) {
+                    if (err.message === "Username is already in use.") setUsernameAlreadyUsed("This username is already taken.");
+                    if (err.message === "Email is already in use.") setEmailAlreadyUsed("This email is already used.");
+                }
+                throw new Error("Validation failed");
             });
         }).then((result)=>{
             navigate(`/users/${result.Username}`);
-            console.log("User updated successfully:", result);
+            console.log("Updated user data:", updatedUser);
             onUpdate(updatedUser);
             window.location.reload(); // Reload the page after updating
         }).catch((error)=>{
-            console.error("Error updating user:", error);
-            $(".alert").alert("An error occurred while updating the user.");
+            // console.error("Error updating user:", error);
+            if (error.response) console.error("Server response:", error.response);
+            else console.error("Error updating user, no server response:", error);
         });
     };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Container), {
@@ -43466,7 +43471,7 @@ const UpdateUser = ({ user, onUpdate })=>{
                         children: "Update Your Profile"
                     }, void 0, false, {
                         fileName: "src/components/profile-view/update-user.jsx",
-                        lineNumber: 112,
+                        lineNumber: 116,
                         columnNumber: 11
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form), {
@@ -43479,17 +43484,18 @@ const UpdateUser = ({ user, onUpdate })=>{
                                         children: "Username"
                                     }, void 0, false, {
                                         fileName: "src/components/profile-view/update-user.jsx",
-                                        lineNumber: 115,
+                                        lineNumber: 119,
                                         columnNumber: 15
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
                                         type: "text",
+                                        value: username,
                                         onChange: (e)=>setUsername(e.target.value),
                                         placeholder: "At least 5 characters long and only lowercase letters",
                                         isInvalid: !!usernameError || !!usernameAlreadyUsed
                                     }, void 0, false, {
                                         fileName: "src/components/profile-view/update-user.jsx",
-                                        lineNumber: 116,
+                                        lineNumber: 120,
                                         columnNumber: 15
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control.Feedback, {
@@ -43497,13 +43503,13 @@ const UpdateUser = ({ user, onUpdate })=>{
                                         children: usernameError || usernameAlreadyUsed
                                     }, void 0, false, {
                                         fileName: "src/components/profile-view/update-user.jsx",
-                                        lineNumber: 122,
+                                        lineNumber: 127,
                                         columnNumber: 15
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/profile-view/update-user.jsx",
-                                lineNumber: 114,
+                                lineNumber: 118,
                                 columnNumber: 13
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
@@ -43513,17 +43519,18 @@ const UpdateUser = ({ user, onUpdate })=>{
                                         children: "Email"
                                     }, void 0, false, {
                                         fileName: "src/components/profile-view/update-user.jsx",
-                                        lineNumber: 128,
+                                        lineNumber: 133,
                                         columnNumber: 15
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
                                         type: "email",
+                                        value: email,
                                         onChange: (e)=>setEmail(e.target.value),
                                         placeholder: "Enter new valid email",
                                         isInvalid: !!emailError || !!emailAlreadyUsed
                                     }, void 0, false, {
                                         fileName: "src/components/profile-view/update-user.jsx",
-                                        lineNumber: 129,
+                                        lineNumber: 134,
                                         columnNumber: 15
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control.Feedback, {
@@ -43531,13 +43538,13 @@ const UpdateUser = ({ user, onUpdate })=>{
                                         children: emailError || emailAlreadyUsed
                                     }, void 0, false, {
                                         fileName: "src/components/profile-view/update-user.jsx",
-                                        lineNumber: 135,
+                                        lineNumber: 141,
                                         columnNumber: 15
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/profile-view/update-user.jsx",
-                                lineNumber: 127,
+                                lineNumber: 132,
                                 columnNumber: 13
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
@@ -43547,7 +43554,7 @@ const UpdateUser = ({ user, onUpdate })=>{
                                         children: "Password"
                                     }, void 0, false, {
                                         fileName: "src/components/profile-view/update-user.jsx",
-                                        lineNumber: 141,
+                                        lineNumber: 147,
                                         columnNumber: 15
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
@@ -43558,7 +43565,7 @@ const UpdateUser = ({ user, onUpdate })=>{
                                         isInvalid: !!passwordError
                                     }, void 0, false, {
                                         fileName: "src/components/profile-view/update-user.jsx",
-                                        lineNumber: 142,
+                                        lineNumber: 148,
                                         columnNumber: 15
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control.Feedback, {
@@ -43566,13 +43573,13 @@ const UpdateUser = ({ user, onUpdate })=>{
                                         children: passwordError
                                     }, void 0, false, {
                                         fileName: "src/components/profile-view/update-user.jsx",
-                                        lineNumber: 149,
+                                        lineNumber: 155,
                                         columnNumber: 15
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/profile-view/update-user.jsx",
-                                lineNumber: 140,
+                                lineNumber: 146,
                                 columnNumber: 13
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
@@ -43582,29 +43589,29 @@ const UpdateUser = ({ user, onUpdate })=>{
                                 children: "Update"
                             }, void 0, false, {
                                 fileName: "src/components/profile-view/update-user.jsx",
-                                lineNumber: 154,
+                                lineNumber: 160,
                                 columnNumber: 13
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/profile-view/update-user.jsx",
-                        lineNumber: 113,
+                        lineNumber: 117,
                         columnNumber: 11
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/profile-view/update-user.jsx",
-                lineNumber: 111,
+                lineNumber: 115,
                 columnNumber: 9
             }, undefined)
         }, void 0, false, {
             fileName: "src/components/profile-view/update-user.jsx",
-            lineNumber: 110,
+            lineNumber: 114,
             columnNumber: 7
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/profile-view/update-user.jsx",
-        lineNumber: 109,
+        lineNumber: 113,
         columnNumber: 5
     }, undefined);
 };
@@ -43629,7 +43636,7 @@ $RefreshReg$(_c, "UpdateUser");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap":"3AD9A","react-router":"dbWyW","@parcel/transformer-js/src/esmodule-helpers.js":"aO8oZ","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"ixNZl","prop-types":"7wKI2"}],"dTTQH":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","prop-types":"7wKI2","react-bootstrap":"3AD9A","react-router":"dbWyW","@parcel/transformer-js/src/esmodule-helpers.js":"aO8oZ","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"ixNZl"}],"dTTQH":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$8767 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -43667,7 +43674,7 @@ const FavoriteMovies = ({ favoriteMovies })=>{
                             lineNumber: 13,
                             columnNumber: 15
                         }, undefined)
-                    }, movie._id, false, {
+                    }, movie.id, false, {
                         fileName: "src/components/profile-view/favorite-movies.jsx",
                         lineNumber: 12,
                         columnNumber: 13
@@ -43702,7 +43709,7 @@ $RefreshReg$(_c, "FavoriteMovies");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","../movie-card/movie-card":"bwuIu","react-bootstrap":"3AD9A","@parcel/transformer-js/src/esmodule-helpers.js":"aO8oZ","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"ixNZl","prop-types":"7wKI2"}],"66eot":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","prop-types":"7wKI2","../movie-card/movie-card":"bwuIu","react-bootstrap":"3AD9A","@parcel/transformer-js/src/esmodule-helpers.js":"aO8oZ","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"ixNZl"}],"66eot":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$1330 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
