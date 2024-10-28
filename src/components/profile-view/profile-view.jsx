@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { UpdateUser } from "./update-user";
 import { FavoriteMovies } from "./favorite-movies";
 import { UserInfo } from "./user-info";
+import { DeleteProfile } from "./delete-user";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { Container, Row, Col, Button, Alert } from "react-bootstrap";
 
@@ -71,32 +72,32 @@ export const ProfileView = ({ onLoggedOut, allMovies }) => {
     setUserUpdate(!userUpdate);
   };
 
-  // Delete profile
-  const handleDeleteProfile = () => {
-    if (
-      !window.confirm(
-        "Are you sure you want to delete your profile? This action is irreversible."
-      )
-    ) {
-      return; // Exit if the user cancels
-    }
+  // // Delete profile
+  // const handleDeleteProfile = () => {
+  //   if (
+  //     !window.confirm(
+  //       "Are you sure you want to delete your profile? This action is irreversible."
+  //     )
+  //   ) {
+  //     return; // Exit if the user cancels
+  //   }
 
-    fetch(`https://catflix-99a985e6fffa.herokuapp.com/users/${username}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    }).then((response) => {
-      if (response.ok) {
-        console.log("Account deleted successfully!");
-        onLoggedOut();
-        navigate("/signup");
-      } else {
-        alert("Failed to delete account!");
-      }
-    });
-  };
+  //   fetch(`https://catflix-99a985e6fffa.herokuapp.com/users/${username}`, {
+  //     method: "DELETE",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       Authorization: `Bearer ${token}`,
+  //     },
+  //   }).then((response) => {
+  //     if (response.ok) {
+  //       console.log("Account deleted successfully!");
+  //       onLoggedOut();
+  //       navigate("/signup");
+  //     } else {
+  //       alert("Failed to delete account!");
+  //     }
+  //   });
+  // };
 
   return (
     <Container className="d-flex justify-content-center align-items-center">
@@ -113,9 +114,12 @@ export const ProfileView = ({ onLoggedOut, allMovies }) => {
             {userUpdate ? "Cancel Update" : "Update Profile"}
           </Button>
 
-          <Button onClick={handleDeleteProfile} className="ms-2">
-            Delete Profile
-          </Button>
+          <DeleteProfile
+            username={user.Username}
+            token={token}
+            onLoggedOut={onLoggedOut}
+            navigate={navigate}
+          />
         </Col>
         <Row>
           <Col>
