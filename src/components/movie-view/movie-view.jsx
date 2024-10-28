@@ -83,7 +83,6 @@ export const MovieView = ({ movies, user, token, setUser }) => {
       }
     )
       .then((response) => {
-        console.log("Authorization Token:", token);
         if (response.ok) {
           return response.json();
         }
