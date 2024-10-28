@@ -58,7 +58,7 @@ export const ProfileView = ({ onLoggedOut, allMovies }) => {
   }
 
   if (!user.Username) {
-    return <div className="loading-msg">Loading user profile...</div>;
+    return <div className="loading-msg">loading user profile...</div>;
   }
 
   const handleUserUpdate = (updatedUserData) => {
@@ -71,33 +71,6 @@ export const ProfileView = ({ onLoggedOut, allMovies }) => {
   const handleToggleUpdate = () => {
     setUserUpdate(!userUpdate);
   };
-
-  // // Delete profile
-  // const handleDeleteProfile = () => {
-  //   if (
-  //     !window.confirm(
-  //       "Are you sure you want to delete your profile? This action is irreversible."
-  //     )
-  //   ) {
-  //     return; // Exit if the user cancels
-  //   }
-
-  //   fetch(`https://catflix-99a985e6fffa.herokuapp.com/users/${username}`, {
-  //     method: "DELETE",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Authorization: `Bearer ${token}`,
-  //     },
-  //   }).then((response) => {
-  //     if (response.ok) {
-  //       console.log("Account deleted successfully!");
-  //       onLoggedOut();
-  //       navigate("/signup");
-  //     } else {
-  //       alert("Failed to delete account!");
-  //     }
-  //   });
-  // };
 
   return (
     <Container className="d-flex justify-content-center align-items-center">

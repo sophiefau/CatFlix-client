@@ -4,6 +4,7 @@ import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
 import { ProfileView } from "../profile-view/profile-view";
+import { CatList } from "../cat-view/cat-list";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
 import { Row, Col, Spinner } from "react-bootstrap";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
@@ -123,6 +124,26 @@ export const MainView = () => {
               }
             />
             <Route
+              path="/"
+              element={
+                <>
+                  {!user ? (
+                    <Navigate to="/login" replace />
+                  ) : movies.length === 0 ? (
+                    <Col>The list is empty!</Col>
+                  ) : (
+                    <>
+                      {movies.map((movie) => (
+                        <Col className="mb-4 d-flex justify-content-center" key={movie.id} sm={12} md={6} lg={4} xl={3}> 
+                          <MovieCard movie={movie} />
+                        </Col>
+                      ))}
+                    </>
+                  )}
+                </>
+              }
+            />
+             <Route
               path="/movies/:movieId"
               element={
                 <>
@@ -144,21 +165,18 @@ export const MainView = () => {
               }
             />
             <Route
-              path="/"
+              path="/cats"
               element={
                 <>
                   {!user ? (
                     <Navigate to="/login" replace />
-                  ) : movies.length === 0 ? (
-                    <Col>The list is empty!</Col>
                   ) : (
-                    <>
-                      {movies.map((movie) => (
-                        <Col className="mb-4 d-flex justify-content-center" key={movie.id} sm={12} md={6} lg={4} xl={3}> 
-                          <MovieCard movie={movie} />
-                        </Col>
-                      ))}
-                    </>
+                    <Col md={8}>
+                      <CatList
+                        movies={movies}
+                        token={token}
+                      />
+                    </Col>
                   )}
                 </>
               }
