@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { CatCard } from './cat-card';
 import { Link } from "react-router-dom";
 import { Container, Row, Col, Button } from 'react-bootstrap';
 
@@ -56,19 +57,12 @@ export const CatList = ({ token }) => {
     <Container>
     <h1 className="my-4">Cat Movie Stars</h1>
     <Row>
-      {cats.map((cat, index) => ( // Map over the cats array to render each cat
-        <Col key={index} md={4} className="mb-4">
-          <div className="card">
-            <div className="card-body">
-              <h5 className="card-title">{cat.Name}</h5>
-              <p className="card-text">Color/Breed: {cat.ColorBreed}</p>
-              <p className="card-text">Bio: {cat.Bio}</p>
-              <p className="card-text">Movies: {cat.Movies.join(', ')}</p>
-            </div>
-          </div>
-        </Col>
-      ))}
-    </Row>
+        {cats.map((cat, index) => (
+          <Col className="mb-4 d-flex justify-content-center" sm={12} md={6} lg={4} xl={3}> 
+          <CatCard key={index} cat={cat} />
+          </Col>
+        ))}  
+      </Row>
     <Row>
     <Link to={`/`}>
             <Button className="back-button btn-dark" onClick={handleClick}>
@@ -78,4 +72,4 @@ export const CatList = ({ token }) => {
     </Row>
   </Container>
   );
-};
+};        

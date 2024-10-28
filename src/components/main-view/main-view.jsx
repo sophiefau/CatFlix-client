@@ -6,7 +6,7 @@ import { SignupView } from "../signup-view/signup-view";
 import { ProfileView } from "../profile-view/profile-view";
 import { CatList } from "../cat-view/cat-list";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
-import { Row, Col, Spinner } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 export const MainView = () => {
@@ -83,17 +83,14 @@ export const MainView = () => {
     return <div>{error}</div>;
   }
 
+  if (loading) {
+    return <div className="loading-msg">{"loading movies..."}</div>;
+  }
+
   return (
     <BrowserRouter>
       <NavigationBar user={user} onLoggedOut={onLoggedOut} />
       <Row className="justify-content-md-center">
-        {loading ? (
-          <div className="text-center">
-            <Spinner animation="border" role="status">
-              <span className="visually-hidden">Loading...</span>
-            </Spinner>
-          </div>
-        ) : (
           <Routes>
             <Route
               path="/signup"
@@ -201,7 +198,6 @@ export const MainView = () => {
               }
             />
           </Routes>
-        )}
       </Row>
     </BrowserRouter>
   );
