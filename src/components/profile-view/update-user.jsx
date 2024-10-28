@@ -97,11 +97,11 @@ export const UpdateUser = ({ user, onUpdate }) => {
         navigate(`/users/${result.Username}`);
         console.log("User updated successfully:", result);
         onUpdate(updatedUser);
-        // window.location.reload(); // Reload the page after updating
+        window.location.reload(); // Reload the page after updating
       })
       .catch((error) => {
         console.error("Error updating user:", error);
-        // $(".alert").alert("An error occurred while updating the user.");
+        $(".alert").alert("An error occurred while updating the user.");
       });
   };
 
