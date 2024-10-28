@@ -2,18 +2,14 @@ import PropTypes from "prop-types";
 import { MovieCard } from "../movie-card/movie-card";
 import { Row, Col } from "react-bootstrap";
 
-// Tonny Ntambaazi
-// 17:43
-// allMovies.filter(movie => user.FavoriteMovies.includes(movie.id))
-
 export const FavoriteMovies = ({ favoriteMovies }) => {
   return (
     <div>
-      <h2>Your Favorite Cat's Movies</h2>
+      <h2 className="mb-3">Your Favorite Cat's Movies</h2>
       <Row>
         {favoriteMovies && favoriteMovies.length > 0 ? (
           favoriteMovies.map((movie) => (
-            <Col xs={12} sm={6} md={4} lg={3} key={movie._id}>
+            <Col xs={12} sm={6} md={4} key={movie._id}>
               <MovieCard movie={movie} />
             </Col>
           ))

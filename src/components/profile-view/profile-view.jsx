@@ -5,7 +5,7 @@ import { UserInfo } from "./user-info";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { Container, Row, Col, Button, Alert } from "react-bootstrap";
 
-export const ProfileView = ({ onLoggedOut }) => {
+export const ProfileView = ({ onLoggedOut, allMovies }) => {
   const { username } = useParams();
   const [user, setUser] = useState({
     Username: "",
@@ -57,7 +57,7 @@ export const ProfileView = ({ onLoggedOut }) => {
   }
 
   if (!user.Username) {
-    return <div className="login-view">Loading user profile...</div>;
+    return <div className="loading-msg">Loading user profile...</div>;
   }
 
   const handleUserUpdate = (updatedUserData) => {
@@ -127,7 +127,7 @@ export const ProfileView = ({ onLoggedOut }) => {
           </Link>
         </Col>
         </Row>
-        <FavoriteMovies favoriteMovies={user.FavoriteMovies}/>
+        <FavoriteMovies favoriteMovies={allMovies.filter(movie => user.FavoriteMovies.includes(movie.id))}/>
       </Row>
     </Container>
   );

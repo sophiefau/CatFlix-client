@@ -43170,7 +43170,7 @@ var _userInfo = require("./user-info");
 var _reactRouterDom = require("react-router-dom");
 var _reactBootstrap = require("react-bootstrap");
 var _s = $RefreshSig$();
-const ProfileView = ({ onLoggedOut })=>{
+const ProfileView = ({ onLoggedOut, allMovies })=>{
     _s();
     const { username } = (0, _reactRouterDom.useParams)();
     const [user, setUser] = (0, _react.useState)({
@@ -43223,7 +43223,7 @@ const ProfileView = ({ onLoggedOut })=>{
         columnNumber: 12
     }, undefined);
     if (!user.Username) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "login-view",
+        className: "loading-msg",
         children: "Loading user profile..."
     }, void 0, false, {
         fileName: "src/components/profile-view/profile-view.jsx",
@@ -43331,7 +43331,7 @@ const ProfileView = ({ onLoggedOut })=>{
                     columnNumber: 1
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _favoriteMovies.FavoriteMovies), {
-                    favoriteMovies: user.FavoriteMovies
+                    favoriteMovies: allMovies.filter((movie)=>user.FavoriteMovies.includes(movie.id))
                 }, void 0, false, {
                     fileName: "src/components/profile-view/profile-view.jsx",
                     lineNumber: 130,
@@ -43649,10 +43649,11 @@ const FavoriteMovies = ({ favoriteMovies })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
+                className: "mb-3",
                 children: "Your Favorite Cat's Movies"
             }, void 0, false, {
                 fileName: "src/components/profile-view/favorite-movies.jsx",
-                lineNumber: 12,
+                lineNumber: 8,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
@@ -43660,34 +43661,33 @@ const FavoriteMovies = ({ favoriteMovies })=>{
                         xs: 12,
                         sm: 6,
                         md: 4,
-                        lg: 3,
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
                             movie: movie
                         }, void 0, false, {
                             fileName: "src/components/profile-view/favorite-movies.jsx",
-                            lineNumber: 17,
+                            lineNumber: 13,
                             columnNumber: 15
                         }, undefined)
                     }, movie._id, false, {
                         fileName: "src/components/profile-view/favorite-movies.jsx",
-                        lineNumber: 16,
+                        lineNumber: 12,
                         columnNumber: 13
                     }, undefined)) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                     children: "No favorite movies"
                 }, void 0, false, {
                     fileName: "src/components/profile-view/favorite-movies.jsx",
-                    lineNumber: 21,
+                    lineNumber: 17,
                     columnNumber: 11
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/profile-view/favorite-movies.jsx",
-                lineNumber: 13,
+                lineNumber: 9,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/profile-view/favorite-movies.jsx",
-        lineNumber: 11,
+        lineNumber: 7,
         columnNumber: 5
     }, undefined);
 };
