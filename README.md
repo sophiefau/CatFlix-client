@@ -54,7 +54,7 @@ You can access the documentation here: [https://catflix-99a985e6fffa.herokuapp.c
 
 ## Contributing
 
-If you’d like to contribute, please fork the repository and use a feature branch. =^._.^=
+If you’d like to contribute, please fork the repository and use a feature branch! =^._.^=
 
 ## License
 
