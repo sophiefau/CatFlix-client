@@ -8,7 +8,7 @@ import PropTypes from "prop-types";
 import { Button } from "react-bootstrap";
 
 export const DeleteProfile = ({ username, token, onLoggedOut, navigate }) => {
-  const [showConfirm, setShowConfirm] = useState(false); 
+  const [showConfirm, setShowConfirm] = useState(false);
 
   // Function to handle profile deletion
   const handleDeleteProfile = () => {
@@ -44,7 +44,6 @@ export const DeleteProfile = ({ username, token, onLoggedOut, navigate }) => {
     </>
   );
 };
-
 
 DeleteProfile.propTypes = {
   username: PropTypes.string.isRequired,

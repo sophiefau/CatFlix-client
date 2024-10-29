@@ -4,7 +4,7 @@ import { Container, Row, Col, Form, Button } from "react-bootstrap";
 export const LoginView = ({ onLoggedIn }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [usernameError, setUsernameError] = useState(""); 
+  const [usernameError, setUsernameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
 
   const handleSubmit = (event) => {
@@ -27,24 +27,24 @@ export const LoginView = ({ onLoggedIn }) => {
       },
       body: JSON.stringify(data),
     })
-    .then((response) => {
-      if (!response.ok) {
-        // Handle server-side validation errors
-        return response.json().then((err) => {
-          if (err.message) {
-            // Display specific error messages based on what the backend sends
-            if (err.message.includes("username")) {
-              setUsernameError("Wrong username");
+      .then((response) => {
+        if (!response.ok) {
+          // Handle server-side validation errors
+          return response.json().then((err) => {
+            if (err.message) {
+              // Display specific error messages based on what the backend sends
+              if (err.message.includes("username")) {
+                setUsernameError("Wrong username");
+              }
+              if (err.message.includes("password")) {
+                setPasswordError("Wrong password");
+              }
             }
-            if (err.message.includes("password")) {
-              setPasswordError("Wrong password");
-            }
-          }
-          return Promise.reject(err); // Stop further processing
-        });
-      }
-      return response.json();
-    })
+            return Promise.reject(err); // Stop further processing
+          });
+        }
+        return response.json();
+      })
       .then((data) => {
         console.log("Login response: ", data);
         if (data.user) {
@@ -56,8 +56,8 @@ export const LoginView = ({ onLoggedIn }) => {
       .catch((e) => {
         console.error("Error during login: ", e);
       });
-    };
-    
+  };
+
   return (
     <Container className="login-container">
       <Form onSubmit={handleSubmit}>

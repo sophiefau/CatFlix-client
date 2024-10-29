@@ -9,9 +9,7 @@ export const ConfirmDelete = ({ show, onHide, onConfirm, message }) => {
         <p>{message}</p>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={onHide}>
-          Cancel
-        </Button>
+        <Button onClick={onHide}>Cancel</Button>
         <Button onClick={onConfirm} className="ms-3">
           Confirm
         </Button>

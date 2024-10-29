@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { CatCard } from './cat-card';
+import React, { useEffect, useState } from "react";
+import { CatCard } from "./cat-card";
 import { Link } from "react-router-dom";
-import { Container, Row, Col, Button } from 'react-bootstrap';
+import { Container, Row, Col, Button } from "react-bootstrap";
 
-export const CatList = ({ token }) => {
+export const CatList = ({ token, movies }) => {
   const [cats, setCats] = useState([]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const movie = movies.find((m) => m.id === movieId);
 
   const handleClick = () => {
     window.scrollTo(0, 0); // Scrolls to the top when the movie card is clicked
@@ -35,7 +36,7 @@ export const CatList = ({ token }) => {
       })
       .then((catsData) => {
         console.log("Fetched cats:", catsData);
-        setCats(catsData); // Assuming catsData is an array of strings
+        setCats(catsData); 
       })
       .catch((error) => {
         console.error("Error fetching cats:", error);
@@ -45,7 +46,6 @@ export const CatList = ({ token }) => {
         setLoading(false);
       });
   }, [token]);
-
 
   if (error) {
     return <div>{error}</div>;
@@ -57,21 +57,28 @@ export const CatList = ({ token }) => {
 
   return (
     <Container>
-    <h1 className="my-4">Cat Movie Stars</h1>
-    <Row>
-    {cats.map((catName, index) => (
-          <Col className="mb-4 d-flex justify-content-center" sm={6} md={6} lg={4} xl={3} key={index}> 
-            <CatCard cat={{ Name: catName }} /> 
+      <h1 className="my-4">Cat Movie Stars</h1>
+      <Row>
+        {cats.map((catName, index) => (
+          <Col
+            className="mb-4 d-flex justify-content-center"
+            sm={6}
+            md={6}
+            lg={4}
+            xl={3}
+            key={index}
+          >
+            <CatCard cat={{ Name: catName }} />
           </Col>
-        ))}  
+        ))}
       </Row>
-    <Row>
-    <Link to={`/`}>
-            <Button className="back-button btn-dark" onClick={handleClick}>
-              Back
-            </Button>
-          </Link>
-    </Row>
-  </Container>
+      <Row>
+        <Link to={`/`}>
+          <Button className="back-button btn-dark" onClick={handleClick}>
+            Back
+          </Button>
+        </Link>
+      </Row>
+    </Container>
   );
-};        
+};

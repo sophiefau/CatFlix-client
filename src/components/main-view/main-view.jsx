@@ -12,7 +12,6 @@ import { CatView } from "../cat-view/cat-view";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
 import { Row, Col } from "react-bootstrap";
 
-
 export const MainView = () => {
   const movies = useSelector((state) => state.movies.list);
   const dispatch = useDispatch();
@@ -21,10 +20,9 @@ export const MainView = () => {
   const storedToken = localStorage.getItem("token");
   const [user, setUser] = useState(storedUser || null);
   const [token, setToken] = useState(storedToken || null);
-  // const [movies, setMovies] = useState([]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  
+
   const onLoggedIn = (user, token) => {
     setUser(user);
     setToken(token);
@@ -52,16 +50,16 @@ export const MainView = () => {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((response) => {
-      if (!response.ok) {
-        if (response.status === 401) {
-          setError("Unauthorized access. Please log in again.");
-          onLoggedOut(); // Log out the user if unauthorized
-          return; // Exit early
+        if (!response.ok) {
+          if (response.status === 401) {
+            setError("Unauthorized access. Please log in again.");
+            onLoggedOut(); // Log out the user if unauthorized
+            return; // Exit early
+          }
+          throw new Error("Failed to fetch movies.");
         }
-        throw new Error("Failed to fetch movies.");
-      }
-      return response.json();
-    })
+        return response.json();
+      })
       .then((movies) => {
         console.log("Fetched movies:", movies);
         const moviesFromApi = movies.map((movie) => ({
@@ -98,130 +96,131 @@ export const MainView = () => {
     <BrowserRouter>
       <NavigationBar user={user} onLoggedOut={onLoggedOut} />
       <Row className="justify-content-md-center">
-          <Routes>
-            <Route
-              path="/signup"
-              element={
-                <>
-                  {user ? (
-                    <Navigate to="/" />
-                  ) : (
-                    <Col>
-                      <SignupView />
-                    </Col>
-                  )}
-                </>
-              }
-            />
-            <Route
-              path="/login"
-              element={
-                <>
-                  {user ? (
-                    <Navigate to="/" />
-                  ) : (
-                    <Col>
-                      <LoginView onLoggedIn={onLoggedIn} />
-                    </Col>
-                  )}
-                </>
-              }
-            />
-            <Route
-              path="/"
-              element={
-                <>
-                  {!user ? (
-                    <Navigate to="/login" replace />
-                  ) : movies.length === 0 ? (
-                    <Col>The list is empty!</Col>
-                  ) : (
-                    <>
-                      {movies.map((movie) => (
-                        <Col className="mb-4 d-flex justify-content-center" key={movie.id} sm={12} md={6} lg={4} xl={3}> 
-                          <MovieCard movie={movie} />
-                        </Col>
-                      ))}
-                    </>
-                  )}
-                </>
-              }
-            />
-             <Route
-              path="/movies/:movieId"
-              element={
-                <>
-                  {!user ? (
-                    <Navigate to="/login" replace />
-                  ) : movies.length === 0 ? (
-                    <Col>The list is empty!</Col>
-                  ) : (
-                    <Col md={8}>
-                      <MovieView
-                        movies={movies}
-                        user={user}
-                        token={token}
-                        setUser={setUser}
-                      />
-                    </Col>
-                  )}
-                </>
-              }
-            />
-            <Route
-              path="/cats"
-              element={
-                <>
-                  {!user ? (
-                    <Navigate to="/login" replace />
-                  ) : (
-                    <Col md={8}>
-                      <CatList
-                        movies={movies}
-                        token={token}
-                      />
-                    </Col>
-                  )}
-                </>
-              }
-            />
-             <Route
-              path="/cats/:name"
-              element={
-                <>
-                  {!user ? (
-                    <Navigate to="/login" replace />
-                  ) : (
-                    <Col md={8}>
-                      <CatView
-                        movies={movies}               
-                        token={token}
-                      />
-                    </Col>
-                  )}
-                </>
-              }
-            />
-            <Route
-              path="/users/:username"
-              element={
-                <>
-                  {!user ? (
-                    <Navigate to="/login" replace />
-                  ) : (
-                    <Col>
-                      <ProfileView
-                        user={user}
-                        token={token}
-                        onLoggedOut={onLoggedOut}
-                        allMovies= {movies}
-                      />
-                    </Col>
-                  )}
-                </>
-              }
-            />
-          </Routes>
+        <Routes>
+          <Route
+            path="/signup"
+            element={
+              <>
+                {user ? (
+                  <Navigate to="/" />
+                ) : (
+                  <Col>
+                    <SignupView />
+                  </Col>
+                )}
+              </>
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <>
+                {user ? (
+                  <Navigate to="/" />
+                ) : (
+                  <Col>
+                    <LoginView onLoggedIn={onLoggedIn} />
+                  </Col>
+                )}
+              </>
+            }
+          />
+          <Route
+            path="/"
+            element={
+              <>
+                {!user ? (
+                  <Navigate to="/login" replace />
+                ) : movies.length === 0 ? (
+                  <Col>The list is empty!</Col>
+                ) : (
+                  <>
+                    {movies.map((movie) => (
+                      <Col
+                        className="mb-4 d-flex justify-content-center"
+                        key={movie.id}
+                        sm={12}
+                        md={6}
+                        lg={4}
+                        xl={3}
+                      >
+                        <MovieCard movie={movie} />
+                      </Col>
+                    ))}
+                  </>
+                )}
+              </>
+            }
+          />
+          <Route
+            path="/movies/:movieId"
+            element={
+              <>
+                {!user ? (
+                  <Navigate to="/login" replace />
+                ) : movies.length === 0 ? (
+                  <Col>The list is empty!</Col>
+                ) : (
+                  <Col md={8}>
+                    <MovieView
+                      movies={movies}
+                      user={user}
+                      token={token}
+                      setUser={setUser}
+                    />
+                  </Col>
+                )}
+              </>
+            }
+          />
+          <Route
+            path="/cats"
+            element={
+              <>
+                {!user ? (
+                  <Navigate to="/login" replace />
+                ) : (
+                  <Col md={8}>
+                    <CatList movies={movies} token={token} />
+                  </Col>
+                )}
+              </>
+            }
+          />
+          <Route
+            path="/cats/:name"
+            element={
+              <>
+                {!user ? (
+                  <Navigate to="/login" replace />
+                ) : (
+                  <Col md={8}>
+                    <CatView movies={movies} token={token} />
+                  </Col>
+                )}
+              </>
+            }
+          />
+          <Route
+            path="/users/:username"
+            element={
+              <>
+                {!user ? (
+                  <Navigate to="/login" replace />
+                ) : (
+                  <Col>
+                    <ProfileView
+                      user={user}
+                      token={token}
+                      onLoggedOut={onLoggedOut}
+                      allMovies={movies}
+                    />
+                  </Col>
+                )}
+              </>
+            }
+          />
+        </Routes>
       </Row>
     </BrowserRouter>
   );

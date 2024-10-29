@@ -27282,7 +27282,6 @@ const MainView = ()=>{
     const storedToken = localStorage.getItem("token");
     const [user, setUser] = (0, _react.useState)(storedUser || null);
     const [token, setToken] = (0, _react.useState)(storedToken || null);
-    // const [movies, setMovies] = useState([]);
     const [error, setError] = (0, _react.useState)("");
     const [loading, setLoading] = (0, _react.useState)(false);
     const onLoggedIn = (user, token)=>{
@@ -27343,7 +27342,7 @@ const MainView = ()=>{
         children: error
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 90,
+        lineNumber: 88,
         columnNumber: 12
     }, undefined);
     if (loading) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27351,7 +27350,7 @@ const MainView = ()=>{
         children: "loading movies..."
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 94,
+        lineNumber: 92,
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.BrowserRouter), {
@@ -27361,7 +27360,7 @@ const MainView = ()=>{
                 onLoggedOut: onLoggedOut
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 99,
+                lineNumber: 97,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
@@ -27375,24 +27374,24 @@ const MainView = ()=>{
                                     to: "/"
                                 }, void 0, false, {
                                     fileName: "src/components/main-view/main-view.jsx",
-                                    lineNumber: 107,
-                                    columnNumber: 21
+                                    lineNumber: 105,
+                                    columnNumber: 19
                                 }, void 0) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
                                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _signupView.SignupView), {}, void 0, false, {
                                         fileName: "src/components/main-view/main-view.jsx",
-                                        lineNumber: 110,
-                                        columnNumber: 23
+                                        lineNumber: 108,
+                                        columnNumber: 21
                                     }, void 0)
                                 }, void 0, false, {
                                     fileName: "src/components/main-view/main-view.jsx",
-                                    lineNumber: 109,
-                                    columnNumber: 21
+                                    lineNumber: 107,
+                                    columnNumber: 19
                                 }, void 0)
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 102,
-                            columnNumber: 13
+                            lineNumber: 100,
+                            columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
                             path: "/login",
@@ -27401,26 +27400,26 @@ const MainView = ()=>{
                                     to: "/"
                                 }, void 0, false, {
                                     fileName: "src/components/main-view/main-view.jsx",
-                                    lineNumber: 121,
-                                    columnNumber: 21
+                                    lineNumber: 119,
+                                    columnNumber: 19
                                 }, void 0) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
                                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginView.LoginView), {
                                         onLoggedIn: onLoggedIn
                                     }, void 0, false, {
                                         fileName: "src/components/main-view/main-view.jsx",
-                                        lineNumber: 124,
-                                        columnNumber: 23
+                                        lineNumber: 122,
+                                        columnNumber: 21
                                     }, void 0)
                                 }, void 0, false, {
                                     fileName: "src/components/main-view/main-view.jsx",
-                                    lineNumber: 123,
-                                    columnNumber: 21
+                                    lineNumber: 121,
+                                    columnNumber: 19
                                 }, void 0)
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 116,
-                            columnNumber: 13
+                            lineNumber: 114,
+                            columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
                             path: "/",
@@ -27430,14 +27429,14 @@ const MainView = ()=>{
                                     replace: true
                                 }, void 0, false, {
                                     fileName: "src/components/main-view/main-view.jsx",
-                                    lineNumber: 135,
-                                    columnNumber: 21
+                                    lineNumber: 133,
+                                    columnNumber: 19
                                 }, void 0) : movies.length === 0 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
                                     children: "The list is empty!"
                                 }, void 0, false, {
                                     fileName: "src/components/main-view/main-view.jsx",
-                                    lineNumber: 137,
-                                    columnNumber: 21
+                                    lineNumber: 135,
+                                    columnNumber: 19
                                 }, void 0) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
                                     children: movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
                                             className: "mb-4 d-flex justify-content-center",
@@ -27449,20 +27448,20 @@ const MainView = ()=>{
                                                 movie: movie
                                             }, void 0, false, {
                                                 fileName: "src/components/main-view/main-view.jsx",
-                                                lineNumber: 142,
-                                                columnNumber: 27
+                                                lineNumber: 147,
+                                                columnNumber: 25
                                             }, void 0)
                                         }, movie.id, false, {
                                             fileName: "src/components/main-view/main-view.jsx",
-                                            lineNumber: 141,
-                                            columnNumber: 25
+                                            lineNumber: 139,
+                                            columnNumber: 23
                                         }, void 0))
                                 }, void 0, false)
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 130,
-                            columnNumber: 13
+                            lineNumber: 128,
+                            columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
                             path: "/movies/:movieId",
@@ -27472,14 +27471,14 @@ const MainView = ()=>{
                                     replace: true
                                 }, void 0, false, {
                                     fileName: "src/components/main-view/main-view.jsx",
-                                    lineNumber: 155,
-                                    columnNumber: 21
+                                    lineNumber: 160,
+                                    columnNumber: 19
                                 }, void 0) : movies.length === 0 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
                                     children: "The list is empty!"
                                 }, void 0, false, {
                                     fileName: "src/components/main-view/main-view.jsx",
-                                    lineNumber: 157,
-                                    columnNumber: 21
+                                    lineNumber: 162,
+                                    columnNumber: 19
                                 }, void 0) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
                                     md: 8,
                                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
@@ -27489,19 +27488,19 @@ const MainView = ()=>{
                                         setUser: setUser
                                     }, void 0, false, {
                                         fileName: "src/components/main-view/main-view.jsx",
-                                        lineNumber: 160,
-                                        columnNumber: 23
+                                        lineNumber: 165,
+                                        columnNumber: 21
                                     }, void 0)
                                 }, void 0, false, {
                                     fileName: "src/components/main-view/main-view.jsx",
-                                    lineNumber: 159,
-                                    columnNumber: 21
+                                    lineNumber: 164,
+                                    columnNumber: 19
                                 }, void 0)
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 150,
-                            columnNumber: 14
+                            lineNumber: 155,
+                            columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
                             path: "/cats",
@@ -27511,8 +27510,8 @@ const MainView = ()=>{
                                     replace: true
                                 }, void 0, false, {
                                     fileName: "src/components/main-view/main-view.jsx",
-                                    lineNumber: 176,
-                                    columnNumber: 21
+                                    lineNumber: 181,
+                                    columnNumber: 19
                                 }, void 0) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
                                     md: 8,
                                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _catList.CatList), {
@@ -27520,19 +27519,19 @@ const MainView = ()=>{
                                         token: token
                                     }, void 0, false, {
                                         fileName: "src/components/main-view/main-view.jsx",
-                                        lineNumber: 179,
-                                        columnNumber: 23
+                                        lineNumber: 184,
+                                        columnNumber: 21
                                     }, void 0)
                                 }, void 0, false, {
                                     fileName: "src/components/main-view/main-view.jsx",
-                                    lineNumber: 178,
-                                    columnNumber: 21
+                                    lineNumber: 183,
+                                    columnNumber: 19
                                 }, void 0)
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 171,
-                            columnNumber: 13
+                            lineNumber: 176,
+                            columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
                             path: "/cats/:name",
@@ -27542,8 +27541,8 @@ const MainView = ()=>{
                                     replace: true
                                 }, void 0, false, {
                                     fileName: "src/components/main-view/main-view.jsx",
-                                    lineNumber: 193,
-                                    columnNumber: 21
+                                    lineNumber: 195,
+                                    columnNumber: 19
                                 }, void 0) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
                                     md: 8,
                                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _catView.CatView), {
@@ -27551,19 +27550,19 @@ const MainView = ()=>{
                                         token: token
                                     }, void 0, false, {
                                         fileName: "src/components/main-view/main-view.jsx",
-                                        lineNumber: 196,
-                                        columnNumber: 23
+                                        lineNumber: 198,
+                                        columnNumber: 21
                                     }, void 0)
                                 }, void 0, false, {
                                     fileName: "src/components/main-view/main-view.jsx",
-                                    lineNumber: 195,
-                                    columnNumber: 21
+                                    lineNumber: 197,
+                                    columnNumber: 19
                                 }, void 0)
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 188,
-                            columnNumber: 14
+                            lineNumber: 190,
+                            columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
                             path: "/users/:username",
@@ -27573,8 +27572,8 @@ const MainView = ()=>{
                                     replace: true
                                 }, void 0, false, {
                                     fileName: "src/components/main-view/main-view.jsx",
-                                    lineNumber: 210,
-                                    columnNumber: 21
+                                    lineNumber: 209,
+                                    columnNumber: 19
                                 }, void 0) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
                                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _profileView.ProfileView), {
                                         user: user,
@@ -27583,35 +27582,35 @@ const MainView = ()=>{
                                         allMovies: movies
                                     }, void 0, false, {
                                         fileName: "src/components/main-view/main-view.jsx",
-                                        lineNumber: 213,
-                                        columnNumber: 23
+                                        lineNumber: 212,
+                                        columnNumber: 21
                                     }, void 0)
                                 }, void 0, false, {
                                     fileName: "src/components/main-view/main-view.jsx",
-                                    lineNumber: 212,
-                                    columnNumber: 21
+                                    lineNumber: 211,
+                                    columnNumber: 19
                                 }, void 0)
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 205,
-                            columnNumber: 13
+                            lineNumber: 204,
+                            columnNumber: 11
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 101,
-                    columnNumber: 11
+                    lineNumber: 99,
+                    columnNumber: 9
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 100,
+                lineNumber: 98,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 98,
+        lineNumber: 96,
         columnNumber: 5
     }, undefined);
 };
@@ -27668,7 +27667,7 @@ const MovieCard = ({ movie })=>{
                     }, void 0, false, {
                         fileName: "src/components/movie-card/movie-card.jsx",
                         lineNumber: 21,
-                        columnNumber: 9
+                        columnNumber: 11
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/movie-card/movie-card.jsx",
@@ -27682,7 +27681,7 @@ const MovieCard = ({ movie })=>{
                             children: movie.Title
                         }, void 0, false, {
                             fileName: "src/components/movie-card/movie-card.jsx",
-                            lineNumber: 24,
+                            lineNumber: 29,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27693,18 +27692,18 @@ const MovieCard = ({ movie })=>{
                                 children: "See details"
                             }, void 0, false, {
                                 fileName: "src/components/movie-card/movie-card.jsx",
-                                lineNumber: 26,
+                                lineNumber: 31,
                                 columnNumber: 13
                             }, undefined)
                         }, void 0, false, {
                             fileName: "src/components/movie-card/movie-card.jsx",
-                            lineNumber: 25,
+                            lineNumber: 30,
                             columnNumber: 11
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/movie-card/movie-card.jsx",
-                    lineNumber: 23,
+                    lineNumber: 28,
                     columnNumber: 9
                 }, undefined)
             ]
@@ -42697,7 +42696,7 @@ const MovieView = ({ movies, user, token, setUser })=>{
         children: "Movie not found"
     }, void 0, false, {
         fileName: "src/components/movie-view/movie-view.jsx",
-        lineNumber: 17,
+        lineNumber: 18,
         columnNumber: 12
     }, undefined);
     // Find similar movies
@@ -42771,12 +42770,12 @@ const MovieView = ({ movies, user, token, setUser })=>{
                             alt: movie.Title
                         }, void 0, false, {
                             fileName: "src/components/movie-view/movie-view.jsx",
-                            lineNumber: 107,
+                            lineNumber: 108,
                             columnNumber: 11
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
-                        lineNumber: 106,
+                        lineNumber: 107,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
@@ -42789,7 +42788,7 @@ const MovieView = ({ movies, user, token, setUser })=>{
                                 children: "Movie Details"
                             }, void 0, false, {
                                 fileName: "src/components/movie-view/movie-view.jsx",
-                                lineNumber: 110,
+                                lineNumber: 111,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -42799,7 +42798,7 @@ const MovieView = ({ movies, user, token, setUser })=>{
                                         children: "Title:"
                                     }, void 0, false, {
                                         fileName: "src/components/movie-view/movie-view.jsx",
-                                        lineNumber: 112,
+                                        lineNumber: 113,
                                         columnNumber: 13
                                     }, undefined),
                                     " ",
@@ -42807,7 +42806,7 @@ const MovieView = ({ movies, user, token, setUser })=>{
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/movie-view/movie-view.jsx",
-                                lineNumber: 111,
+                                lineNumber: 112,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -42817,7 +42816,7 @@ const MovieView = ({ movies, user, token, setUser })=>{
                                         children: "Director:"
                                     }, void 0, false, {
                                         fileName: "src/components/movie-view/movie-view.jsx",
-                                        lineNumber: 115,
+                                        lineNumber: 116,
                                         columnNumber: 13
                                     }, undefined),
                                     " ",
@@ -42825,7 +42824,7 @@ const MovieView = ({ movies, user, token, setUser })=>{
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/movie-view/movie-view.jsx",
-                                lineNumber: 114,
+                                lineNumber: 115,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -42834,7 +42833,7 @@ const MovieView = ({ movies, user, token, setUser })=>{
                                         children: "Cat:"
                                     }, void 0, false, {
                                         fileName: "src/components/movie-view/movie-view.jsx",
-                                        lineNumber: 118,
+                                        lineNumber: 119,
                                         columnNumber: 13
                                     }, undefined),
                                     " ",
@@ -42845,13 +42844,13 @@ const MovieView = ({ movies, user, token, setUser })=>{
                                         children: "View Cat"
                                     }, void 0, false, {
                                         fileName: "src/components/movie-view/movie-view.jsx",
-                                        lineNumber: 119,
+                                        lineNumber: 120,
                                         columnNumber: 13
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/movie-view/movie-view.jsx",
-                                lineNumber: 117,
+                                lineNumber: 118,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -42861,7 +42860,7 @@ const MovieView = ({ movies, user, token, setUser })=>{
                                         children: "Genre:"
                                     }, void 0, false, {
                                         fileName: "src/components/movie-view/movie-view.jsx",
-                                        lineNumber: 124,
+                                        lineNumber: 128,
                                         columnNumber: 13
                                     }, undefined),
                                     " ",
@@ -42869,7 +42868,7 @@ const MovieView = ({ movies, user, token, setUser })=>{
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/movie-view/movie-view.jsx",
-                                lineNumber: 123,
+                                lineNumber: 127,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -42879,7 +42878,7 @@ const MovieView = ({ movies, user, token, setUser })=>{
                                         children: "Year:"
                                     }, void 0, false, {
                                         fileName: "src/components/movie-view/movie-view.jsx",
-                                        lineNumber: 127,
+                                        lineNumber: 131,
                                         columnNumber: 13
                                     }, undefined),
                                     " ",
@@ -42887,7 +42886,7 @@ const MovieView = ({ movies, user, token, setUser })=>{
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/movie-view/movie-view.jsx",
-                                lineNumber: 126,
+                                lineNumber: 130,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -42897,7 +42896,7 @@ const MovieView = ({ movies, user, token, setUser })=>{
                                         children: "Synopsis:"
                                     }, void 0, false, {
                                         fileName: "src/components/movie-view/movie-view.jsx",
-                                        lineNumber: 130,
+                                        lineNumber: 134,
                                         columnNumber: 13
                                     }, undefined),
                                     " ",
@@ -42905,7 +42904,7 @@ const MovieView = ({ movies, user, token, setUser })=>{
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/movie-view/movie-view.jsx",
-                                lineNumber: 129,
+                                lineNumber: 133,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
@@ -42914,13 +42913,13 @@ const MovieView = ({ movies, user, token, setUser })=>{
                                 children: isFavorite ? "Remove from Favorites" : "Add to Favorites"
                             }, void 0, false, {
                                 fileName: "src/components/movie-view/movie-view.jsx",
-                                lineNumber: 133,
+                                lineNumber: 137,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/movie-view/movie-view.jsx",
-                        lineNumber: 109,
+                        lineNumber: 110,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
@@ -42933,28 +42932,28 @@ const MovieView = ({ movies, user, token, setUser })=>{
                                     children: "Back"
                                 }, void 0, false, {
                                     fileName: "src/components/movie-view/movie-view.jsx",
-                                    lineNumber: 140,
-                                    columnNumber: 13
+                                    lineNumber: 147,
+                                    columnNumber: 15
                                 }, undefined)
                             }, void 0, false, {
                                 fileName: "src/components/movie-view/movie-view.jsx",
-                                lineNumber: 139,
-                                columnNumber: 11
+                                lineNumber: 146,
+                                columnNumber: 13
                             }, undefined)
                         }, void 0, false, {
                             fileName: "src/components/movie-view/movie-view.jsx",
-                            lineNumber: 138,
-                            columnNumber: 3
+                            lineNumber: 145,
+                            columnNumber: 11
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
-                        lineNumber: 137,
-                        columnNumber: 1
+                        lineNumber: 144,
+                        columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/movie-view/movie-view.jsx",
-                lineNumber: 105,
+                lineNumber: 106,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -42964,7 +42963,7 @@ const MovieView = ({ movies, user, token, setUser })=>{
                         children: "Similar Movies"
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
-                        lineNumber: 149,
+                        lineNumber: 156,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
@@ -42977,35 +42976,35 @@ const MovieView = ({ movies, user, token, setUser })=>{
                                     movie: similarMovie
                                 }, void 0, false, {
                                     fileName: "src/components/movie-view/movie-view.jsx",
-                                    lineNumber: 154,
+                                    lineNumber: 161,
                                     columnNumber: 17
                                 }, undefined)
                             }, similarMovie.id, false, {
                                 fileName: "src/components/movie-view/movie-view.jsx",
-                                lineNumber: 153,
+                                lineNumber: 160,
                                 columnNumber: 15
                             }, undefined)) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                             children: "No similar movies found"
                         }, void 0, false, {
                             fileName: "src/components/movie-view/movie-view.jsx",
-                            lineNumber: 158,
+                            lineNumber: 165,
                             columnNumber: 13
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
-                        lineNumber: 150,
+                        lineNumber: 157,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/movie-view/movie-view.jsx",
-                lineNumber: 148,
+                lineNumber: 155,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/movie-view/movie-view.jsx",
-        lineNumber: 104,
+        lineNumber: 105,
         columnNumber: 5
     }, undefined);
 };
@@ -43332,7 +43331,7 @@ const SignupView = ()=>{
                                     children: "Username:"
                                 }, void 0, false, {
                                     fileName: "src/components/signup-view/signup-view.jsx",
-                                    lineNumber: 119,
+                                    lineNumber: 121,
                                     columnNumber: 15
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
@@ -43345,7 +43344,7 @@ const SignupView = ()=>{
                                     isInvalid: !!usernameError || !!usernameAlreadyUsed
                                 }, void 0, false, {
                                     fileName: "src/components/signup-view/signup-view.jsx",
-                                    lineNumber: 120,
+                                    lineNumber: 122,
                                     columnNumber: 15
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control.Feedback, {
@@ -43353,18 +43352,18 @@ const SignupView = ()=>{
                                     children: usernameError || usernameAlreadyUsed
                                 }, void 0, false, {
                                     fileName: "src/components/signup-view/signup-view.jsx",
-                                    lineNumber: 129,
+                                    lineNumber: 131,
                                     columnNumber: 15
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/signup-view/signup-view.jsx",
-                            lineNumber: 118,
+                            lineNumber: 120,
                             columnNumber: 13
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/signup-view/signup-view.jsx",
-                        lineNumber: 117,
+                        lineNumber: 119,
                         columnNumber: 11
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
@@ -43377,7 +43376,7 @@ const SignupView = ()=>{
                                     children: "Password:"
                                 }, void 0, false, {
                                     fileName: "src/components/signup-view/signup-view.jsx",
-                                    lineNumber: 137,
+                                    lineNumber: 139,
                                     columnNumber: 15
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
@@ -43389,7 +43388,7 @@ const SignupView = ()=>{
                                     isInvalid: !!passwordError
                                 }, void 0, false, {
                                     fileName: "src/components/signup-view/signup-view.jsx",
-                                    lineNumber: 138,
+                                    lineNumber: 140,
                                     columnNumber: 15
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control.Feedback, {
@@ -43397,18 +43396,18 @@ const SignupView = ()=>{
                                     children: passwordError
                                 }, void 0, false, {
                                     fileName: "src/components/signup-view/signup-view.jsx",
-                                    lineNumber: 146,
+                                    lineNumber: 148,
                                     columnNumber: 15
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/signup-view/signup-view.jsx",
-                            lineNumber: 136,
+                            lineNumber: 138,
                             columnNumber: 13
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/signup-view/signup-view.jsx",
-                        lineNumber: 135,
+                        lineNumber: 137,
                         columnNumber: 11
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
@@ -43421,7 +43420,7 @@ const SignupView = ()=>{
                                     children: "Email:"
                                 }, void 0, false, {
                                     fileName: "src/components/signup-view/signup-view.jsx",
-                                    lineNumber: 154,
+                                    lineNumber: 156,
                                     columnNumber: 15
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
@@ -43433,7 +43432,7 @@ const SignupView = ()=>{
                                     isInvalid: !!emailError || !!emailAlreadyUsed
                                 }, void 0, false, {
                                     fileName: "src/components/signup-view/signup-view.jsx",
-                                    lineNumber: 155,
+                                    lineNumber: 157,
                                     columnNumber: 15
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control.Feedback, {
@@ -43441,18 +43440,18 @@ const SignupView = ()=>{
                                     children: emailError || emailAlreadyUsed
                                 }, void 0, false, {
                                     fileName: "src/components/signup-view/signup-view.jsx",
-                                    lineNumber: 163,
+                                    lineNumber: 165,
                                     columnNumber: 15
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/signup-view/signup-view.jsx",
-                            lineNumber: 153,
+                            lineNumber: 155,
                             columnNumber: 13
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/signup-view/signup-view.jsx",
-                        lineNumber: 152,
+                        lineNumber: 154,
                         columnNumber: 11
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
@@ -43465,7 +43464,7 @@ const SignupView = ()=>{
                                     children: "Birthday:"
                                 }, void 0, false, {
                                     fileName: "src/components/signup-view/signup-view.jsx",
-                                    lineNumber: 171,
+                                    lineNumber: 173,
                                     columnNumber: 15
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
@@ -43476,7 +43475,7 @@ const SignupView = ()=>{
                                     isInvalid: !!birthdayError
                                 }, void 0, false, {
                                     fileName: "src/components/signup-view/signup-view.jsx",
-                                    lineNumber: 172,
+                                    lineNumber: 174,
                                     columnNumber: 15
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control.Feedback, {
@@ -43484,18 +43483,18 @@ const SignupView = ()=>{
                                     children: birthdayError
                                 }, void 0, false, {
                                     fileName: "src/components/signup-view/signup-view.jsx",
-                                    lineNumber: 179,
+                                    lineNumber: 181,
                                     columnNumber: 15
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/signup-view/signup-view.jsx",
-                            lineNumber: 170,
+                            lineNumber: 172,
                             columnNumber: 13
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/signup-view/signup-view.jsx",
-                        lineNumber: 169,
+                        lineNumber: 171,
                         columnNumber: 11
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
@@ -43506,12 +43505,12 @@ const SignupView = ()=>{
                             children: "Sign up to CatFlix"
                         }, void 0, false, {
                             fileName: "src/components/signup-view/signup-view.jsx",
-                            lineNumber: 185,
+                            lineNumber: 187,
                             columnNumber: 13
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/signup-view/signup-view.jsx",
-                        lineNumber: 184,
+                        lineNumber: 186,
                         columnNumber: 11
                     }, undefined),
                     AlertMessag && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -43530,34 +43529,34 @@ const SignupView = ()=>{
                                     children: "\xd7"
                                 }, void 0, false, {
                                     fileName: "src/components/signup-view/signup-view.jsx",
-                                    lineNumber: 193,
-                                    columnNumber: 23
+                                    lineNumber: 204,
+                                    columnNumber: 17
                                 }, undefined)
                             }, void 0, false, {
                                 fileName: "src/components/signup-view/signup-view.jsx",
-                                lineNumber: 192,
-                                columnNumber: 21
+                                lineNumber: 197,
+                                columnNumber: 15
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/signup-view/signup-view.jsx",
-                        lineNumber: 190,
-                        columnNumber: 17
+                        lineNumber: 192,
+                        columnNumber: 13
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/signup-view/signup-view.jsx",
-                lineNumber: 116,
+                lineNumber: 118,
                 columnNumber: 9
             }, undefined)
         }, void 0, false, {
             fileName: "src/components/signup-view/signup-view.jsx",
-            lineNumber: 115,
+            lineNumber: 117,
             columnNumber: 7
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/signup-view/signup-view.jsx",
-        lineNumber: 114,
+        lineNumber: 116,
         columnNumber: 5
     }, undefined);
 };
@@ -44136,11 +44135,11 @@ const UserInfo = ({ username, email, birthday })=>{
     console.log("Fetch User Data:", username, email, birthday);
     // Check if the user data is available and contains the necessary fields
     if (!username || !email || !birthday) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-        children: "Loading user information..."
+        children: "loading user information..."
     }, void 0, false, {
         fileName: "src/components/profile-view/user-info.jsx",
         lineNumber: 8,
-        columnNumber: 10
+        columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: [
@@ -44150,7 +44149,7 @@ const UserInfo = ({ username, email, birthday })=>{
             }, void 0, false, {
                 fileName: "src/components/profile-view/user-info.jsx",
                 lineNumber: 13,
-                columnNumber: 5
+                columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                 children: [
@@ -44160,7 +44159,7 @@ const UserInfo = ({ username, email, birthday })=>{
             }, void 0, true, {
                 fileName: "src/components/profile-view/user-info.jsx",
                 lineNumber: 14,
-                columnNumber: 5
+                columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                 children: [
@@ -44170,7 +44169,7 @@ const UserInfo = ({ username, email, birthday })=>{
             }, void 0, true, {
                 fileName: "src/components/profile-view/user-info.jsx",
                 lineNumber: 15,
-                columnNumber: 5
+                columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                 children: [
@@ -44180,7 +44179,7 @@ const UserInfo = ({ username, email, birthday })=>{
             }, void 0, true, {
                 fileName: "src/components/profile-view/user-info.jsx",
                 lineNumber: 16,
-                columnNumber: 5
+                columnNumber: 7
             }, undefined)
         ]
     }, void 0, true);
@@ -44329,7 +44328,7 @@ const ConfirmDelete = ({ show, onHide, onConfirm, message })=>{
                         children: "Confirm"
                     }, void 0, false, {
                         fileName: "src/components/profile-view/confirm-delete.jsx",
-                        lineNumber: 15,
+                        lineNumber: 13,
                         columnNumber: 9
                     }, undefined)
                 ]
@@ -44394,7 +44393,7 @@ const NavigationBar = ({ user, onLoggedOut })=>{
                         }, void 0, false, {
                             fileName: "src/components/navigation-bar/navigation-bar.jsx",
                             lineNumber: 10,
-                            columnNumber: 9
+                            columnNumber: 11
                         }, undefined),
                         " "
                     ]
@@ -44407,7 +44406,7 @@ const NavigationBar = ({ user, onLoggedOut })=>{
                     "aria-controls": "basic-navbar-nav"
                 }, void 0, false, {
                     fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                    lineNumber: 15,
+                    lineNumber: 12,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Navbar).Collapse, {
@@ -44424,7 +44423,7 @@ const NavigationBar = ({ user, onLoggedOut })=>{
                                         children: "Login"
                                     }, void 0, false, {
                                         fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                                        lineNumber: 20,
+                                        lineNumber: 17,
                                         columnNumber: 17
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.NavLink), {
@@ -44434,7 +44433,7 @@ const NavigationBar = ({ user, onLoggedOut })=>{
                                         children: "Signup"
                                     }, void 0, false, {
                                         fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                                        lineNumber: 23,
+                                        lineNumber: 20,
                                         columnNumber: 17
                                     }, undefined)
                                 ]
@@ -44447,7 +44446,7 @@ const NavigationBar = ({ user, onLoggedOut })=>{
                                         children: "Home"
                                     }, void 0, false, {
                                         fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                                        lineNumber: 30,
+                                        lineNumber: 27,
                                         columnNumber: 17
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav).Link, {
@@ -44456,7 +44455,7 @@ const NavigationBar = ({ user, onLoggedOut })=>{
                                         children: "Cats"
                                     }, void 0, false, {
                                         fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                                        lineNumber: 33,
+                                        lineNumber: 30,
                                         columnNumber: 17
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav).Link, {
@@ -44465,7 +44464,7 @@ const NavigationBar = ({ user, onLoggedOut })=>{
                                         children: "Profile"
                                     }, void 0, false, {
                                         fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                                        lineNumber: 36,
+                                        lineNumber: 33,
                                         columnNumber: 17
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav).Link, {
@@ -44473,7 +44472,7 @@ const NavigationBar = ({ user, onLoggedOut })=>{
                                         children: "Logout"
                                     }, void 0, false, {
                                         fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                                        lineNumber: 39,
+                                        lineNumber: 36,
                                         columnNumber: 17
                                     }, undefined)
                                 ]
@@ -44481,12 +44480,12 @@ const NavigationBar = ({ user, onLoggedOut })=>{
                         ]
                     }, void 0, true, {
                         fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                        lineNumber: 17,
+                        lineNumber: 14,
                         columnNumber: 11
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/navigation-bar/navigation-bar.jsx",
-                    lineNumber: 16,
+                    lineNumber: 13,
                     columnNumber: 9
                 }, undefined)
             ]
@@ -44565,11 +44564,12 @@ var _catCard = require("./cat-card");
 var _reactRouterDom = require("react-router-dom");
 var _reactBootstrap = require("react-bootstrap");
 var _s = $RefreshSig$();
-const CatList = ({ token })=>{
+const CatList = ({ token, movies })=>{
     _s();
     const [cats, setCats] = (0, _react.useState)([]);
     const [error, setError] = (0, _react.useState)("");
     const [loading, setLoading] = (0, _react.useState)(false);
+    const movie = movies.find((m)=>m.id === movieId);
     const handleClick = ()=>{
         window.scrollTo(0, 0); // Scrolls to the top when the movie card is clicked
     };
@@ -44592,7 +44592,7 @@ const CatList = ({ token })=>{
             return response.json();
         }).then((catsData)=>{
             console.log("Fetched cats:", catsData);
-            setCats(catsData); // Assuming catsData is an array of strings
+            setCats(catsData);
         }).catch((error)=>{
             console.error("Error fetching cats:", error);
             setError("Failed to get cats. Please try again later.");
@@ -44625,7 +44625,7 @@ const CatList = ({ token })=>{
             }, void 0, false, {
                 fileName: "src/components/cat-view/cat-list.jsx",
                 lineNumber: 60,
-                columnNumber: 5
+                columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
                 children: cats.map((catName, index)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
@@ -44640,7 +44640,7 @@ const CatList = ({ token })=>{
                             }
                         }, void 0, false, {
                             fileName: "src/components/cat-view/cat-list.jsx",
-                            lineNumber: 64,
+                            lineNumber: 71,
                             columnNumber: 13
                         }, undefined)
                     }, index, false, {
@@ -44651,7 +44651,7 @@ const CatList = ({ token })=>{
             }, void 0, false, {
                 fileName: "src/components/cat-view/cat-list.jsx",
                 lineNumber: 61,
-                columnNumber: 5
+                columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
@@ -44662,18 +44662,18 @@ const CatList = ({ token })=>{
                         children: "Back"
                     }, void 0, false, {
                         fileName: "src/components/cat-view/cat-list.jsx",
-                        lineNumber: 70,
-                        columnNumber: 13
+                        lineNumber: 77,
+                        columnNumber: 11
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/cat-view/cat-list.jsx",
-                    lineNumber: 69,
-                    columnNumber: 5
+                    lineNumber: 76,
+                    columnNumber: 9
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/cat-view/cat-list.jsx",
-                lineNumber: 68,
-                columnNumber: 5
+                lineNumber: 75,
+                columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
@@ -44699,7 +44699,6 @@ var prevRefreshSig = window.$RefreshSig$;
 $parcel$ReactRefreshHelpers$17f9.prelude(module);
 
 try {
-// import PropTypes from "prop-types";
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "CatCard", ()=>CatCard);
@@ -44727,8 +44726,8 @@ const CatCard = ({ cat })=>{
                             children: cat.Name
                         }, void 0, false, {
                             fileName: "src/components/cat-view/cat-card.jsx",
-                            lineNumber: 20,
-                            columnNumber: 9
+                            lineNumber: 19,
+                            columnNumber: 13
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                             className: "mt-auto",
@@ -44738,42 +44737,36 @@ const CatCard = ({ cat })=>{
                                 children: "See details"
                             }, void 0, false, {
                                 fileName: "src/components/cat-view/cat-card.jsx",
-                                lineNumber: 22,
-                                columnNumber: 13
+                                lineNumber: 21,
+                                columnNumber: 15
                             }, undefined)
                         }, void 0, false, {
                             fileName: "src/components/cat-view/cat-card.jsx",
-                            lineNumber: 21,
-                            columnNumber: 9
+                            lineNumber: 20,
+                            columnNumber: 13
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/cat-view/cat-card.jsx",
-                    lineNumber: 19,
-                    columnNumber: 7
+                    lineNumber: 18,
+                    columnNumber: 11
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/cat-view/cat-card.jsx",
-                lineNumber: 18,
-                columnNumber: 5
+                lineNumber: 17,
+                columnNumber: 9
             }, undefined)
         }, void 0, false, {
             fileName: "src/components/cat-view/cat-card.jsx",
-            lineNumber: 13,
-            columnNumber: 5
+            lineNumber: 12,
+            columnNumber: 7
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/cat-view/cat-card.jsx",
-        lineNumber: 12,
+        lineNumber: 11,
         columnNumber: 5
     }, undefined);
-}; // CatCard.propTypes = {
- //   cat: PropTypes.shape({
- //     Name: PropTypes.string.isRequired,
- //     ColorBreed: PropTypes.string,
- //     Bio: PropTypes.string,
- //   }).isRequired,
- // };
+};
 _c = CatCard;
 var _c;
 $RefreshReg$(_c, "CatCard");

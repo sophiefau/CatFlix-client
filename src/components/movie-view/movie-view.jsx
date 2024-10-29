@@ -10,6 +10,7 @@ export const MovieView = ({ movies, user, token, setUser }) => {
   const handleClick = () => {
     window.scrollTo(0, 0); // Scrolls to the top when the movie card is clicked
   };
+  
   // console.log("Current movieId:", movieId);
   // console.log("Movies array:", movies);
 
@@ -116,9 +117,12 @@ export const MovieView = ({ movies, user, token, setUser }) => {
           </div>
           <div>
             <strong>Cat:</strong> {movie.Cat?.Name}
-            <Link to={`/cats/${movie.Cat?.Name}`} className="btn btn-primary btn-sm ms-2">
-    View Cat
-  </Link>
+            <Link
+              to={`/cats/${movie.Cat?.Name}`}
+              className="btn btn-primary btn-sm ms-2"
+            >
+              View Cat
+            </Link>
           </div>
           <div className="mb-2">
             <strong>Genre:</strong> {movie.Genre?.Name}
@@ -130,18 +134,21 @@ export const MovieView = ({ movies, user, token, setUser }) => {
             <strong>Synopsis:</strong> {movie.Synopsis}
           </div>
 
-          <Button className="btn-sm" onClick={isFavorite ? removeFromFavorite : addToFavorite}>
+          <Button
+            className="btn-sm"
+            onClick={isFavorite ? removeFromFavorite : addToFavorite}
+          >
             {isFavorite ? "Remove from Favorites" : "Add to Favorites"}
           </Button>
-          </Col>
-<Row>
-  <Col>
-          <Link to={`/`}>
-            <Button className="back-button btn-dark" onClick={handleClick}>
-              Back
-            </Button>
-          </Link>
         </Col>
+        <Row>
+          <Col>
+            <Link to={`/`}>
+              <Button className="back-button btn-dark" onClick={handleClick}>
+                Back
+              </Button>
+            </Link>
+          </Col>
         </Row>
       </Row>
 

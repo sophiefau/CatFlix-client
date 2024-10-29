@@ -15,7 +15,6 @@ export const SignupView = () => {
   const [birthdayError, setBirthdayError] = useState("");
   const navigate = useNavigate();
   const [AlertMessag, setAlertMessage] = useState("");
-  
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -71,43 +70,46 @@ export const SignupView = () => {
       headers: {
         "Content-Type": "application/json",
       },
-    }).then((response) => {
-      if (response.ok) {
-          setAlertMessage('Signup successful');
-          setTimeout(() => {
-              setAlertMessage(''); 
-              navigate("/login");  
-          }, 1000); 
-      } else {
-        // Handle server-side validation errors
-        response.json().then((err) => {
-          if (err.errors) {
-            err.errors.forEach((error) => {
-              if (error.param === "Username") {
-                if (error.msg === "Username already exists") {
-                  setUsernameAlreadyUsed("This username is already taken.");
-                } else {
-                  setUsernameError(error.msg);
-                }
-              }
-              if (error.param === "Email") {
-                if (error.msg === "Email already exists") {
-                  setEmailAlreadyUsed("This email is already used.");
-                } else {
-                  setEmailError(error.msg);
-                }
-              }
-            });
-          } else {
-            setAlertMessage("Signup failed");
-          }
-        });
-      }
     })
-    .catch((error) => {
-      console.error("Error during signup:", error);
-      setAlertMessage("Signup failed due to a network error, please try later.");
-    });
+      .then((response) => {
+        if (response.ok) {
+          setAlertMessage("Signup successful");
+          setTimeout(() => {
+            setAlertMessage("");
+            navigate("/login");
+          }, 1000);
+        } else {
+          // Handle server-side validation errors
+          response.json().then((err) => {
+            if (err.errors) {
+              err.errors.forEach((error) => {
+                if (error.param === "Username") {
+                  if (error.msg === "Username already exists") {
+                    setUsernameAlreadyUsed("This username is already taken.");
+                  } else {
+                    setUsernameError(error.msg);
+                  }
+                }
+                if (error.param === "Email") {
+                  if (error.msg === "Email already exists") {
+                    setEmailAlreadyUsed("This email is already used.");
+                  } else {
+                    setEmailError(error.msg);
+                  }
+                }
+              });
+            } else {
+              setAlertMessage("Signup failed");
+            }
+          });
+        }
+      })
+      .catch((error) => {
+        console.error("Error during signup:", error);
+        setAlertMessage(
+          "Signup failed due to a network error, please try later."
+        );
+      });
   };
 
   return (
@@ -187,13 +189,22 @@ export const SignupView = () => {
             </Button>
           </Col>
           {AlertMessag && (
-                <div className="alert alert-custom alert-dismissible fade show" role="alert">
-                    {AlertMessag}
-                    <button type="button" className="btn-custom" data-dismiss="alert" onClick={() => setAlertMessage('')} aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            )}
+            <div
+              className="alert alert-custom alert-dismissible fade show"
+              role="alert"
+            >
+              {AlertMessag}
+              <button
+                type="button"
+                className="btn-custom"
+                data-dismiss="alert"
+                onClick={() => setAlertMessage("")}
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          )}
         </Row>
       </Form>
     </Container>

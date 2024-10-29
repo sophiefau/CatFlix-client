@@ -7,10 +7,7 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
     <Navbar variant="dark" bg="dark" expand="lg" className="mb-4">
       <Container>
         <Navbar.Brand as={Link} to="/">
-        <img className="logo"
-                    src={logo}
-                    alt="Logo for CatFlix App"
-                />{' '}
+          <img className="logo" src={logo} alt="Logo for CatFlix App" />{" "}
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -27,7 +24,7 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
             )}
             {user && (
               <>
-                <Nav.Link as={Link} to="/" >
+                <Nav.Link as={Link} to="/">
                   Home
                 </Nav.Link>
                 <Nav.Link as={Link} to="/cats">

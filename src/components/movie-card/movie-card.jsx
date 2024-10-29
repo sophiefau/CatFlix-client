@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
@@ -18,7 +18,12 @@ export const MovieCard = ({ movie }) => {
     >
       <Card className="h-100 bg-dark">
         <div className="movies_img">
-        <Card.Img className="w-100" variant="top" src={movie.Img} alt={movie.Title +'poster'} />
+          <Card.Img
+            className="w-100"
+            variant="top"
+            src={movie.Img}
+            alt={movie.Title + "poster"}
+          />
         </div>
         <Card.Body className="d-flex flex-column">
           <Card.Title>{movie.Title}</Card.Title>
