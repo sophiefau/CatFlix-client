@@ -1,7 +1,7 @@
 import React from "react";
-import { createRoot } from 'react-dom/client';
-import { MainView } from './components/main-view/main-view';
-import Container from 'react-bootstrap/Container';
+import { createRoot } from "react-dom/client";
+import { MainView } from "./components/main-view/main-view";
+import Container from "react-bootstrap/Container";
 import { store } from "./redux/store";
 import { Provider } from "react-redux";
 
@@ -11,9 +11,9 @@ import "./index.scss";
 const CatFlixApplication = () => {
   return (
     <Provider store={store}>
-    <Container className='container' fluid>
-      <MainView />
-    </Container>
+      <Container className="container" fluid>
+        <MainView />
+      </Container>
     </Provider>
   );
 };

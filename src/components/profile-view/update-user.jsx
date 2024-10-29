@@ -1,5 +1,5 @@
 import { useState } from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router";
 
@@ -33,7 +33,9 @@ export const UpdateUser = ({ user, onUpdate }) => {
     let isValid = true;
 
     if (username && !usernameRegex.test(username)) {
-      setUsernameError("Username must be at least 5 characters long and contains only lowercases letters.");
+      setUsernameError(
+        "Username must be at least 5 characters long and contains only lowercases letters."
+      );
       isValid = false;
     }
 
@@ -69,30 +71,30 @@ export const UpdateUser = ({ user, onUpdate }) => {
     })
       .then((response) => {
         console.log("Username:", username);
-console.log("Email:", email);
-console.log("Password:", password);
-console.log("Fetch request data:", JSON.stringify(updatedUser));
-if (password) {
-  console.log("Password before adding to updatedUser:", password);
-  updatedUser.Password = password;
-}
-  if (response.ok) {
-    return response.json();
-  } else {
-    // Handle server-side validation errors
-    return response.json().then((err) => {
-      if (err.message) {
-        if (err.message === "Username is already in use.") {
-          setUsernameAlreadyUsed("This username is already taken.");
+        console.log("Email:", email);
+        console.log("Password:", password);
+        console.log("Fetch request data:", JSON.stringify(updatedUser));
+        if (password) {
+          console.log("Password before adding to updatedUser:", password);
+          updatedUser.Password = password;
         }
-        if (err.message === "Email is already in use.") {
-          setEmailAlreadyUsed("This email is already used.");
+        if (response.ok) {
+          return response.json();
+        } else {
+          // Handle server-side validation errors
+          return response.json().then((err) => {
+            if (err.message) {
+              if (err.message === "Username is already in use.") {
+                setUsernameAlreadyUsed("This username is already taken.");
+              }
+              if (err.message === "Email is already in use.") {
+                setEmailAlreadyUsed("This email is already used.");
+              }
+            }
+            throw new Error("Validation failed");
+          });
         }
-      }
-      throw new Error("Validation failed");
-    });
-  }
-})
+      })
       .then((result) => {
         navigate(`/users/${result.Username}`);
         console.log("Updated user data:", updatedUser);
@@ -133,7 +135,7 @@ if (password) {
               <Form.Label>Email</Form.Label>
               <Form.Control
                 type="email"
-                value={email} 
+                value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter new valid email"
                 isInvalid={!!emailError || !!emailAlreadyUsed}
@@ -166,7 +168,6 @@ if (password) {
     </Container>
   );
 };
-
 
 UpdateUser.propTypes = {
   user: PropTypes.shape({
