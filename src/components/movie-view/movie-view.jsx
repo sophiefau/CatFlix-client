@@ -103,9 +103,9 @@ export const MovieView = ({ movies, user, token, setUser }) => {
 
   return (
     <Container>
-      <Row className="mb-4">
+      <Row className="my-4">
         <Col className="mb-4 me-0" sm={12} md={5} lg={4}>
-          <img className="w-100" src={movie.Img} alt={movie.Title} />
+          <img className="my-2 w-100" src={movie.Img} alt={movie.Title} />
         </Col>
         <Col sm={12} md={7} lg={8}>
           <h1 className="mb-4">Movie Details</h1>

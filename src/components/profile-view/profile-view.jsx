@@ -74,7 +74,7 @@ export const ProfileView = ({ onLoggedOut, allMovies }) => {
 
   return (
     <Container className="d-flex justify-content-center align-items-center">
-      <Row className="login-view mb-4">
+      <Row className="login-view my-4">
         <Col>
           <UserInfo
             username={username}

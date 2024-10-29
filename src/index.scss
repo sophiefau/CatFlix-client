@@ -12,7 +12,6 @@ $cream: #f0e4b8;
 @import '~bootstrap/scss/bootstrap.scss';
 
 .body{
-  background: #352941;
   min-height: 100vh;
   margin: 0;
   font-family: "Afacad Flux", sans-serif;
@@ -21,6 +20,10 @@ $cream: #f0e4b8;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
+}
+
+.margin-top{
+  padding-top: 100px;
 }
 
 .btn-primary{

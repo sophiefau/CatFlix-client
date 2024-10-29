@@ -2967,7 +2967,7 @@ const CatFlixApplication = ()=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRedux.Provider), {
         store: (0, _store.store),
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _containerDefault.default), {
-            className: "container",
+            className: "container margin-top",
             fluid: true,
             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _mainView.MainView), {}, void 0, false, {
                 fileName: "src/index.jsx",
@@ -47825,7 +47825,7 @@ const MovieView = ({ movies, user, token, setUser })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Container), {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
-                className: "mb-4",
+                className: "my-4",
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
                         className: "mb-4 me-0",
@@ -47833,7 +47833,7 @@ const MovieView = ({ movies, user, token, setUser })=>{
                         md: 5,
                         lg: 4,
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                            className: "w-100",
+                            className: "my-2 w-100",
                             src: movie.Img,
                             alt: movie.Title
                         }, void 0, false, {
@@ -48734,7 +48734,7 @@ const ProfileView = ({ onLoggedOut, allMovies })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Container), {
         className: "d-flex justify-content-center align-items-center",
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
-            className: "login-view mb-4",
+            className: "login-view my-4",
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
                     children: [
@@ -49716,6 +49716,7 @@ const CatView = ({ token })=>{
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
                     children: [
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+                            className: "my-4",
                             children: cat.Name
                         }, void 0, false, {
                             fileName: "src/components/cat-view/cat-view.jsx",
@@ -49875,7 +49876,7 @@ const NavigationBar = ({ user, onLoggedOut })=>{
         variant: "dark",
         bg: "dark",
         expand: "lg",
-        className: "mb-4",
+        className: "mb-4 fixed-top",
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Container), {
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Navbar).Brand, {

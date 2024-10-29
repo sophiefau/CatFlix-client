@@ -13191,13 +13191,16 @@ textarea.form-control-lg {
 .body {
   color: #faf5ea;
   font-optical-sizing: auto;
-  background: #352941;
   min-height: 100vh;
   margin: 0;
   font-family: Afacad Flux, sans-serif;
   font-size: 17px;
   font-style: normal;
   font-weight: 400;
+}
+
+.margin-top {
+  padding-top: 100px;
 }
 
 .btn-primary {

@@ -11,7 +11,7 @@ import "./index.scss";
 const CatFlixApplication = () => {
   return (
     <Provider store={store}>
-      <Container className="container" fluid>
+      <Container className="container margin-top" fluid>
         <MainView />
       </Container>
     </Provider>
