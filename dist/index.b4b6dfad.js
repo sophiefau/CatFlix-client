@@ -42807,7 +42807,6 @@ const MovieView = ({ movies, user, token, setUser })=>{
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "mb-2",
                                 children: [
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
                                         children: "Cat:"
@@ -44784,7 +44783,6 @@ const CatView = ({ token })=>{
     const navigate = (0, _reactRouterDom.useNavigate)();
     const [cat, setCat] = (0, _react.useState)(null);
     const [error, setError] = (0, _react.useState)("");
-    const { movieId } = (0, _reactRouterDom.useParams)();
     const handleBackClick = ()=>{
         navigate(-1); // Go back to the previous page
         window.scrollTo(0, 0); // Scrolls to the top when the movie card is clicked
@@ -44802,21 +44800,20 @@ const CatView = ({ token })=>{
         });
     }, [
         name,
-        token,
-        movieId
+        token
     ]);
     if (error) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: error
     }, void 0, false, {
         fileName: "src/components/cat-view/cat-view.jsx",
-        lineNumber: 37,
+        lineNumber: 36,
         columnNumber: 12
     }, undefined);
     if (!cat) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "loading cats..."
     }, void 0, false, {
         fileName: "src/components/cat-view/cat-view.jsx",
-        lineNumber: 41,
+        lineNumber: 40,
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Container), {
@@ -44828,7 +44825,7 @@ const CatView = ({ token })=>{
                             children: cat.Name
                         }, void 0, false, {
                             fileName: "src/components/cat-view/cat-view.jsx",
-                            lineNumber: 48,
+                            lineNumber: 47,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -44838,7 +44835,7 @@ const CatView = ({ token })=>{
                                     children: "Color/Breed:"
                                 }, void 0, false, {
                                     fileName: "src/components/cat-view/cat-view.jsx",
-                                    lineNumber: 50,
+                                    lineNumber: 49,
                                     columnNumber: 13
                                 }, undefined),
                                 " ",
@@ -44846,7 +44843,7 @@ const CatView = ({ token })=>{
                             ]
                         }, void 0, true, {
                             fileName: "src/components/cat-view/cat-view.jsx",
-                            lineNumber: 49,
+                            lineNumber: 48,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -44856,7 +44853,7 @@ const CatView = ({ token })=>{
                                     children: "Bio:"
                                 }, void 0, false, {
                                     fileName: "src/components/cat-view/cat-view.jsx",
-                                    lineNumber: 53,
+                                    lineNumber: 52,
                                     columnNumber: 13
                                 }, undefined),
                                 " ",
@@ -44864,18 +44861,18 @@ const CatView = ({ token })=>{
                             ]
                         }, void 0, true, {
                             fileName: "src/components/cat-view/cat-view.jsx",
-                            lineNumber: 52,
+                            lineNumber: 51,
                             columnNumber: 11
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/cat-view/cat-view.jsx",
-                    lineNumber: 47,
+                    lineNumber: 46,
                     columnNumber: 9
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/cat-view/cat-view.jsx",
-                lineNumber: 46,
+                lineNumber: 45,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -44885,7 +44882,7 @@ const CatView = ({ token })=>{
                         children: "Movies:"
                     }, void 0, false, {
                         fileName: "src/components/cat-view/cat-view.jsx",
-                        lineNumber: 59,
+                        lineNumber: 58,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
@@ -44895,23 +44892,23 @@ const CatView = ({ token })=>{
                                     movie: movie
                                 }, void 0, false, {
                                     fileName: "src/components/cat-view/cat-view.jsx",
-                                    lineNumber: 63,
+                                    lineNumber: 62,
                                     columnNumber: 15
                                 }, undefined)
                             }, movie.id, false, {
                                 fileName: "src/components/cat-view/cat-view.jsx",
-                                lineNumber: 62,
+                                lineNumber: 61,
                                 columnNumber: 13
                             }, undefined))
                     }, void 0, false, {
                         fileName: "src/components/cat-view/cat-view.jsx",
-                        lineNumber: 60,
+                        lineNumber: 59,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/cat-view/cat-view.jsx",
-                lineNumber: 58,
+                lineNumber: 57,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
@@ -44924,36 +44921,35 @@ const CatView = ({ token })=>{
                             children: "Back"
                         }, void 0, false, {
                             fileName: "src/components/cat-view/cat-view.jsx",
-                            lineNumber: 71,
+                            lineNumber: 70,
                             columnNumber: 13
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/cat-view/cat-view.jsx",
-                        lineNumber: 70,
+                        lineNumber: 69,
                         columnNumber: 11
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/cat-view/cat-view.jsx",
-                    lineNumber: 69,
+                    lineNumber: 68,
                     columnNumber: 9
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/cat-view/cat-view.jsx",
-                lineNumber: 68,
+                lineNumber: 67,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/cat-view/cat-view.jsx",
-        lineNumber: 45,
+        lineNumber: 44,
         columnNumber: 5
     }, undefined);
-};
-_s(CatView, "nkKiJaRb9yI4MGe+WP+ciME51Uk=", false, function() {
+}; // const catMovies = movies.filter((m) => m.id === movieId);
+_s(CatView, "WFN3fnIEj70Voww3dQp4PTgZGvQ=", false, function() {
     return [
         (0, _reactRouterDom.useParams),
-        (0, _reactRouterDom.useNavigate),
-        (0, _reactRouterDom.useParams)
+        (0, _reactRouterDom.useNavigate)
     ];
 });
 _c = CatView;

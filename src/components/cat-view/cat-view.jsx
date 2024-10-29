@@ -8,13 +8,12 @@ export const CatView = ({ token }) => {
   const navigate = useNavigate();
   const [cat, setCat] = useState(null);
   const [error, setError] = useState("");
-  const { movieId } = useParams();
 
   const handleBackClick = () => {
     navigate(-1); // Go back to the previous page
     window.scrollTo(0, 0); // Scrolls to the top when the movie card is clicked
   };
-
+  
   useEffect(() => {
     fetch(`https://catflix-99a985e6fffa.herokuapp.com/cats/${name}`, {
       headers: {
@@ -31,7 +30,7 @@ export const CatView = ({ token }) => {
       .catch((err) => {
         setError(err.message || "Failed to fetch cat details");
       });
-  }, [name, token, movieId]);
+  }, [name, token]);
 
   if (error) {
     return <div>{error}</div>;
@@ -79,3 +78,4 @@ export const CatView = ({ token }) => {
 };
 
 
+// const catMovies = movies.filter((m) => m.id === movieId);
