@@ -47,7 +47,7 @@ Here is a list of CatFlix app's essential features:
 
 ## API Integration
 
-You can access the documentation here: [API Documentation](https://catflix-99a985e6fffa.herokuapp.com/)
+You can access to the documentation wvia Swagger: [API Documentation](https://catflix-99a985e6fffa.herokuapp.com/api-docs/)
 
 ### Deployment
 
