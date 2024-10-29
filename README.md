@@ -26,12 +26,12 @@ Here is a list of CatFlix app's essential features:
 
 ## Usage
 
-1. **Sign Up or Log In:** => Sign up for a new account or log in with existing credentials.
-2. **Browse Movies:** => After logging in, browse the main movie list.
-3. **View Movie Details:** => Select any movie to view detailed information, including director, genre, and synopsis.
-4. **View Cat Details:** => Access cat details from the navigation menu or directly from the movie page.
-5. **User Profile:** => Update your username, password, email, or date of birth.
-6. **Manage Favorite Movies:** => Add or remove movies from your favorites directly on the movie details page, and access/manage your favorite movies from your profile page.
+1. **Sign Up or Log In** → Sign up for a new account or log in with existing credentials.
+2. **Browse Movies** → After logging in, browse the main movie list.
+3. **View Movie Details** → Select any movie to view detailed information, including director, genre, and synopsis.
+4. **View Cat Details** → Access cat details from the navigation menu or directly from the movie page.
+5. **User Profile** → Update your username, password, email, or date of birth.
+6. **Manage Favorite Movies** → Add or remove movies from your favorites directly on the movie details page, and access/manage your favorite movies from your profile page.
 
 ## Dependencies
 
