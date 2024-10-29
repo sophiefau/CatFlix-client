@@ -22,6 +22,7 @@ Here is a list of CatFlix app's essential features:
 - **Profile Management:** Update your profile information, including username, email, and password.
 - **Favorites Management:** Add or remove movies from your favorites list.
 - **Responsive Design:** Enjoy a seamless experience across devices with Bootstrap's responsive design.
+- **Error handling:** Implemented accurate error messages in forms to guide users through input.
 
 ## Usage
 
