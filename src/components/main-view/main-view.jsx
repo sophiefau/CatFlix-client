@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { setMovies } from "../../redux/reducers/movies";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
@@ -8,14 +11,17 @@ import { CatList } from "../cat-view/cat-list";
 import { CatView } from "../cat-view/cat-view";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
 import { Row, Col } from "react-bootstrap";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+
 
 export const MainView = () => {
+  const movies = useSelector((state) => state.movies.list);
+  const dispatch = useDispatch();
+
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
   const [user, setUser] = useState(storedUser || null);
   const [token, setToken] = useState(storedToken || null);
-  const [movies, setMovies] = useState([]);
+  // const [movies, setMovies] = useState([]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   
@@ -69,7 +75,7 @@ export const MainView = () => {
           Synopsis: movie.Synopsis,
           Animation: movie.Animation,
         }));
-        setMovies(moviesFromApi);
+        dispatch(setMovies(moviesFromApi));
       })
       .catch((error) => {
         console.error("Error fetching movies:", error);
@@ -220,5 +226,3 @@ export const MainView = () => {
     </BrowserRouter>
   );
 };
-
-// "Welcome to CatFlix, the ultimate app showcasing a delightful collection of movies featuring our feline friends! Discover, rate, and share your favorite cat movies, and immerse yourself in a world of cuteness and adventure."
