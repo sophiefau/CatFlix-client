@@ -16,7 +16,6 @@ export const CatCard = ({ cat }) => {
     className="text-decoration-none"
   >
     <Card className="h-100 w-100 bg-dark">
-      
       <Card.Body className="d-flex flex-column">
         <Card.Title>{cat.Name}</Card.Title>
         <div className="mt-auto">
@@ -31,3 +30,11 @@ export const CatCard = ({ cat }) => {
     </div>
   );
 };
+
+// CatCard.propTypes = {
+//   cat: PropTypes.shape({
+//     Name: PropTypes.string.isRequired,
+//     ColorBreed: PropTypes.string,
+//     Bio: PropTypes.string,
+//   }).isRequired,
+// };

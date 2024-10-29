@@ -1,37 +1,79 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-// import { Container } from 'react-bootstrap';
+import { Container, Row, Col, Button } from "react-bootstrap";
+import { MovieCard } from "../movie-card/movie-card";
 
-export const CatView = () => {
-  const { movieId } = useParams();
+export const CatView = ({ token }) => {
+  const { name } = useParams(); 
   const [cat, setCat] = useState(null);
   const [error, setError] = useState("");
+  const { movieId } = useParams();
 
-  useEffect() => {
-    fetch(`https://catflix-99a985e6fffa.herokuapp.com/cats/${cat.Name}`, {
+  const handleClick = () => {
+    window.scrollTo(0, 0); // Scrolls to the top when the movie card is clicked
+  };
+
+  useEffect(() => {
+    fetch(`https://catflix-99a985e6fffa.herokuapp.com/cats/${name}`, {
       headers: {
-        Authorization: `Bearer ${token}`, // make sure to pass token if needed
+        Authorization: `Bearer ${token}`,
       },
     })
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to fetch cat details");
+        }
+        return response.json();
+      })
       .then((data) => setCat(data))
-      .catch((err) => setError("Failed to fetch cat details"));
-  };
+      .catch((err) => {
+        setError(err.message || "Failed to fetch cat details");
+      });
+  }, [name, token, movieId]);
 
   if (error) {
     return <div>{error}</div>;
   }
 
   if (!cat) {
-    return <div>Loading cats...</div>;
+    return <div>loading cats...</div>;
   }
 
   return (
     <Container>
-      <h2>{cat.Name}</h2>
-      <p>Color/Breed: {cat.ColorBreed}</p>
-      <p>Bio: {cat.Bio}</p>
-      <p>Movies: {cat.Movies.join(", ")}</p>
+      <Row>
+        <Col>
+          <h1>{cat.Name}</h1>
+          <div className="mb-3">
+            <strong>Color/Breed:</strong> {cat.ColorBreed}
+          </div>
+          <div className="mb-3">
+            <strong>Bio:</strong> {cat.Bio}
+          </div>
+        </Col>
+      </Row>
+
+      <div className="mb-3">
+        <h2>Movies:</h2>
+        <Row>
+          {cat.Movies.map((movie) => (
+            <Col className="col mb-4" key={movie.id}>
+              <MovieCard movie={movie} />
+            </Col>
+          ))}
+        </Row>
+      </div>
+      <Row>
+        <Col>
+          <Link to={`/cats`}>
+            <Button className="back-button btn-dark" onClick={handleClick}>
+              Back
+            </Button>
+          </Link>
+        </Col>
+      </Row>
     </Container>
   );
 };
+
+

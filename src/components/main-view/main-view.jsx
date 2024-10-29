@@ -5,6 +5,7 @@ import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
 import { ProfileView } from "../profile-view/profile-view";
 import { CatList } from "../cat-view/cat-list";
+import { CatView } from "../cat-view/cat-view";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
 import { Row, Col } from "react-bootstrap";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
@@ -171,6 +172,23 @@ export const MainView = () => {
                     <Col md={8}>
                       <CatList
                         movies={movies}
+                        token={token}
+                      />
+                    </Col>
+                  )}
+                </>
+              }
+            />
+             <Route
+              path="/cats/:name"
+              element={
+                <>
+                  {!user ? (
+                    <Navigate to="/login" replace />
+                  ) : (
+                    <Col md={8}>
+                      <CatView
+                        movies={movies}               
                         token={token}
                       />
                     </Col>
