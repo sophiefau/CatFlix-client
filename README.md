@@ -17,7 +17,7 @@ Here is a list of CatFlix app's essential features:
 - **User Authentication:** Easily create an account and access your profile.
 - **Movie Display:** Browse a list of movies featuring cats, retrieved from a RESTful API.
 - **Detailed Movie Information:** View details for each movie, including genre, director, and cast.
-- **Cat Character Insights:** Access detailed information about the cats in each movie.
+- **Cat Character Insights:** Access detailed information about the cat(s) in each movie.
 - **Similar Movies Feature:** View similar movies based on genre and animation.
 - **Profile Management:** Update your profile information, including username, email, and password.
 - **Favorites Management:** Add or remove movies from your favorites list.
@@ -51,7 +51,7 @@ You can access the documentation here: [https://catflix-99a985e6fffa.herokuapp.c
 
 ## Contributing
 
-If you’d like to contribute, please fork the repository and use a feature branch.
+If you’d like to contribute, please fork the repository and use a feature branch. =^._.^= ∫
 
 ## License
 
