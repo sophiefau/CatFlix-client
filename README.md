@@ -45,11 +45,11 @@ Here is a list of CatFlix app's essential features:
 - **MongoDB** → For building the database
 - **Swagger** → For API documentation
 
-## API Integration
+### API Integration
 
 You can access to the documentation wvia Swagger: [API Documentation](https://catflix-99a985e6fffa.herokuapp.com/api-docs/)
 
-## Deployment
+### Deployment
 
 - This application is deployed on [Netlify](https://catflixmovies.netlify.app) for the frontend client app and [Heroku](https://catflix-99a985e6fffa.herokuapp.com/) for the backend API.
 
@@ -59,15 +59,15 @@ You can access to the documentation wvia Swagger: [API Documentation](https://ca
 ![screenshot CatFlix movie details](https://github.com/sophiefau/CatFlix-client/blob/main/src/img/screenshot_moviedetail.png)
 ![screenshot CatFlix signup page](https://github.com/sophiefau/CatFlix-client/blob/main/src/img/screenshot_signup.png)
 
-## Contributing
+### Contributing
 
 If you’d like to contribute, please fork the repository and use a feature branch! =^._.^=
 
-## License
+### License
 
 Distributed under the MIT License.
 
-## Acknowledgments
+### Acknowledgments
 
 This project was created as part of the Web Development course at CareerFoundry.
 
