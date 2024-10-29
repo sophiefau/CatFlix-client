@@ -49,9 +49,15 @@ Here is a list of CatFlix app's essential features:
 
 You can access to the documentation wvia Swagger: [API Documentation](https://catflix-99a985e6fffa.herokuapp.com/api-docs/)
 
-### Deployment
+## Deployment
 
 - This application is deployed on [Netlify](https://catflixmovies.netlify.app) for the frontend client app and [Heroku](https://catflix-99a985e6fffa.herokuapp.com/) for the backend API.
+
+## Previews
+
+![screenshot CatFlix movies list](https://github.com/sophiefau/CatFlix-client/blob/main/src/img/screenshot_movies.png)
+![screenshot CatFlix movie details](https://github.com/sophiefau/CatFlix-client/blob/main/src/img/screenshot_moviedetail.png)
+![screenshot CatFlix signup page](https://github.com/sophiefau/CatFlix-client/blob/main/src/img/screenshot_signup.png)
 
 ## Contributing
 
