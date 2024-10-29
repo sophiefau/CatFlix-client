@@ -1,5 +1,3 @@
-@import '~bootstrap/scss/bootstrap.scss';
-
 $primary: #9b7006;
 $body-bg: #352941;
 $body-color: #faf5ea;
@@ -11,7 +9,10 @@ $ocher:#9b7006;
 $grey: #5c5849;
 $cream: #f0e4b8;
 
+@import '~bootstrap/scss/bootstrap.scss';
+
 .body{
+  background: #352941;
   min-height: 100vh;
   margin: 0;
   font-family: "Afacad Flux", sans-serif;
