@@ -7,7 +7,7 @@ Welcome to CatFlix, the ultimate app showcasing a delightful collection of movie
 ## Getting Started
 To run or deploy the application locally or on a server, install the following dependencies:
 
-1. Node.js - Download and install from [nodejs.org](nodejs.org).
+1. Node.js - Download and install from [nodejs.org](https://nodejs.org).
 2. Project Dependencies - Run `npm install` in the project directory to install all required packages.
 
 ## Features
@@ -47,7 +47,7 @@ Here is a list of CatFlix app's essential features:
 
 ## API Integration
 
-You can access the documentation here: [https://catflix-99a985e6fffa.herokuapp.com/api-docs/](https://catflix-99a985e6fffa.herokuapp.com/api-docs/)
+You can access the documentation here: [API Documentation](https://catflix-99a985e6fffa.herokuapp.com/)
 
 ### Deployment
 
