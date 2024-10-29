@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { MovieCard } from "../movie-card/movie-card";
 
 export const CatView = ({ token }) => {
   const { name } = useParams(); 
+  const navigate = useNavigate();
   const [cat, setCat] = useState(null);
   const [error, setError] = useState("");
   const { movieId } = useParams();
 
-  const handleClick = () => {
+  const handleBackClick = () => {
+    navigate(-1); // Go back to the previous page
     window.scrollTo(0, 0); // Scrolls to the top when the movie card is clicked
   };
 
@@ -66,7 +68,7 @@ export const CatView = ({ token }) => {
       <Row>
         <Col>
           <Link to={`/cats`}>
-            <Button className="back-button btn-dark" onClick={handleClick}>
+            <Button className="back-button btn-dark" onClick={handleBackClick}>
               Back
             </Button>
           </Link>

@@ -116,6 +116,9 @@ export const MovieView = ({ movies, user, token, setUser }) => {
           </div>
           <div className="mb-2">
             <strong>Cat:</strong> {movie.Cat?.Name}
+            <Link to={`/cats/${movie.Cat?.Name}`} className="btn btn-primary btn-sm ms-2">
+    View Cat
+  </Link>
           </div>
           <div className="mb-2">
             <strong>Genre:</strong> {movie.Genre?.Name}

@@ -42817,7 +42817,16 @@ const MovieView = ({ movies, user, token, setUser })=>{
                                         columnNumber: 13
                                     }, undefined),
                                     " ",
-                                    movie.Cat?.Name
+                                    movie.Cat?.Name,
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
+                                        to: `/cats/${movie.Cat?.Name}`,
+                                        className: "btn btn-primary btn-sm ms-2",
+                                        children: "View Cat"
+                                    }, void 0, false, {
+                                        fileName: "src/components/movie-view/movie-view.jsx",
+                                        lineNumber: 119,
+                                        columnNumber: 13
+                                    }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/movie-view/movie-view.jsx",
@@ -42831,29 +42840,11 @@ const MovieView = ({ movies, user, token, setUser })=>{
                                         children: "Genre:"
                                     }, void 0, false, {
                                         fileName: "src/components/movie-view/movie-view.jsx",
-                                        lineNumber: 121,
-                                        columnNumber: 13
-                                    }, undefined),
-                                    " ",
-                                    movie.Genre?.Name
-                                ]
-                            }, void 0, true, {
-                                fileName: "src/components/movie-view/movie-view.jsx",
-                                lineNumber: 120,
-                                columnNumber: 11
-                            }, undefined),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "mb-2",
-                                children: [
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
-                                        children: "Year:"
-                                    }, void 0, false, {
-                                        fileName: "src/components/movie-view/movie-view.jsx",
                                         lineNumber: 124,
                                         columnNumber: 13
                                     }, undefined),
                                     " ",
-                                    movie.Year
+                                    movie.Genre?.Name
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/movie-view/movie-view.jsx",
@@ -42864,10 +42855,28 @@ const MovieView = ({ movies, user, token, setUser })=>{
                                 className: "mb-2",
                                 children: [
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
-                                        children: "Synopsis:"
+                                        children: "Year:"
                                     }, void 0, false, {
                                         fileName: "src/components/movie-view/movie-view.jsx",
                                         lineNumber: 127,
+                                        columnNumber: 13
+                                    }, undefined),
+                                    " ",
+                                    movie.Year
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/components/movie-view/movie-view.jsx",
+                                lineNumber: 126,
+                                columnNumber: 11
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                className: "mb-2",
+                                children: [
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
+                                        children: "Synopsis:"
+                                    }, void 0, false, {
+                                        fileName: "src/components/movie-view/movie-view.jsx",
+                                        lineNumber: 130,
                                         columnNumber: 13
                                     }, undefined),
                                     " ",
@@ -42875,7 +42884,7 @@ const MovieView = ({ movies, user, token, setUser })=>{
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/movie-view/movie-view.jsx",
-                                lineNumber: 126,
+                                lineNumber: 129,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
@@ -42884,7 +42893,7 @@ const MovieView = ({ movies, user, token, setUser })=>{
                                 children: isFavorite ? "Remove from Favorites" : "Add to Favorites"
                             }, void 0, false, {
                                 fileName: "src/components/movie-view/movie-view.jsx",
-                                lineNumber: 130,
+                                lineNumber: 133,
                                 columnNumber: 11
                             }, undefined)
                         ]
@@ -42903,22 +42912,22 @@ const MovieView = ({ movies, user, token, setUser })=>{
                                     children: "Back"
                                 }, void 0, false, {
                                     fileName: "src/components/movie-view/movie-view.jsx",
-                                    lineNumber: 137,
+                                    lineNumber: 140,
                                     columnNumber: 13
                                 }, undefined)
                             }, void 0, false, {
                                 fileName: "src/components/movie-view/movie-view.jsx",
-                                lineNumber: 136,
+                                lineNumber: 139,
                                 columnNumber: 11
                             }, undefined)
                         }, void 0, false, {
                             fileName: "src/components/movie-view/movie-view.jsx",
-                            lineNumber: 135,
+                            lineNumber: 138,
                             columnNumber: 3
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
-                        lineNumber: 134,
+                        lineNumber: 137,
                         columnNumber: 1
                     }, undefined)
                 ]
@@ -42934,7 +42943,7 @@ const MovieView = ({ movies, user, token, setUser })=>{
                         children: "Similar Movies"
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
-                        lineNumber: 146,
+                        lineNumber: 149,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
@@ -42947,29 +42956,29 @@ const MovieView = ({ movies, user, token, setUser })=>{
                                     movie: similarMovie
                                 }, void 0, false, {
                                     fileName: "src/components/movie-view/movie-view.jsx",
-                                    lineNumber: 151,
+                                    lineNumber: 154,
                                     columnNumber: 17
                                 }, undefined)
                             }, similarMovie.id, false, {
                                 fileName: "src/components/movie-view/movie-view.jsx",
-                                lineNumber: 150,
+                                lineNumber: 153,
                                 columnNumber: 15
                             }, undefined)) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                             children: "No similar movies found"
                         }, void 0, false, {
                             fileName: "src/components/movie-view/movie-view.jsx",
-                            lineNumber: 155,
+                            lineNumber: 158,
                             columnNumber: 13
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
-                        lineNumber: 147,
+                        lineNumber: 150,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/movie-view/movie-view.jsx",
-                lineNumber: 145,
+                lineNumber: 148,
                 columnNumber: 7
             }, undefined)
         ]
@@ -44772,10 +44781,12 @@ var _s = $RefreshSig$();
 const CatView = ({ token })=>{
     _s();
     const { name } = (0, _reactRouterDom.useParams)();
+    const navigate = (0, _reactRouterDom.useNavigate)();
     const [cat, setCat] = (0, _react.useState)(null);
     const [error, setError] = (0, _react.useState)("");
     const { movieId } = (0, _reactRouterDom.useParams)();
-    const handleClick = ()=>{
+    const handleBackClick = ()=>{
+        navigate(-1); // Go back to the previous page
         window.scrollTo(0, 0); // Scrolls to the top when the movie card is clicked
     };
     (0, _react.useEffect)(()=>{
@@ -44798,14 +44809,14 @@ const CatView = ({ token })=>{
         children: error
     }, void 0, false, {
         fileName: "src/components/cat-view/cat-view.jsx",
-        lineNumber: 35,
+        lineNumber: 37,
         columnNumber: 12
     }, undefined);
     if (!cat) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "loading cats..."
     }, void 0, false, {
         fileName: "src/components/cat-view/cat-view.jsx",
-        lineNumber: 39,
+        lineNumber: 41,
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Container), {
@@ -44817,7 +44828,7 @@ const CatView = ({ token })=>{
                             children: cat.Name
                         }, void 0, false, {
                             fileName: "src/components/cat-view/cat-view.jsx",
-                            lineNumber: 46,
+                            lineNumber: 48,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -44827,7 +44838,7 @@ const CatView = ({ token })=>{
                                     children: "Color/Breed:"
                                 }, void 0, false, {
                                     fileName: "src/components/cat-view/cat-view.jsx",
-                                    lineNumber: 48,
+                                    lineNumber: 50,
                                     columnNumber: 13
                                 }, undefined),
                                 " ",
@@ -44835,7 +44846,7 @@ const CatView = ({ token })=>{
                             ]
                         }, void 0, true, {
                             fileName: "src/components/cat-view/cat-view.jsx",
-                            lineNumber: 47,
+                            lineNumber: 49,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -44845,7 +44856,7 @@ const CatView = ({ token })=>{
                                     children: "Bio:"
                                 }, void 0, false, {
                                     fileName: "src/components/cat-view/cat-view.jsx",
-                                    lineNumber: 51,
+                                    lineNumber: 53,
                                     columnNumber: 13
                                 }, undefined),
                                 " ",
@@ -44853,18 +44864,18 @@ const CatView = ({ token })=>{
                             ]
                         }, void 0, true, {
                             fileName: "src/components/cat-view/cat-view.jsx",
-                            lineNumber: 50,
+                            lineNumber: 52,
                             columnNumber: 11
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/cat-view/cat-view.jsx",
-                    lineNumber: 45,
+                    lineNumber: 47,
                     columnNumber: 9
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/cat-view/cat-view.jsx",
-                lineNumber: 44,
+                lineNumber: 46,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -44874,7 +44885,7 @@ const CatView = ({ token })=>{
                         children: "Movies:"
                     }, void 0, false, {
                         fileName: "src/components/cat-view/cat-view.jsx",
-                        lineNumber: 57,
+                        lineNumber: 59,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
@@ -44884,23 +44895,23 @@ const CatView = ({ token })=>{
                                     movie: movie
                                 }, void 0, false, {
                                     fileName: "src/components/cat-view/cat-view.jsx",
-                                    lineNumber: 61,
+                                    lineNumber: 63,
                                     columnNumber: 15
                                 }, undefined)
                             }, movie.id, false, {
                                 fileName: "src/components/cat-view/cat-view.jsx",
-                                lineNumber: 60,
+                                lineNumber: 62,
                                 columnNumber: 13
                             }, undefined))
                     }, void 0, false, {
                         fileName: "src/components/cat-view/cat-view.jsx",
-                        lineNumber: 58,
+                        lineNumber: 60,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/cat-view/cat-view.jsx",
-                lineNumber: 56,
+                lineNumber: 58,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
@@ -44909,38 +44920,39 @@ const CatView = ({ token })=>{
                         to: `/cats`,
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
                             className: "back-button btn-dark",
-                            onClick: handleClick,
+                            onClick: handleBackClick,
                             children: "Back"
                         }, void 0, false, {
                             fileName: "src/components/cat-view/cat-view.jsx",
-                            lineNumber: 69,
+                            lineNumber: 71,
                             columnNumber: 13
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/cat-view/cat-view.jsx",
-                        lineNumber: 68,
+                        lineNumber: 70,
                         columnNumber: 11
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/cat-view/cat-view.jsx",
-                    lineNumber: 67,
+                    lineNumber: 69,
                     columnNumber: 9
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/cat-view/cat-view.jsx",
-                lineNumber: 66,
+                lineNumber: 68,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/cat-view/cat-view.jsx",
-        lineNumber: 43,
+        lineNumber: 45,
         columnNumber: 5
     }, undefined);
 };
-_s(CatView, "Ex7O9I0PRE/l3byfp9s4eMQkJlo=", false, function() {
+_s(CatView, "nkKiJaRb9yI4MGe+WP+ciME51Uk=", false, function() {
     return [
         (0, _reactRouterDom.useParams),
+        (0, _reactRouterDom.useNavigate),
         (0, _reactRouterDom.useParams)
     ];
 });
