@@ -50,7 +50,8 @@ Here is a list of CatFlix app's essential features:
 You can access the documentation here: [https://catflix-99a985e6fffa.herokuapp.com/api-docs/](https://catflix-99a985e6fffa.herokuapp.com/api-docs/)
 
 ### Deployment
-- This application is deployed on [Heroku](your-heroku-app-url) for the backend API and [Netlify](your-netlify-app-url) for the frontend client app.
+
+- This application is deployed on [Netlify](https://catflixmovies.netlify.app) for the frontend client app and [Heroku](https://catflix-99a985e6fffa.herokuapp.com/) for the backend API.
 
 ## Contributing
 
