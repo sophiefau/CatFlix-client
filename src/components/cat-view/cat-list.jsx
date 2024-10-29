@@ -7,7 +7,6 @@ export const CatList = ({ token, movies }) => {
   const [cats, setCats] = useState([]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const movie = movies.find((m) => m.id === movieId);
 
   const handleClick = () => {
     window.scrollTo(0, 0); // Scrolls to the top when the movie card is clicked
