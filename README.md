@@ -1,71 +1,57 @@
-## CatFlix
-
-<!-- TABLE OF CONTENTS
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
-  </ol>
-</details> -->
-
+# CatFlix
 
 ## About The Project
 
-This project is a small movies web application, with a catalog of movies featuring cats.
-The web application will provide users with access to information about different movies, directors, and genres. Users will be able to sign up, update their personal information, and create a list of their favorite movies.
+This project is a small movie web application showcasing movies that feature cats. It provides users with access to information about different movies and the featured cats. Users can sign up, log in, update their personal information, and create a list of their favorite movies.
 
-### Built With
-- **React** - For building the user interface.
-- **Parcel** - For buidling and serving the app.
-- **Bootstrap** - For responsive design and styling.
-- **Sass** - For custom styles.
-- **RESTful API** - Provides movie data and user management.
-- **MongoDB** - For building the database.
 
 ## Getting Started
-This project is still in building process!
+To run or deploy the application locally or on a server, install the following dependencies:
 
-# Features
-Here is a list of CatFlix app essential features:
+1. Node.js - Download and install from [nodejs.org](nodejs.org).
+2. Project Dependencies - Run `npm install` in the project directory to install all required packages.
 
-- **User Registration and Login:** Easily create an account and access your profile.
-- **Movie Display:** Browse a comprehensive list of movies retrieved from a RESTful API.
-- **Advanced Filtering:** Filter movies by title, genre, and cat characters for a personalized experience.
-- **Cat Character Insights:** Access detailed information about cat characters, including biographies and lifespan.
-- **Detailed Movie Information:** View in-depth details for each movie, including genre, director, and cast.
-- **Favorites Management:** Add or remove movies from your favorites list effortlessly.
+
+## Features
+
+Here is a list of CatFlix app's essential features:
+
+- **User Authentication:** Easily create an account and access your profile.
+- **Movie Display:** Browse a list of movies featuring cats, retrieved from a RESTful API.
+- **Detailed Movie Information:** View details for each movie, including genre, director, and cast.
+- **Cat Character Insights:** Access detailed information about the cats in each movie.
+- **Similar Movies Feature:** View similar movies based on genre and animation.
 - **Profile Management:** Update your profile information, including username, email, and password.
+- **Favorites Management:** Add or remove movies from your favorites list.
 - **Responsive Design:** Enjoy a seamless experience across devices with Bootstrap's responsive design.
 
-### Prerequisites
-
-Node.js and npm should be installed on your machine.
-
-### Installation
 
 ## Usage
 
-# Documentation
+1. **Sign Up or Log In:** Sign up for a new account or log in with existing credentials.
+2. **Browse Movies:** After logging in, browse the main movie list.
+3. **View Movie Details:** Select any movie to view detailed information, including director, genre, and synopsis.
+4. **View Cat Details:** Access cat details from the navigation menu or directly from the movie page.
+5. **User Profile:** Update your username, password, email, or date of birth.
+6. **Manage Favorite Movies:** Add or remove movies from your favorites directly on the movie details page, and access/manage your favorite movies from your profile page.
 
-You can access the documentation build with Swagger here: https://catflix-99a985e6fffa.herokuapp.com/api-docs/
+
+## Dependencies
+
+- **React** - For building the user interface
+- **Parcel** - For building and serving the app
+- **Bootstrap** - For responsive design and styling
+- **Sass** - For custom styles
+- **Redux** - For state management
+- **RESTful API** - Provides movie data and user management
+- **Node and Express** - For building the API
+- **MongoDB** - For building the database
+- **Swagger** - For API documentation
+
+
+## API Integration
+
+You can access the documentation here: [https://catflix-99a985e6fffa.herokuapp.com/api-docs/](https://catflix-99a985e6fffa.herokuapp.com/api-docs/)
 
 ## Contributing
 
@@ -75,6 +61,6 @@ If you’d like to contribute, please fork the repository and use a feature bran
 
 Distributed under the MIT License.
 
-## Contact
-
 ## Acknowledgments
+
+This project was created as part of the Web Development course at CareerFoundry.
