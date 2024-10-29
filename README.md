@@ -7,7 +7,7 @@ Welcome to CatFlix, the ultimate app showcasing a delightful collection of movie
 ## Getting Started
 To run or deploy the application locally or on a server, install the following dependencies:
 
-1. Node.js - Download and install from [nodejs.org](https://nodejs.org/).
+1. Node.js - Download and install from [nodejs.org](https://nodejs.org/en).
 2. Project Dependencies - Run `npm install` in the project directory to install all required packages.
 
 ## Features
