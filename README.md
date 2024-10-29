@@ -22,16 +22,16 @@ Here is a list of CatFlix app's essential features:
 - **Profile Management:** Update your profile information, including username, email, and password.
 - **Favorites Management:** Add or remove movies from your favorites list.
 - **Responsive Design:** Enjoy a seamless experience across devices with Bootstrap's responsive design.
-- **Error handling:** Implemented accurate error messages in forms to guide users through input.
+- **Error handling:** Accurate error messages are implemented in forms to guide you through input.
 
 ## Usage
 
-1. **Sign Up or Log In:** Sign up for a new account or log in with existing credentials.
-2. **Browse Movies:** After logging in, browse the main movie list.
-3. **View Movie Details:** Select any movie to view detailed information, including director, genre, and synopsis.
-4. **View Cat Details:** Access cat details from the navigation menu or directly from the movie page.
-5. **User Profile:** Update your username, password, email, or date of birth.
-6. **Manage Favorite Movies:** Add or remove movies from your favorites directly on the movie details page, and access/manage your favorite movies from your profile page.
+1. **Sign Up or Log In:** => Sign up for a new account or log in with existing credentials.
+2. **Browse Movies:** => After logging in, browse the main movie list.
+3. **View Movie Details:** => Select any movie to view detailed information, including director, genre, and synopsis.
+4. **View Cat Details:** => Access cat details from the navigation menu or directly from the movie page.
+5. **User Profile:** => Update your username, password, email, or date of birth.
+6. **Manage Favorite Movies:** => Add or remove movies from your favorites directly on the movie details page, and access/manage your favorite movies from your profile page.
 
 ## Dependencies
 
@@ -49,9 +49,12 @@ Here is a list of CatFlix app's essential features:
 
 You can access the documentation here: [https://catflix-99a985e6fffa.herokuapp.com/api-docs/](https://catflix-99a985e6fffa.herokuapp.com/api-docs/)
 
+### Deployment
+- This application is deployed on [Heroku](your-heroku-app-url) for the backend API and [Netlify](your-netlify-app-url) for the frontend client app.
+
 ## Contributing
 
-If you’d like to contribute, please fork the repository and use a feature branch. =^._.^= ∫
+If you’d like to contribute, please fork the repository and use a feature branch. =^._.^=
 
 ## License
 
