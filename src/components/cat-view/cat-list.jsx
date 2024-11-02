@@ -9,14 +9,13 @@ export const CatList = ({ token, movies }) => {
   const [loading, setLoading] = useState(false);
 
   const handleClick = () => {
-    window.scrollTo(0, 0); // Scrolls to the top when the movie card is clicked
+    window.scrollTo(0, 0);
   };
 
   useEffect(() => {
     if (!token) {
       return;
     }
-    // console.log("Token being used:", token);
 
     setLoading(true);
 
@@ -27,14 +26,13 @@ export const CatList = ({ token, movies }) => {
         if (!response.ok) {
           if (response.status === 401) {
             setError("Unauthorized access. Please log in again.");
-            return; // Exit early
+            return;
           }
           throw new Error("Failed to fetch cats.");
         }
         return response.json();
       })
       .then((catsData) => {
-        console.log("Fetched cats:", catsData);
         setCats(catsData); 
       })
       .catch((error) => {

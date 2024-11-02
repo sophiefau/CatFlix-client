@@ -4,7 +4,7 @@ import { Card, Button } from "react-bootstrap";
 
 export const CatCard = ({ cat }) => {
   const handleClick = () => {
-    window.scrollTo(0, 0); // Scrolls to the top when the movie card is clicked
+    window.scrollTo(0, 0);
   };
 
   return (

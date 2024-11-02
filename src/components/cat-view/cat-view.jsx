@@ -10,8 +10,8 @@ export const CatView = ({ token }) => {
   const [error, setError] = useState("");
 
   const handleBackClick = () => {
-    navigate(-1); // Go back to the previous page
-    window.scrollTo(0, 0); // Scrolls to the top when the movie card is clicked
+    navigate(-1);
+    window.scrollTo(0, 0);
   };
 
   useEffect(() => {
@@ -26,7 +26,10 @@ export const CatView = ({ token }) => {
         }
         return response.json();
       })
-      .then((data) => setCat(data))
+      .then((data) => {
+        console.log("Retrieved cat data:", data);
+        setCat(data);
+      })
       .catch((err) => {
         setError(err.message || "Failed to fetch cat details");
       });
@@ -59,7 +62,7 @@ export const CatView = ({ token }) => {
         <Row>
           {cat.Movies.map((movie) => (
             <Col className="col mb-4" key={movie.id}>
-              <MovieCard movie={movie} />
+              <MovieCard movie={movie} Img={movie.Img} />
             </Col>
           ))}
         </Row>
@@ -76,5 +79,3 @@ export const CatView = ({ token }) => {
     </Container>
   );
 };
-
-// const catMovies = movies.filter((m) => m.id === movieId);
