@@ -24,6 +24,10 @@ export const MainView = () => {
   const [loading, setLoading] = useState(false);
   const [filter, setFilter] = useState("");
 
+  const handleClick = () => {
+    window.scrollTo(0, 0);
+  };
+
   const onLoggedIn = (user, token) => {
     setUser(user);
     setToken(token);
@@ -137,6 +141,7 @@ export const MainView = () => {
           />
            <Route
             path="/"
+            onClick={handleClick}
             element={
               <>
                 {!user ? (

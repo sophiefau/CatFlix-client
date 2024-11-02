@@ -3,10 +3,14 @@ import { Container, Nav, Navbar } from "react-bootstrap";
 import logo from "../../img/catflix_logo_trans.png";
 
 export const NavigationBar = ({ user, onLoggedOut }) => {
+  const handleClick = () => {
+    window.scrollTo(0, 0);
+  };
+
   return (
     <Navbar variant="dark" bg="dark" expand="lg" className="mb-4 fixed-top">
       <Container>
-        <Navbar.Brand as={Link} to="/">
+        <Navbar.Brand as={Link} to="/" onClick={handleClick}>
           <img className="logo" src={logo} alt="Logo for CatFlix App" />{" "}
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -24,7 +28,7 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
             )}
             {user && (
               <>
-                <Nav.Link as={Link} to="/">
+                <Nav.Link as={Link} to="/" onClick={handleClick}>
                   Home
                 </Nav.Link>
                 <Nav.Link as={Link} to="/cats">
