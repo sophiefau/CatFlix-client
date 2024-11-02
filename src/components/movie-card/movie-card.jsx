@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-export const MovieCard = ({ movie, Img }) => {
+export const MovieCard = ({ movie }) => {
   const handleClick = () => {
     window.scrollTo(0, 0);
   };
