@@ -150,7 +150,7 @@ export const MainView = () => {
                   <Col>The list is empty!</Col>
                 ) : (
                   <>
-                   <Col md={8} className="mb-12" xl={11}>
+                   <Col className="mb-12" sm={11}>
                     <input
                       type="text"
                       placeholder="Filter by title or genre..."
