@@ -33,7 +33,6 @@ export const ProfileView = ({ onLoggedOut, allMovies }) => {
         return response.json();
       })
       .then((userData) => {
-        console.log("Fetched user data:", userData);
         setUser({
           Username: userData.Username,
           Email: userData.Email,
