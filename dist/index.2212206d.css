@@ -13280,9 +13280,7 @@ img {
 }
 
 .btn-link {
-  margin: none;
-  padding: none;
-  color: #9c7b0f;
+  opacity: .9;
 }
 
 h1, .h1 {

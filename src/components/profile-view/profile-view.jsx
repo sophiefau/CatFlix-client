@@ -102,6 +102,8 @@ export const ProfileView = ({ onLoggedOut, allMovies }) => {
           favoriteMovies={allMovies.filter((movie) =>
             user.FavoriteMovies.includes(movie.id)
           )}
+          user={user}
+          token={token}
         />
       </Row>
     </Container>
