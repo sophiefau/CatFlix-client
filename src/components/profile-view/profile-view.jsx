@@ -42,14 +42,12 @@ export const ProfileView = ({ onLoggedOut, allMovies }) => {
       })
       .catch((error) => {
         console.error("Error fetching user data:", error);
-        setError(error.message); 
+        setError(error.message);
       });
   };
 
   useEffect(() => {
-    console.log("Username from URL params:", username);
-    console.log("Token:", token);
-    fetchUserData(); 
+    fetchUserData();
   }, [username, token]);
 
   if (error) {
@@ -64,7 +62,7 @@ export const ProfileView = ({ onLoggedOut, allMovies }) => {
     // Update the user state with the new data
     setUser(updatedUserData);
     console.log("User updated:", updatedUserData);
-    fetchUserData(); 
+    fetchUserData();
   };
 
   const handleToggleUpdate = () => {
