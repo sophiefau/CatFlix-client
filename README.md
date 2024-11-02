@@ -5,7 +5,10 @@
 Welcome to CatFlix, the ultimate app showcasing a delightful collection of movies featuring our feline friends! Discover, rate, and share your favorite cat movies, and immerse yourself in a world of cuteness and adventure.
 
 ## Getting Started
-To run or deploy the application locally or on a server, install the following dependencies:
+
+To run the web application, please follow this link: https://catflixmovies.netlify.app/
+
+To deploy the application locally or on a server, install the following dependencies:
 
 1. Node.js - Download and install from [nodejs.org](https://nodejs.org/en).
 2. Project Dependencies - Run `npm install` in the project directory to install all required packages.
