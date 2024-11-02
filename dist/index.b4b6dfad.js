@@ -27604,6 +27604,7 @@ const MainView = ()=>{
                                     lineNumber: 233,
                                     columnNumber: 19
                                 }, void 0) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
+                                    md: 8,
                                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _profileView.ProfileView), {
                                         user: user,
                                         token: token,
@@ -39975,7 +39976,7 @@ const MovieCard = ({ movie })=>{
                             className: "mt-auto",
                             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
                                 variant: "link",
-                                className: "m-0 p-0 text-decoration-none",
+                                className: "m-0 p-0 text-decoration-none see-details",
                                 children: "See details"
                             }, void 0, false, {
                                 fileName: "src/components/movie-card/movie-card.jsx",
@@ -49219,7 +49220,6 @@ const ProfileView = ({ onLoggedOut, allMovies })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Container), {
         className: "d-flex justify-content-center align-items-center",
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
-            className: "login-view my-4",
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
                     children: [
@@ -49638,10 +49638,10 @@ const FavoriteMovies = ({ favoriteMovies, user, token })=>{
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
                 children: movies && movies.length > 0 ? movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
-                        xs: 12,
-                        sm: 6,
-                        md: 4,
                         className: "mb-3",
+                        md: 6,
+                        lg: 4,
+                        xl: 3,
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                             className: "d-flex flex-column align-items-stretch",
                             children: [
@@ -49654,8 +49654,8 @@ const FavoriteMovies = ({ favoriteMovies, user, token })=>{
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
                                     onClick: ()=>removeFromFavorite(movie.id),
-                                    variant: "link",
-                                    className: "m-4 p-0 mt-2 text-start text-decoration-none btn-link",
+                                    variant: "outline-primary",
+                                    className: "btn-sm m-5 p-0 mt-2 w-50 mb-sm-3",
                                     children: "Remove"
                                 }, void 0, false, {
                                     fileName: "src/components/profile-view/favorite-movies.jsx",
@@ -49666,7 +49666,7 @@ const FavoriteMovies = ({ favoriteMovies, user, token })=>{
                         }, void 0, true, {
                             fileName: "src/components/profile-view/favorite-movies.jsx",
                             lineNumber: 41,
-                            columnNumber: 15
+                            columnNumber: 16
                         }, undefined)
                     }, movie.id, false, {
                         fileName: "src/components/profile-view/favorite-movies.jsx",
@@ -49676,7 +49676,7 @@ const FavoriteMovies = ({ favoriteMovies, user, token })=>{
                     children: "No favorite movies"
                 }, void 0, false, {
                     fileName: "src/components/profile-view/favorite-movies.jsx",
-                    lineNumber: 53,
+                    lineNumber: 54,
                     columnNumber: 11
                 }, undefined)
             }, void 0, false, {
@@ -50233,7 +50233,6 @@ const CatView = ({ token })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Container), {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
-                className: "my-4",
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
                     children: [
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
@@ -50303,7 +50302,7 @@ const CatView = ({ token })=>{
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
                         children: cat.Movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
-                                className: "col mb-4",
+                                className: "mb-3",
                                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
                                     movie: movie
                                 }, void 0, false, {

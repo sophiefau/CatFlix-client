@@ -25,7 +25,7 @@ export const MovieCard = ({ movie }) => {
         <Card.Body className="d-flex flex-column">
           <Card.Title>{movie.Title}</Card.Title>
           <div className="mt-auto">
-            <Button variant="link" className="m-0 p-0 text-decoration-none">
+            <Button variant="link" className="m-0 p-0 text-decoration-none see-details">
               See details
             </Button>
           </div>

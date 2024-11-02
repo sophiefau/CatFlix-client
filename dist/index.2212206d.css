@@ -13270,6 +13270,10 @@ textarea.form-control-lg {
   box-shadow: 0 4px 20px #000;
 }
 
+.see-details {
+  color: #7c7766;
+}
+
 div.movies_img {
   max-width: 220px;
   max-height: 350px;

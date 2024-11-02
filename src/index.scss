@@ -6,7 +6,7 @@ $gold: #9c7b0f;
 $black: #000;
 $darkgrey: #212529;
 $ocher:#9b7006; 
-$grey: #5c5849;
+$grey: #7c7766;
 $cream: #f0e4b8;
 
 @import '~bootstrap/scss/bootstrap.scss';
@@ -92,6 +92,10 @@ $cream: #f0e4b8;
     transform: scale(1.04); 
     box-shadow: 0 4px 20px #000; // 
   }
+}
+
+.see-details{
+  color: $grey;
 }
 
 div.movies_img{

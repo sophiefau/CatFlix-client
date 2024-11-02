@@ -45,7 +45,7 @@ export const CatView = ({ token }) => {
 
   return (
     <Container>
-      <Row className="my-4">
+      <Row>
         <Col>
           <h1 className="my-4">{cat.Name}</h1>
           <div className="mb-3">
@@ -61,7 +61,7 @@ export const CatView = ({ token }) => {
         <h2>Movies:</h2>
         <Row>
           {cat.Movies.map((movie) => (
-            <Col className="col mb-4" key={movie.id}>
+            <Col className="mb-3" key={movie.id}>
               <MovieCard movie={movie}/>
             </Col>
           ))}

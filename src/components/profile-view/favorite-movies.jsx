@@ -37,12 +37,13 @@ export const FavoriteMovies = ({ favoriteMovies, user, token }) => {
       <Row>
         {movies && movies.length > 0 ? (
           movies.map((movie) => (
-            <Col xs={12} sm={6} md={4} key={movie.id} className="mb-3">
-              <div className="d-flex flex-column align-items-stretch">
+            <Col className="mb-3" md={6} lg={4} xl={3} key={movie.id}>
+               <div className="d-flex flex-column align-items-stretch">
               <MovieCard movie={movie} />
               <Button 
                 onClick={() => removeFromFavorite(movie.id)}
-                variant="link" className="m-4 p-0 mt-2 text-start text-decoration-none btn-link"
+                variant="outline-primary" 
+                className="btn-sm m-5 p-0 mt-2 w-50 mb-sm-3"
               >
                 Remove
               </Button>
