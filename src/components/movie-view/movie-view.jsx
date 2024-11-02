@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { MovieCard } from "../movie-card/movie-card";
 import { Container, Row, Col, Button } from "react-bootstrap";
 
@@ -7,13 +7,13 @@ export const MovieView = ({ movies, user, token, setUser }) => {
   const { movieId } = useParams();
   const [isFavorite, setIsFavorite] = useState(false);
   const movie = movies.find((m) => m.id === movieId);
-  const handleClick = () => {
-    window.scrollTo(0, 0); // Scrolls to the top when the movie card is clicked
+  const navigate = useNavigate();
+
+  const handleBackClick = () => {
+    navigate(-1);
+    window.scrollTo(0, 0);
   };
   
-  // console.log("Current movieId:", movieId);
-  // console.log("Movies array:", movies);
-
   if (!movie) {
     return <div>Movie not found</div>;
   }
@@ -25,7 +25,6 @@ export const MovieView = ({ movies, user, token, setUser }) => {
       m.Genre.Name === movie.Genre.Name &&
       m.isAnimated === movie.isAnimated
   );
-  // console.log("Filtered similarMovies:", similarMovies);
 
   // Add-remove favorite movie
   useEffect(() => {
@@ -40,8 +39,7 @@ export const MovieView = ({ movies, user, token, setUser }) => {
       console.log("No token found. Please log in again.");
       return;
     }
-    // console.log("Token before request:", token);
-    // console.log("Current movieId:", movieId);
+
     fetch(
       `https://catflix-99a985e6fffa.herokuapp.com/users/${user.Username}/${movieId}`,
       {
@@ -144,7 +142,7 @@ export const MovieView = ({ movies, user, token, setUser }) => {
         <Row>
           <Col>
             <Link to={`/`}>
-              <Button className="back-button btn-dark" onClick={handleClick}>
+              <Button className="back-button btn-dark" onClick={handleBackClick}>
                 Back
               </Button>
             </Link>

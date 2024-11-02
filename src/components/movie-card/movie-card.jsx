@@ -2,13 +2,10 @@ import PropTypes from "prop-types";
 import { Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-export const MovieCard = ({ movie }) => {
+export const MovieCard = ({ movie, Img }) => {
   const handleClick = () => {
-    window.scrollTo(0, 0); // Scrolls to the top when the movie card is clicked
+    window.scrollTo(0, 0);
   };
-
-  // console.log("Rendering MovieCard for:", movie.Title, movie);
-  // console.log("Navigating to:", `/movies/${encodeURIComponent(movie.id)}`);
 
   return (
     <Link
