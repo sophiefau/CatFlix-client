@@ -60,7 +60,6 @@ export const UpdateUser = ({ user, onUpdate }) => {
     if (password) updatedUser.Password = password;
 
     // Update user information in the database
-    console.log("Updated user object before fetch:", updatedUser);
     fetch(`https://catflix-99a985e6fffa.herokuapp.com/users/${user.Username}`, {
       method: "PATCH",
       body: JSON.stringify(updatedUser),
@@ -70,12 +69,7 @@ export const UpdateUser = ({ user, onUpdate }) => {
       },
     })
       .then((response) => {
-        console.log("Username:", username);
-        console.log("Email:", email);
-        console.log("Password:", password);
-        console.log("Fetch request data:", JSON.stringify(updatedUser));
         if (password) {
-          console.log("Password before adding to updatedUser:", password);
           updatedUser.Password = password;
         }
         if (response.ok) {
@@ -97,12 +91,10 @@ export const UpdateUser = ({ user, onUpdate }) => {
       })
       .then((result) => {
         navigate(`/users/${result.Username}`);
-        console.log("Updated user data:", updatedUser);
         onUpdate(updatedUser);
-        window.location.reload(); // Reload the page after updating
+        window.location.reload();
       })
       .catch((error) => {
-        // console.error("Error updating user:", error);
         if (error.response) {
           console.error("Server response:", error.response);
         } else {

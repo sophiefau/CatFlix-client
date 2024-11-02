@@ -42,7 +42,6 @@ export const MainView = () => {
     if (!token) {
       return;
     }
-    // console.log("Token being used:", token);
 
     setLoading(true);
 
@@ -61,7 +60,6 @@ export const MainView = () => {
         return response.json();
       })
       .then((movies) => {
-        console.log("Fetched movies:", movies);
         const moviesFromApi = movies.map((movie) => ({
           id: movie._id,
           Title: movie.Title,

@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 
 export const UserInfo = ({ username, email, birthday }) => {
-  console.log("Fetch User Data:", username, email, birthday);
 
   // Check if the user data is available and contains the necessary fields
   if (!username || !email || !birthday) {
