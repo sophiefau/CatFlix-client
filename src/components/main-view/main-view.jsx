@@ -22,6 +22,7 @@ export const MainView = () => {
   const [token, setToken] = useState(storedToken || null);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [filter, setFilter] = useState("");
 
   const onLoggedIn = (user, token) => {
     setUser(user);
@@ -52,8 +53,8 @@ export const MainView = () => {
         if (!response.ok) {
           if (response.status === 401) {
             setError("Unauthorized access. Please log in again.");
-            onLoggedOut(); // Log out the user if unauthorized
-            return; // Exit early
+            onLoggedOut();
+            return;
           }
           throw new Error("Failed to fetch movies.");
         }
@@ -90,6 +91,17 @@ export const MainView = () => {
     return <div className="loading-msg">{"loading movies..."}</div>;
   }
 
+  const filteredMovies = movies.filter((movie) => {
+    const lowerCaseFilter = filter.toLowerCase();
+
+    const genreName = movie.Genre && movie.Genre.Name ? movie.Genre.Name : "";
+  
+    return (
+      movie.Title.toLowerCase().includes(lowerCaseFilter) || 
+      genreName.toLowerCase().includes(lowerCaseFilter)
+    );
+  });
+
   return (
     <BrowserRouter>
       <NavigationBar user={user} onLoggedOut={onLoggedOut} />
@@ -123,17 +135,26 @@ export const MainView = () => {
               </>
             }
           />
-          <Route
+           <Route
             path="/"
             element={
               <>
                 {!user ? (
                   <Navigate to="/login" replace />
-                ) : movies.length === 0 ? (
+                ) : filteredMovies.length === 0 ? (
                   <Col>The list is empty!</Col>
                 ) : (
                   <>
-                    {movies.map((movie) => (
+                   <Col md={8} className="mb-12" xl={11}>
+                    <input
+                      type="text"
+                      placeholder="Filter by title or genre..."
+                      value={filter}
+                      onChange={(e) => setFilter(e.target.value)}
+                      className="form-control"
+                    />
+                  </Col>
+                    {filteredMovies.map((movie) => (
                       <Col
                         className="mb-4 d-flex justify-content-center"
                         key={movie.id}
