@@ -8,17 +8,13 @@ Welcome to CatFlix, the ultimate app showcasing a delightful collection of movie
 
 To run the web application, please follow this link: https://catflixmovies.netlify.app/
 
-To deploy the application locally or on a server, install the following dependencies:
-
-1. Node.js - Download and install from [nodejs.org](https://nodejs.org/en).
-2. Project Dependencies - Run `npm install` in the project directory to install all required packages.
-
 ## Features
 
 Here is a list of CatFlix app's essential features:
 
 - **User Authentication:** Easily create an account and access your profile.
 - **Movie Display:** Browse a list of movies featuring cats, retrieved from a RESTful API.
+- **Filtering:** Filter movies by title or genre.
 - **Detailed Movie Information:** View details for each movie, including genre, director, and cast.
 - **Cat Character Insights:** Access detailed information about the cat(s) in each movie.
 - **Similar Movies Feature:** View similar movies based on genre and if it is animated or not.
@@ -30,7 +26,7 @@ Here is a list of CatFlix app's essential features:
 ## Usage
 
 1. **Sign Up or Log In:** Sign up for a new account or log in with existing credentials.
-2. **Browse Movies:** After logging in, browse the main movie list.
+2. **Browse Movies:** After logging in, browse the main movie list by scrolling down or using the search bar.
 3. **View Movie Details:** Select any movie to view detailed information, including director, genre, and synopsis.
 4. **View Cat Details:** Access cat details from the navigation menu or directly from the movie page.
 5. **User Profile:** Update your username, password, email, or date of birth.
