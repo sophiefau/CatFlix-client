@@ -1,7 +1,7 @@
 # CatFlix
 
 ## About The Project
-Welcome to CatFlix, the ultimate app showcasing a delightful collection of movies featuring our feline friends! Discover, rate, and share your favorite cat movies, and immerse yourself in a world of cuteness and adventure.
+Welcome to CatFlix, the ultimate app showcasing a delightful collection of movies featuring our feline friends! Discover and list your favorite cat movies, and immerse yourself in a world of cuteness and adventure.
 
 ## Getting Started
 To run the web application, please follow this link: https://catflixmovies.netlify.app/
