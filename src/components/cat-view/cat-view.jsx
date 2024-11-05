@@ -45,9 +45,12 @@ export const CatView = ({ token }) => {
 
   return (
     <Container>
-      <Row>
-        <Col>
-          <h1 className="my-4">{cat.Name}</h1>
+        <Row className="my-4">
+        <Col className="mb-4 me-0" sm={12} md={6} lg={4}>
+          <img className="my-2 w-100" src={cat.Img} alt={cat.Name + "portrait"} />
+        </Col>
+        <Col sm={12} md={6} lg={8}>
+          <h1 className="mb-4 my-4">{cat.Name}</h1>
           <div className="mb-3">
             <strong>Color/Breed:</strong> {cat.ColorBreed}
           </div>

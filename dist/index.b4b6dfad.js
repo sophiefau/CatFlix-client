@@ -40026,11 +40026,7 @@ MovieCard.propTypes = {
     movie: (0, _propTypesDefault.default).shape({
         id: (0, _propTypesDefault.default).string.isRequired,
         Title: (0, _propTypesDefault.default).string.isRequired,
-        Img: (0, _propTypesDefault.default).string.isRequired,
-        Genre: (0, _propTypesDefault.default).shape({
-            Name: (0, _propTypesDefault.default).string.isRequired
-        }).isRequired,
-        Animation: (0, _propTypesDefault.default).bool.isRequired
+        Img: (0, _propTypesDefault.default).string.isRequired
     }).isRequired
 };
 var _c;
@@ -50281,62 +50277,87 @@ const CatView = ({ token })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Container), {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
-                    children: [
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-                            className: "my-4",
-                            children: cat.Name
+                className: "my-4",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
+                        className: "mb-4 me-0",
+                        sm: 12,
+                        md: 6,
+                        lg: 4,
+                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                            className: "my-2 w-100",
+                            src: cat.Img,
+                            alt: cat.Name + "portrait"
                         }, void 0, false, {
                             fileName: "src/components/cat-view/cat-view.jsx",
                             lineNumber: 50,
                             columnNumber: 11
-                        }, undefined),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                            className: "mb-3",
-                            children: [
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
-                                    children: "Color/Breed:"
-                                }, void 0, false, {
-                                    fileName: "src/components/cat-view/cat-view.jsx",
-                                    lineNumber: 52,
-                                    columnNumber: 13
-                                }, undefined),
-                                " ",
-                                cat.ColorBreed
-                            ]
-                        }, void 0, true, {
-                            fileName: "src/components/cat-view/cat-view.jsx",
-                            lineNumber: 51,
-                            columnNumber: 11
-                        }, undefined),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                            className: "mb-3",
-                            children: [
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
-                                    children: "Bio:"
-                                }, void 0, false, {
-                                    fileName: "src/components/cat-view/cat-view.jsx",
-                                    lineNumber: 55,
-                                    columnNumber: 13
-                                }, undefined),
-                                " ",
-                                cat.Bio
-                            ]
-                        }, void 0, true, {
-                            fileName: "src/components/cat-view/cat-view.jsx",
-                            lineNumber: 54,
-                            columnNumber: 11
                         }, undefined)
-                    ]
-                }, void 0, true, {
-                    fileName: "src/components/cat-view/cat-view.jsx",
-                    lineNumber: 49,
-                    columnNumber: 9
-                }, undefined)
-            }, void 0, false, {
+                    }, void 0, false, {
+                        fileName: "src/components/cat-view/cat-view.jsx",
+                        lineNumber: 49,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
+                        sm: 12,
+                        md: 6,
+                        lg: 8,
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+                                className: "mb-4 my-4",
+                                children: cat.Name
+                            }, void 0, false, {
+                                fileName: "src/components/cat-view/cat-view.jsx",
+                                lineNumber: 53,
+                                columnNumber: 11
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                className: "mb-3",
+                                children: [
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
+                                        children: "Color/Breed:"
+                                    }, void 0, false, {
+                                        fileName: "src/components/cat-view/cat-view.jsx",
+                                        lineNumber: 55,
+                                        columnNumber: 13
+                                    }, undefined),
+                                    " ",
+                                    cat.ColorBreed
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/components/cat-view/cat-view.jsx",
+                                lineNumber: 54,
+                                columnNumber: 11
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                className: "mb-3",
+                                children: [
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
+                                        children: "Bio:"
+                                    }, void 0, false, {
+                                        fileName: "src/components/cat-view/cat-view.jsx",
+                                        lineNumber: 58,
+                                        columnNumber: 13
+                                    }, undefined),
+                                    " ",
+                                    cat.Bio
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/components/cat-view/cat-view.jsx",
+                                lineNumber: 57,
+                                columnNumber: 11
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/components/cat-view/cat-view.jsx",
+                        lineNumber: 52,
+                        columnNumber: 9
+                    }, undefined)
+                ]
+            }, void 0, true, {
                 fileName: "src/components/cat-view/cat-view.jsx",
                 lineNumber: 48,
-                columnNumber: 7
+                columnNumber: 9
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 className: "mb-3",
@@ -50345,7 +50366,7 @@ const CatView = ({ token })=>{
                         children: "Movies:"
                     }, void 0, false, {
                         fileName: "src/components/cat-view/cat-view.jsx",
-                        lineNumber: 61,
+                        lineNumber: 64,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
@@ -50355,23 +50376,23 @@ const CatView = ({ token })=>{
                                     movie: movie
                                 }, void 0, false, {
                                     fileName: "src/components/cat-view/cat-view.jsx",
-                                    lineNumber: 65,
+                                    lineNumber: 68,
                                     columnNumber: 15
                                 }, undefined)
                             }, movie.id, false, {
                                 fileName: "src/components/cat-view/cat-view.jsx",
-                                lineNumber: 64,
+                                lineNumber: 67,
                                 columnNumber: 13
                             }, undefined))
                     }, void 0, false, {
                         fileName: "src/components/cat-view/cat-view.jsx",
-                        lineNumber: 62,
+                        lineNumber: 65,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/cat-view/cat-view.jsx",
-                lineNumber: 60,
+                lineNumber: 63,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
@@ -50382,17 +50403,17 @@ const CatView = ({ token })=>{
                         children: "Back"
                     }, void 0, false, {
                         fileName: "src/components/cat-view/cat-view.jsx",
-                        lineNumber: 72,
+                        lineNumber: 75,
                         columnNumber: 13
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/cat-view/cat-view.jsx",
-                    lineNumber: 71,
+                    lineNumber: 74,
                     columnNumber: 9
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/cat-view/cat-view.jsx",
-                lineNumber: 70,
+                lineNumber: 73,
                 columnNumber: 7
             }, undefined)
         ]
