@@ -49990,7 +49990,7 @@ var _catCard = require("./cat-card");
 var _reactRouterDom = require("react-router-dom");
 var _reactBootstrap = require("react-bootstrap");
 var _s = $RefreshSig$();
-const CatList = ({ token, movies })=>{
+const CatList = ({ token })=>{
     _s();
     const [cats, setCats] = (0, _react.useState)([]);
     const [error, setError] = (0, _react.useState)("");
@@ -50015,13 +50015,21 @@ const CatList = ({ token, movies })=>{
             }
             return response.json();
         }).then((cats)=>{
-            const catsFromApi = cats.map((cat)=>({
-                    Name: cat.Name,
-                    Img: cat.Img,
-                    ColorBreed: cat.ColorBreed,
-                    Bio: cat.Bio
-                }));
-            setCats(catsFromApi);
+            const uniqueCats = [];
+            const catNames = new Set();
+            // Filter for unique cats
+            cats.forEach((cat)=>{
+                if (!catNames.has(cat.Name)) {
+                    uniqueCats.push({
+                        Name: cat.Name,
+                        Img: cat.Img,
+                        ColorBreed: cat.ColorBreed,
+                        Bio: cat.Bio
+                    });
+                    catNames.add(cat.Name);
+                }
+            });
+            setCats(uniqueCats);
         }).catch((error)=>{
             console.error("Error fetching cats:", error);
             setError("Failed to get cats. Please try again later.");
@@ -50035,7 +50043,7 @@ const CatList = ({ token, movies })=>{
         children: error
     }, void 0, false, {
         fileName: "src/components/cat-view/cat-list.jsx",
-        lineNumber: 54,
+        lineNumber: 64,
         columnNumber: 12
     }, undefined);
     if (loading) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -50043,7 +50051,7 @@ const CatList = ({ token, movies })=>{
         children: "loading cats..."
     }, void 0, false, {
         fileName: "src/components/cat-view/cat-list.jsx",
-        lineNumber: 58,
+        lineNumber: 68,
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Container), {
@@ -50053,7 +50061,7 @@ const CatList = ({ token, movies })=>{
                 children: "Cat Movie Stars"
             }, void 0, false, {
                 fileName: "src/components/cat-view/cat-list.jsx",
-                lineNumber: 63,
+                lineNumber: 73,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
@@ -50067,17 +50075,17 @@ const CatList = ({ token, movies })=>{
                             cat: cat
                         }, void 0, false, {
                             fileName: "src/components/cat-view/cat-list.jsx",
-                            lineNumber: 74,
+                            lineNumber: 84,
                             columnNumber: 11
                         }, undefined)
                     }, `${cat.Name}-${index}`, false, {
                         fileName: "src/components/cat-view/cat-list.jsx",
-                        lineNumber: 66,
+                        lineNumber: 76,
                         columnNumber: 9
                     }, undefined))
             }, void 0, false, {
                 fileName: "src/components/cat-view/cat-list.jsx",
-                lineNumber: 64,
+                lineNumber: 74,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
@@ -50089,23 +50097,23 @@ const CatList = ({ token, movies })=>{
                         children: "Back"
                     }, void 0, false, {
                         fileName: "src/components/cat-view/cat-list.jsx",
-                        lineNumber: 80,
+                        lineNumber: 90,
                         columnNumber: 11
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/cat-view/cat-list.jsx",
-                    lineNumber: 79,
+                    lineNumber: 89,
                     columnNumber: 9
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/cat-view/cat-list.jsx",
-                lineNumber: 78,
+                lineNumber: 88,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/cat-view/cat-list.jsx",
-        lineNumber: 62,
+        lineNumber: 72,
         columnNumber: 5
     }, undefined);
 };

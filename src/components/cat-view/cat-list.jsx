@@ -3,7 +3,7 @@ import { CatCard } from "./cat-card";
 import { Link } from "react-router-dom";
 import { Container, Row, Col, Button } from "react-bootstrap";
 
-export const CatList = ({ token, movies }) => {
+export const CatList = ({ token }) => {
   const [cats, setCats] = useState([]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -33,13 +33,23 @@ export const CatList = ({ token, movies }) => {
         return response.json();
       })
       .then((cats) => {
-          const catsFromApi = cats.map((cat) => ({
-            Name:cat.Name,
-            Img: cat.Img,
-            ColorBreed: cat.ColorBreed,
-            Bio: cat.Bio,
-          }));
-        setCats(catsFromApi); 
+        const uniqueCats = [];
+        const catNames = new Set();
+
+        // Filter for unique cats
+        cats.forEach((cat) => {
+          if (!catNames.has(cat.Name)) {
+            uniqueCats.push({
+              Name: cat.Name,
+              Img: cat.Img,
+              ColorBreed: cat.ColorBreed,
+              Bio: cat.Bio,
+            });
+            catNames.add(cat.Name);
+          }
+        });
+
+        setCats(uniqueCats);
       })
       .catch((error) => {
         console.error("Error fetching cats:", error);
