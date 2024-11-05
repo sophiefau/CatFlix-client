@@ -69,11 +69,9 @@ export const CatView = ({ token }) => {
       </div>
       <Row>
         <Col>
-          <Link to={`/cats`}>
-            <Button className="back-button btn-dark" onClick={handleBackClick}>
+            <Button className="btn btn-dark" onClick={handleBackClick}>
               Back
             </Button>
-          </Link>
         </Col>
       </Row>
     </Container>

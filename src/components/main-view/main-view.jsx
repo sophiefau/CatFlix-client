@@ -68,6 +68,7 @@ export const MainView = () => {
           Cat: movie.Cat,
           Genre: movie.Genre,
           Year: movie.Year,
+          Country: movie.Country,
           Synopsis: movie.Synopsis,
           Animation: movie.Animation,
         }));

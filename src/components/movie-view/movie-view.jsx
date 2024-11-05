@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { MovieCard } from "../movie-card/movie-card";
 import { Container, Row, Col, Button } from "react-bootstrap";
+import PropTypes from "prop-types";
 
 export const MovieView = ({ movies, user, token, setUser }) => {
   const { movieId } = useParams();
@@ -129,6 +130,9 @@ export const MovieView = ({ movies, user, token, setUser }) => {
             <strong>Year:</strong> {movie.Year}
           </div>
           <div className="mb-2">
+            <strong>Country:</strong> {movie.Country}
+          </div>
+          <div className="mb-2">
             <strong>Synopsis:</strong> {movie.Synopsis}
           </div>
 
@@ -141,11 +145,9 @@ export const MovieView = ({ movies, user, token, setUser }) => {
         </Col>
         <Row>
           <Col>
-            <Link to={`/`}>
-              <Button className="back-button btn-dark" onClick={handleBackClick}>
+              <Button className="btn btn-dark" onClick={handleBackClick}>
                 Back
               </Button>
-            </Link>
           </Col>
         </Row>
       </Row>
@@ -166,4 +168,35 @@ export const MovieView = ({ movies, user, token, setUser }) => {
       </div>
     </Container>
   );
+};
+
+MovieView.propTypes = {
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      Title: PropTypes.string.isRequired,
+      Img: PropTypes.string,
+      Director: PropTypes.string,
+      Cat: PropTypes.shape({
+        Name: PropTypes.string,
+        ColorBreed: PropTypes.string,
+        Bio: PropTypes.string,
+        Img: PropTypes.string,
+      }),
+      Genre: PropTypes.shape({
+        Name: PropTypes.string,
+        Description: PropTypes.string,
+      }),
+      Animation: PropTypes.bool,
+      Year: PropTypes.string,
+      Country: PropTypes.string,
+      Synopsis: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  user: PropTypes.shape({
+    Username: PropTypes.string.isRequired,
+    FavoriteMovies: PropTypes.arrayOf(PropTypes.string),
+  }),
+  token: PropTypes.string,
+  setUser: PropTypes.func.isRequired,
 };
