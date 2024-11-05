@@ -13,9 +13,8 @@ import { NavigationBar } from "../navigation-bar/navigation-bar";
 import { Row, Col } from "react-bootstrap";
 
 export const MainView = () => {
-  const movies = useSelector((state) => state.movies.list);
   const dispatch = useDispatch();
-
+  const movies = useSelector((state) => state.movies.list);
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
   const [user, setUser] = useState(storedUser || null);
@@ -23,10 +22,6 @@ export const MainView = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [filter, setFilter] = useState("");
-
-  const handleClick = () => {
-    window.scrollTo(0, 0);
-  };
 
   const onLoggedIn = (user, token) => {
     setUser(user);
@@ -99,12 +94,17 @@ export const MainView = () => {
     const lowerCaseFilter = filter.toLowerCase();
 
     const genreName = movie.Genre && movie.Genre.Name ? movie.Genre.Name : "";
-  
+
     return (
-      movie.Title.toLowerCase().includes(lowerCaseFilter) || 
+      movie.Title.toLowerCase().includes(lowerCaseFilter) ||
       genreName.toLowerCase().includes(lowerCaseFilter)
     );
   });
+
+  const resetFilter = () => {
+    setFilter("");
+    window.scrollTo(0, 0);
+  };
 
   return (
     <BrowserRouter>
@@ -139,26 +139,31 @@ export const MainView = () => {
               </>
             }
           />
-           <Route
+          <Route
             path="/"
-            onClick={handleClick}
+            onClick={resetFilter}
             element={
               <>
                 {!user ? (
                   <Navigate to="/login" replace />
                 ) : filteredMovies.length === 0 ? (
-                  <Col>The list is empty!</Col>
+                  <Col className="text-center">
+                    No cat movie found!
+                    <button onClick={resetFilter} className="btn btn-dark ms-2">
+                      Back
+                    </button>
+                  </Col>
                 ) : (
                   <>
-                   <Col className="mb-12" sm={11}>
-                    <input
-                      type="text"
-                      placeholder="Filter by title or genre..."
-                      value={filter}
-                      onChange={(e) => setFilter(e.target.value)}
-                      className="form-control"
-                    />
-                  </Col>
+                    <Col className="mb-12" sm={11}>
+                      <input
+                        type="text"
+                        placeholder="Filter by title or genre..."
+                        value={filter}
+                        onChange={(e) => setFilter(e.target.value)}
+                        className="form-control"
+                      />
+                    </Col>
                     {filteredMovies.map((movie) => (
                       <Col
                         className="mb-4 d-flex justify-content-center"
@@ -183,7 +188,7 @@ export const MainView = () => {
                 {!user ? (
                   <Navigate to="/login" replace />
                 ) : movies.length === 0 ? (
-                  <Col>The list is empty!</Col>
+                  <Col className="text-center">No cat movie found!</Col>
                 ) : (
                   <Col md={8}>
                     <MovieView
