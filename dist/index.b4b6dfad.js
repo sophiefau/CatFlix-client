@@ -48269,7 +48269,7 @@ const MovieView = ({ movies, user, token, setUser })=>{
         columnNumber: 12
     }, undefined);
     // Find similar movies
-    const similarMovies = movies.filter((m)=>m.id !== movieId && m.Genre.Name === movie.Genre.Name && m.isAnimated === movie.isAnimated);
+    const similarMovies = movies.filter((m)=>m.id !== movieId && m.Genre.Name === movie.Genre.Name && m.Animation === movie.Animation);
     // Add-remove favorite movie
     (0, _react.useEffect)(()=>{
         if (user && user.FavoriteMovies) {

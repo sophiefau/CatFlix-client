@@ -24,7 +24,7 @@ export const MovieView = ({ movies, user, token, setUser }) => {
     (m) =>
       m.id !== movieId &&
       m.Genre.Name === movie.Genre.Name &&
-      m.isAnimated === movie.isAnimated
+      m.Animation === movie.Animation
   );
 
   // Add-remove favorite movie
