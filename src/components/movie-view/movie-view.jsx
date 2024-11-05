@@ -102,7 +102,7 @@ export const MovieView = ({ movies, user, token, setUser }) => {
 
   return (
     <Container>
-      <Row className="my-4">
+      <Row className="my-4 custom-margin-sm">
         <Col className="mb-4 me-0" sm={12} md={5} lg={4}>
           <img className="my-2 w-100" src={movie.Img} alt={movie.Title} />
         </Col>
@@ -137,24 +137,21 @@ export const MovieView = ({ movies, user, token, setUser }) => {
           </div>
 
           <Button
-            className="btn-sm"
+            className="btn-sm my-3"
             onClick={isFavorite ? removeFromFavorite : addToFavorite}
           >
             {isFavorite ? "Remove from Favorites" : "Add to Favorites"}
           </Button>
         </Col>
-        <Row>
           <Col>
-              <Button className="btn btn-dark" onClick={handleBackClick}>
+              <Button className="btn btn-dark my-2" onClick={handleBackClick}>
                 Back
               </Button>
           </Col>
-        </Row>
       </Row>
 
-      <div>
+      <Row className="my-4 custom-margin-sm">
         <h2 className="mb-3">Similar Movies</h2>
-        <Row>
           {similarMovies.length > 0 ? (
             similarMovies.map((similarMovie) => (
               <Col className="mb-3" md={6} lg={4} xl={3} key={similarMovie.id}>
@@ -165,7 +162,6 @@ export const MovieView = ({ movies, user, token, setUser }) => {
             <div>No similar movies found</div>
           )}
         </Row>
-      </div>
     </Container>
   );
 };

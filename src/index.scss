@@ -132,6 +132,19 @@ h2{
 }
 
 .cat-card{
-  width: 170px;
   min-height: 170px;
+}
+
+.movies-card{
+  min-height: 370px;
+}
+
+@media (max-width: 764px) {
+  .custom-margin-sm {
+    margin-left: 10%;
+  }
+
+  .btn-small-screen{
+    max-width: 50%;
+  }
 }

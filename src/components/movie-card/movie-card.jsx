@@ -13,10 +13,9 @@ export const MovieCard = ({ movie }) => {
       className="text-decoration-none"
       onClick={handleClick}
     >
-      <Card className="h-100 bg-dark">
+      <Card className="h-100 w-100 bg-dark movies-card">
         <div className="movies_img">
           <Card.Img
-            className="w-100"
             variant="top"
             src={movie.Img}
             alt={movie.Title + "poster"}

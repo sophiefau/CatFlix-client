@@ -151,7 +151,7 @@ export const UpdateUser = ({ user, onUpdate }) => {
               </Form.Control.Feedback>
             </Form.Group>
 
-            <Button variant="primary" type="submit" className="mt-3">
+            <Button variant="primary" type="submit" className="mt-3 mb-3">
               Update
             </Button>
           </Form>

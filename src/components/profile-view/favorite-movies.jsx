@@ -23,38 +23,42 @@ export const FavoriteMovies = ({ favoriteMovies, user, token }) => {
           setMovies(movies.filter((movie) => movie.id !== movieId));
         } else {
           // Handle error case
-          console.error('Failed to remove movie');
+          console.error("Failed to remove movie");
         }
       })
       .catch((error) => {
-        console.error('Error:', error);
+        console.error("Error:", error);
       });
   };
 
   return (
-    <div>
+    <Row>
       <h2 className="mb-3">Your Favorite Cat's Movies</h2>
-      <Row>
-        {movies && movies.length > 0 ? (
-          movies.map((movie) => (
-            <Col className="mb-3" md={6} lg={4} xl={3} key={movie.id}>
-               <div className="d-flex flex-column align-items-stretch">
-              <MovieCard movie={movie} />
-              <Button 
-                onClick={() => removeFromFavorite(movie.id)}
-                variant="outline-primary" 
-                className="btn-sm m-5 p-0 mt-2 w-50 mb-sm-3"
-              >
-                Remove
-              </Button>
-              </div>
+      {movies && movies.length > 0 ? (
+        movies.map((movie) => (
+          <Col
+            className="mb-3 d-flex flex-column align-items-stretch"
+            md={6}
+            lg={4}
+            xl={3}
+            key={movie.id}
+          >
+            <div className="h-100 d-flex flex-column">
+            <MovieCard movie={movie} className="h-100"/>
+            <Button
+              onClick={() => removeFromFavorite(movie.id)}
+              variant="outline-primary"
+              className="btn-sm mt-2 m-4 p-0 btn-small-screen"
+            >
+              Remove
+            </Button>
+            </div>
             </Col>
-          ))
-        ) : (
-          <p>No favorite movies</p>
-        )}
-      </Row>
-    </div>
+        ))
+      ) : (
+        <p>No favorite movies</p>
+      )}
+    </Row>
   );
 };
 

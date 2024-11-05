@@ -45,12 +45,16 @@ export const CatView = ({ token }) => {
 
   return (
     <Container>
-        <Row className="my-4">
+      <Row className="my-4 custom-margin-sm">
         <Col className="mb-4 me-0" sm={12} md={6} lg={4}>
-          <img className="my-2 w-100" src={cat.Img} alt={cat.Name + "portrait"} />
+          <img
+            className="my-2 w-100"
+            src={cat.Img}
+            alt={cat.Name + "portrait"}
+          />
         </Col>
         <Col sm={12} md={6} lg={8}>
-          <h1 className="mb-4 my-4">{cat.Name}</h1>
+          <h1 className="mb-4">{cat.Name}</h1>
           <div className="mb-3">
             <strong>Color/Breed:</strong> {cat.ColorBreed}
           </div>
@@ -58,24 +62,19 @@ export const CatView = ({ token }) => {
             <strong>Bio:</strong> {cat.Bio}
           </div>
         </Col>
-      </Row>
-
-      <div className="mb-3">
-        <h2>Movies:</h2>
-        <Row>
-          {cat.Movies.map((movie) => (
-            <Col className="mb-3" key={movie.id}>
-              <MovieCard movie={movie}/>
-            </Col>
-          ))}
-        </Row>
-      </div>
-      <Row>
         <Col>
-            <Button className="btn btn-dark" onClick={handleBackClick}>
-              Back
-            </Button>
+          <Button className="btn btn-dark my-2" onClick={handleBackClick}>
+            Back
+          </Button>
         </Col>
+      </Row>
+      <Row className="mb-3 custom-margin-sm">
+        <h2>Movies:</h2>
+        {cat.Movies.map((movie) => (
+          <Col className="mb-3" sm={12} md={6} lg={4} key={movie.id}>
+            <MovieCard movie={movie} />
+          </Col>
+        ))}
       </Row>
     </Container>
   );

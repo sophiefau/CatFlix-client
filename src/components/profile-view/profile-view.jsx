@@ -19,6 +19,11 @@ export const ProfileView = ({ onLoggedOut, allMovies }) => {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
+  const handleBackClick = () => {
+    navigate(-1);
+    window.scrollTo(0, 0);
+  };
+
   // Function to fetch user data
   const fetchUserData = () => {
     if (!token) return;
@@ -71,7 +76,7 @@ export const ProfileView = ({ onLoggedOut, allMovies }) => {
 
   return (
     <Container className="d-flex justify-content-center align-items-center">
-      <Row>
+      <Row className="custom-margin-sm">
         <Col>
           <UserInfo
             username={username}
@@ -80,7 +85,7 @@ export const ProfileView = ({ onLoggedOut, allMovies }) => {
           />
 
           {userUpdate && <UpdateUser user={user} onUpdate={handleUserUpdate} />}
-          <Button onClick={handleToggleUpdate}>
+          <Button onClick={handleToggleUpdate} className="my-2">
             {userUpdate ? "Cancel Update" : "Update Profile"}
           </Button>
 
@@ -93,9 +98,12 @@ export const ProfileView = ({ onLoggedOut, allMovies }) => {
         </Col>
         <Row>
           <Col>
-            <Link to={`/`}>
-              <Button className="back-button btn-dark">Back</Button>
-            </Link>
+            <Button
+              className="btn btn-dark my-4 mb-3"
+              onClick={handleBackClick}
+            >
+              Back
+            </Button>
           </Col>
         </Row>
         <FavoriteMovies

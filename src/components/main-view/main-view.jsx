@@ -110,7 +110,7 @@ export const MainView = () => {
   return (
     <BrowserRouter>
       <NavigationBar user={user} onLoggedOut={onLoggedOut} />
-      <Row className="justify-content-md-center custom-margin-sm">
+      <Row className="justify-content-md-center">
         <Routes>
           <Route
             path="/signup"
@@ -225,7 +225,7 @@ export const MainView = () => {
                   <Navigate to="/login" replace />
                 ) : (
                   <Col md={8}>
-                    <CatView movies={movies} token={token} />
+                    <CatView movies={movies} token={token}/>
                   </Col>
                 )}
               </>
