@@ -40,7 +40,7 @@ export const CatView = ({ token }) => {
   }
 
   if (!cat) {
-    return <div>loading cats...</div>;
+    return <div className="loading-msg">loading cats...</div>;
   }
 
   return (

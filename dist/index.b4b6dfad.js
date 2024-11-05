@@ -27373,7 +27373,7 @@ const MainView = ()=>{
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
-                className: "justify-content-md-center",
+                className: "justify-content-md-center custom-margin-sm",
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Routes), {
                     children: [
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -50031,8 +50031,14 @@ const CatList = ({ token, movies })=>{
                 throw new Error("Failed to fetch cats.");
             }
             return response.json();
-        }).then((catsData)=>{
-            setCats(catsData);
+        }).then((cats)=>{
+            const catsFromApi = cats.map((cat)=>({
+                    Name: cat.Name,
+                    Img: cat.Img,
+                    ColorBreed: cat.ColorBreed,
+                    Bio: cat.Bio
+                }));
+            setCats(catsFromApi);
         }).catch((error)=>{
             console.error("Error fetching cats:", error);
             setError("Failed to get cats. Please try again later.");
@@ -50046,7 +50052,7 @@ const CatList = ({ token, movies })=>{
         children: error
     }, void 0, false, {
         fileName: "src/components/cat-view/cat-list.jsx",
-        lineNumber: 48,
+        lineNumber: 54,
         columnNumber: 12
     }, undefined);
     if (loading) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -50054,7 +50060,7 @@ const CatList = ({ token, movies })=>{
         children: "loading cats..."
     }, void 0, false, {
         fileName: "src/components/cat-view/cat-list.jsx",
-        lineNumber: 52,
+        lineNumber: 58,
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Container), {
@@ -50064,33 +50070,31 @@ const CatList = ({ token, movies })=>{
                 children: "Cat Movie Stars"
             }, void 0, false, {
                 fileName: "src/components/cat-view/cat-list.jsx",
-                lineNumber: 57,
+                lineNumber: 63,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
-                children: cats.map((catName, index)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
+                children: cats.map((cat, index)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
                         className: "mb-4 d-flex justify-content-center",
                         sm: 6,
                         md: 6,
                         lg: 4,
                         xl: 3,
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _catCard.CatCard), {
-                            cat: {
-                                Name: catName
-                            }
+                            cat: cat
                         }, void 0, false, {
                             fileName: "src/components/cat-view/cat-list.jsx",
-                            lineNumber: 68,
-                            columnNumber: 13
+                            lineNumber: 74,
+                            columnNumber: 11
                         }, undefined)
-                    }, index, false, {
+                    }, `${cat.Name}-${index}`, false, {
                         fileName: "src/components/cat-view/cat-list.jsx",
-                        lineNumber: 60,
-                        columnNumber: 11
+                        lineNumber: 66,
+                        columnNumber: 9
                     }, undefined))
             }, void 0, false, {
                 fileName: "src/components/cat-view/cat-list.jsx",
-                lineNumber: 58,
+                lineNumber: 64,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
@@ -50102,23 +50106,23 @@ const CatList = ({ token, movies })=>{
                         children: "Back"
                     }, void 0, false, {
                         fileName: "src/components/cat-view/cat-list.jsx",
-                        lineNumber: 74,
+                        lineNumber: 80,
                         columnNumber: 11
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/cat-view/cat-list.jsx",
-                    lineNumber: 73,
+                    lineNumber: 79,
                     columnNumber: 9
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/cat-view/cat-list.jsx",
-                lineNumber: 72,
+                lineNumber: 78,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/cat-view/cat-list.jsx",
-        lineNumber: 56,
+        lineNumber: 62,
         columnNumber: 5
     }, undefined);
 };
@@ -50159,39 +50163,57 @@ const CatCard = ({ cat })=>{
             className: "text-decoration-none",
             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card), {
                 className: "h-100 w-100 bg-dark",
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Body, {
-                    className: "d-flex flex-column",
-                    children: [
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Title, {
-                            children: cat.Name
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Img, {
+                            className: "w-100",
+                            variant: "top",
+                            src: cat.Img,
+                            alt: cat.Name + "portrait"
                         }, void 0, false, {
                             fileName: "src/components/cat-view/cat-card.jsx",
                             lineNumber: 19,
-                            columnNumber: 13
-                        }, undefined),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                            className: "mt-auto",
-                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
-                                variant: "link",
-                                className: "m-0 p-0 text-decoration-none",
-                                children: "See details"
+                            columnNumber: 5
+                        }, undefined)
+                    }, void 0, false, {
+                        fileName: "src/components/cat-view/cat-card.jsx",
+                        lineNumber: 18,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Body, {
+                        className: "d-flex flex-column",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Title, {
+                                children: cat.Name
                             }, void 0, false, {
                                 fileName: "src/components/cat-view/cat-card.jsx",
-                                lineNumber: 21,
-                                columnNumber: 15
+                                lineNumber: 27,
+                                columnNumber: 13
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                className: "mt-auto",
+                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
+                                    variant: "link",
+                                    className: "m-0 p-0 text-decoration-none see-details",
+                                    children: "See details"
+                                }, void 0, false, {
+                                    fileName: "src/components/cat-view/cat-card.jsx",
+                                    lineNumber: 29,
+                                    columnNumber: 15
+                                }, undefined)
+                            }, void 0, false, {
+                                fileName: "src/components/cat-view/cat-card.jsx",
+                                lineNumber: 28,
+                                columnNumber: 13
                             }, undefined)
-                        }, void 0, false, {
-                            fileName: "src/components/cat-view/cat-card.jsx",
-                            lineNumber: 20,
-                            columnNumber: 13
-                        }, undefined)
-                    ]
-                }, void 0, true, {
-                    fileName: "src/components/cat-view/cat-card.jsx",
-                    lineNumber: 18,
-                    columnNumber: 11
-                }, undefined)
-            }, void 0, false, {
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/components/cat-view/cat-card.jsx",
+                        lineNumber: 26,
+                        columnNumber: 11
+                    }, undefined)
+                ]
+            }, void 0, true, {
                 fileName: "src/components/cat-view/cat-card.jsx",
                 lineNumber: 17,
                 columnNumber: 9
@@ -50268,6 +50290,7 @@ const CatView = ({ token })=>{
         columnNumber: 12
     }, undefined);
     if (!cat) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "loading-msg",
         children: "loading cats..."
     }, void 0, false, {
         fileName: "src/components/cat-view/cat-view.jsx",

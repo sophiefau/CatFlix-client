@@ -15,10 +15,18 @@ export const CatCard = ({ cat }) => {
         className="text-decoration-none"
       >
         <Card className="h-100 w-100 bg-dark">
+        <div>
+    <Card.Img
+      className="w-100"
+      variant="top"
+      src={cat.Img}
+      alt={cat.Name + "portrait"}
+    />
+  </div>
           <Card.Body className="d-flex flex-column">
             <Card.Title>{cat.Name}</Card.Title>
             <div className="mt-auto">
-              <Button variant="link" className="m-0 p-0 text-decoration-none">
+              <Button variant="link" className="m-0 p-0 text-decoration-none see-details">
                 See details
               </Button>
             </div>

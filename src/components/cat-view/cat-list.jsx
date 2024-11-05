@@ -32,8 +32,14 @@ export const CatList = ({ token, movies }) => {
         }
         return response.json();
       })
-      .then((catsData) => {
-        setCats(catsData); 
+      .then((cats) => {
+          const catsFromApi = cats.map((cat) => ({
+            Name:cat.Name,
+            Img: cat.Img,
+            ColorBreed: cat.ColorBreed,
+            Bio: cat.Bio,
+          }));
+        setCats(catsFromApi); 
       })
       .catch((error) => {
         console.error("Error fetching cats:", error);
@@ -56,19 +62,19 @@ export const CatList = ({ token, movies }) => {
     <Container>
       <h1 className="my-4">Cat Movie Stars</h1>
       <Row>
-        {cats.map((catName, index) => (
-          <Col
-            className="mb-4 d-flex justify-content-center"
-            sm={6}
-            md={6}
-            lg={4}
-            xl={3}
-            key={index}
-          >
-            <CatCard cat={{ Name: catName }} />
-          </Col>
-        ))}
-      </Row>
+      {cats.map((cat, index) => (
+        <Col
+          className="mb-4 d-flex justify-content-center"
+          sm={6}
+          md={6}
+          lg={4}
+          xl={3}
+          key={`${cat.Name}-${index}`}  
+        >
+          <CatCard cat={cat} /> 
+        </Col>
+      ))}
+    </Row>
       <Row>
         <Link to={`/`}>
           <Button className="back-button btn-dark" onClick={handleClick}>

@@ -13204,8 +13204,8 @@ textarea.form-control-lg {
 }
 
 .btn-primary {
+  margin: none;
   color: #faf5ea;
-  margin: 20px 0;
   font-size: 18px;
 }
 

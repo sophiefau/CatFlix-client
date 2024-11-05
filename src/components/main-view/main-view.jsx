@@ -110,7 +110,7 @@ export const MainView = () => {
   return (
     <BrowserRouter>
       <NavigationBar user={user} onLoggedOut={onLoggedOut} />
-      <Row className="justify-content-md-center">
+      <Row className="justify-content-md-center custom-margin-sm">
         <Routes>
           <Route
             path="/signup"
