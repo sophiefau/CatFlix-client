@@ -15,7 +15,7 @@ Here is a list of CatFlix app's essential features:
 - **Detailed Movie Information:** View details for each movie, including genre, director, and cast.
 - **Cat Character Insights:** Access detailed information about the cat(s) in each movie.
 - **Similar Movies Feature:** View similar movies based on genre and if it is animated or not.
-- **Profile Management:** Update your profile information, including username, email, and password.
+- **Profile Management:** Update your profile information, or delete your profile.
 - **Favorites Management:** Add or remove movies from your favorites list.
 - **Responsive Design:** Enjoy a seamless experience across devices with Bootstrap's responsive design.
 - **Error handling:** Accurate error messages are implemented in forms to guide you through input.
